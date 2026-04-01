@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Country — Catálogo Home & Deco</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f5f0eb; color: #3a2e20; }
+
+  header {
+    background: #f5ead8;
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 3px solid #2c1f0e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header img.logo {
+    height: 130px;
+    width: auto;
+    margin-bottom: 6px;
+    mix-blend-mode: multiply;
+  }
+  header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4em;
+    letter-spacing: 4px;
+    color: #2c1f0e;
+    line-height: 1;
+  }
+  header p { font-size: 0.82em; letter-spacing: 3px; color: #8a6840; text-transform: uppercase; margin-top: 4px; }
+  header .tagline { margin-top: 8px; font-size: 0.8em; color: #6a4f30; }
+
+  .catalog {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .product {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    break-inside: avoid;
+  }
+
+  .main-photo {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .thumbnails {
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    background: #faf7f3;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .thumbnails::-webkit-scrollbar { display: none; }
+
+  .thumbnails img {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .thumbnails img:hover,
+  .thumbnails img.active {
+    border-color: #5c3d1e;
+  }
+
+  .product-info {
+    padding: 15px 18px 18px;
+  }
+
+  .product-name {
+    font-size: 1em;
+    font-weight: bold;
+    color: #2c1f0e;
+  }
+
+  .product-desc {
+    font-size: 0.82em;
+    color: #8a7060;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .product-price {
+    margin-top: 10px;
+    font-size: 1.3em;
+    color: #5c3d1e;
+    font-weight: bold;
+  }
+
+  .product-tag {
+    display: inline-block;
+    margin-top: 7px;
+    font-size: 0.72em;
+    background: #f0e8da;
+    color: #7a5c3a;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #2c1f0e;
+    color: #c4a87a;
+    margin-top: 60px;
+  }
+  footer .brand { font-size: 1.5em; font-style: italic; color: #f5ead8; margin-bottom: 8px; }
+  footer p { font-size: 0.85em; margin: 4px 0; }
+
+  @media print {
+    header, footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .no-print { display: none; }
+    .product { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 20px 16px 16px; }
+    header img.logo { height: 70px; }
+    header h1 { font-size: 2.8em; }
+    header p { font-size: 0.75em; }
+
+    .catalog {
+      grid-template-columns: repeat(2, 1fr);
+      margin: 16px auto;
+      padding: 0 10px;
+      gap: 14px;
+    }
+
+    .main-photo { height: 200px; }
+
+    .thumbnails { gap: 5px; padding: 7px; }
+    .thumbnails img { width: 44px; height: 44px; }
+
+    .product-info { padding: 10px 12px 14px; }
+    .product-name { font-size: 0.85em; }
+    .product-desc { font-size: 0.74em; }
+    .product-price { font-size: 1.15em; margin-top: 6px; }
+    .product-tag { font-size: 0.65em; padding: 2px 7px; }
+
+    footer { padding: 24px 16px; margin-top: 30px; }
+    footer > div {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+    }
+    footer > div > div { text-align: center !important; }
+    footer > div > div > div { justify-content: center !important; }
+  }
+
+  @media (max-width: 480px) {
+    .catalog {
+      grid-template-columns: 1fr;
+      padding: 0 12px;
+      gap: 16px;
+    }
+    .main-photo { height: 280px; }
+    .thumbnails img { width: 50px; height: 50px; flex-shrink: 0; }
+    .product-name { font-size: 0.95em; }
+    .product-price { font-size: 1.25em; }
+    .product-desc { font-size: 0.78em; }
+  }
+
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 18px;
+    background: #25D366;
+    color: white;
+    border-radius: 50px;
+    padding: 13px 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 999;
+    letter-spacing: 0.5px;
+  }
+  .whatsapp-btn:hover { background: #1ebe5d; }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="country_horse.png" alt="Country Horse">
+  <h1>Country</h1>
+  <p>Loving Every Day</p>
+  <div class="tagline">Home &amp; Deco · Piezas con calidez para cada rincón · Envíos a todo el país</div>
+</header>
+
+<div style="background:#2c1f0e;color:#f5ead8;text-align:center;padding:12px 20px;font-size:0.82em;letter-spacing:1.5px;text-transform:uppercase;">
+  Precios directos · Sin comisión de plataforma · Envío a coordinar
+</div>
+
+<div class="catalog">
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Hojas/ML BLANCA/1-copy-1.jpg" alt="Bandeja Hoja Decorativa Blanca">
+    <div class="thumbnails">
+      <img src="FOTOS/Hojas/ML BLANCA/1-copy-1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML BLANCA/2-copy-1.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML BLANCA/3-copy-1.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML BLANCA/4-copy-1.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML BLANCA/5.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML BLANCA/3-copy-1 (Embellecedor de Producto).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Centro de Mesa PAMPA</div>
+      <div class="product-desc">Bandeja hoja decorativa blanca · 56×12×3 cm · Ideal para decorar mesas, aparadores o repisas — combina perfectamente con velas y difusores de estilo rústico</div>
+      <div class="product-price">$25.500</div>
+      <span class="product-tag">Home &amp; Deco</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Hojas/ML NEGRA/1-copy-2.jpg" alt="Bandeja Hoja Decorativa Negra">
+    <div class="thumbnails">
+      <img src="FOTOS/Hojas/ML NEGRA/1-copy-2.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML NEGRA/2-copy-2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML NEGRA/3-copy-2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML NEGRA/4-copy-2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML NEGRA/5-copy-0.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML NEGRA/6.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Hojas/ML NEGRA/Embellecedor de Producto-f7083315-73c9-45a4-a685-7f813420e3ec.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Centro de Mesa PAMPA</div>
+      <div class="product-desc">Bandeja hoja decorativa negra · 56×12×3 cm · Ideal para decorar mesas, aparadores o repisas — combina perfectamente con velas y difusores de estilo rústico</div>
+      <div class="product-price">$25.500</div>
+      <span class="product-tag">Home &amp; Deco</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Florero ceramica/ML/1.jpg" alt="Florero Cerámica Artesanal Blanco">
+    <div class="thumbnails">
+      <img src="FOTOS/Florero ceramica/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero ceramica/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero ceramica/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero ceramica/ML/4.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero ceramica/ML/5.png" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero ceramica/ML/6.png" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero ceramica/ML/1 (Embellecedor de Producto) (3).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Florero CLAY</div>
+      <div class="product-desc">Florero cerámica artesanal blanco · 6×18×18 cm · Cada pieza tiene carácter propio por su terminación única — ideal con flores secas, pampas o solo como objeto decorativo</div>
+      <div class="product-price">$23.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Florero de gris de vidrio/ML/1.jpg" alt="Florero Vidrio Ahumado Gris">
+    <div class="thumbnails">
+      <img src="FOTOS/Florero de gris de vidrio/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero de gris de vidrio/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero de gris de vidrio/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero de gris de vidrio/ML/4.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero de gris de vidrio/ML/2 (Embellecedor de Producto) (2).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero de gris de vidrio/ML/4 (Embellecedor de Producto).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Florero STONE</div>
+      <div class="product-desc">Florero vidrio ahumado gris · 12×12×16 cm · Aporta profundidad y textura a cualquier rincón — hermoso con ramas naturales, flores secas o como pieza sola</div>
+      <div class="product-price">$23.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Tabla difusor/ML/WhatsApp Image 2026-03-25 at 8.31.29 PM (Embellecedor de Producto)-copy-0.jpg" alt="Bandeja Oval Negra Mate">
+    <div class="thumbnails">
+      <img src="FOTOS/Tabla difusor/ML/WhatsApp Image 2026-03-25 at 8.31.29 PM (Embellecedor de Producto)-copy-0.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor/ML/WhatsApp Image 2026-03-25 at 8.31.30 PM (1) (Embellecedor de Producto).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Deck LENA</div>
+      <div class="product-desc">Bandeja oval negra mate · 16×12×2 cm · Ideal para organizar difusores, jaboneras o pequeños accesorios en baño o mesita de luz</div>
+      <div class="product-price">$8.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Tabla difusor 2/ML/1.jpg" alt="Difusor De Ambiente Negro Esférico">
+    <div class="thumbnails">
+      <img src="FOTOS/Tabla difusor 2/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 2/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 2/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 2/ML/2 (Embellecedor de Producto) (4).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Deck SAGE</div>
+      <div class="product-desc">Difusor decorativo negro mate con palitos de bambú · 11×19×11 cm · Organiza y aromatiza tu baño, escritorio o mesita con una sola pieza de diseño</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Ambiente</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/tabla difusor 3/ML/1.jpg" alt="Bandeja Rectangular Negra 31cm">
+    <div class="thumbnails">
+      <img src="FOTOS/tabla difusor 3/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla difusor 3/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla difusor 3/ML/2 (Embellecedor de Producto) (5).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Deck RIVER</div>
+      <div class="product-desc">Bandeja rectangular negra · 31×12×2 cm · Perfecta para armar un rincón decorativo con difusor, vela y pequeños accesorios</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Tabla difusor 4/ML/1.jpg" alt="Bandeja Rectangular Negra 29cm">
+    <div class="thumbnails">
+      <img src="FOTOS/Tabla difusor 4/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 4/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 4/ML/2 (Embellecedor de Producto) (6).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 4/ML/1 (Embellecedor de Producto) (4).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Tabla difusor 4/ML/1 (Embellecedor de Producto) (1).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Deck RANCH</div>
+      <div class="product-desc">Bandeja rectangular plástico premium, negro mate · 29.5×12×1 cm · Terminación de alta calidad que combina con ambientes modernos, nórdicos y country</div>
+      <div class="product-price">$18.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/tabla de apoyo/ML/1.jpg" alt="Bandeja Redonda Negra Home">
+    <div class="thumbnails">
+      <img src="FOTOS/tabla de apoyo/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla de apoyo/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla de apoyo/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla de apoyo/ML/4.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla de apoyo/ML/1 (Embellecedor de Producto) (5).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla de apoyo/ML/1 (Embellecedor de Producto) (6).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/tabla de apoyo/ML/2 (Embellecedor de Producto) (3).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Deck GROVE</div>
+      <div class="product-desc">Bandeja redonda negra con interior verde sage y tag HOME · 21×21×2 cm · El toque de color que transforma cualquier rincón — perfecta para agrupar velas, difusores o plantas pequeñas</div>
+      <div class="product-price">$23.000</div>
+      <span class="product-tag">Home &amp; Deco</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Difusores x3/ML/1.jpg" alt="Set 3 Difusores Decorativos Negros">
+    <div class="thumbnails">
+      <img src="FOTOS/Difusores x3/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Difusores x3/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Difusores x3/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Difusores x3/ML/5.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Set x3 CLOVER</div>
+      <div class="product-desc">Set de 3 difusores negros con palitos de bambú, tres tamaños distintos · Solo recipientes — no incluye aromatizante · El combo ideal para decorar y personalizar baño, living y dormitorio</div>
+      <div class="product-price">$20.500</div>
+      <span class="product-tag">Bundle</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/love/ML/WhatsApp Image 2026-03-25 at 8.31.28 PM (Embellecedor de Producto).jpg" alt="Figura Love Decorativa Plateada">
+    <div class="thumbnails">
+      <img src="FOTOS/love/ML/WhatsApp Image 2026-03-25 at 8.31.28 PM (Embellecedor de Producto).jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/love/ML/WhatsApp Image 2026-03-25 at 8.31.29 PM (Embellecedor de Producto).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/love/ML/lifestyle_1.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/love/ML/lifestyle_2.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Pieza de Decoración LOVE</div>
+      <div class="product-desc">Letras LOVE 3D en cerámica, acabado plateado brillante · 17×4×8 cm · Un detalle que llena de calidez cualquier mesita de luz, escritorio o repisa — también ideal como regalo</div>
+      <div class="product-price">$8.500</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Belas/1/ML/1.jpg" alt="Vela Aromática Negra — Modelo A">
+    <div class="thumbnails">
+      <img src="FOTOS/Belas/1/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Belas/1/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Belas/1/ML/1 (Embellecedor de Producto).jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Belas/1/ML/1 (Embellecedor de Producto) (1).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Vela EMBER</div>
+      <div class="product-desc">Vela aromática en recipiente con textura en relieve · 7×7×6 cm · Ideal para iluminar y aromatizar tu espacio favorito con un toque de estilo boho y rústico</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Ambiente</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Belas/2/ML/1.jpg" alt="Vela Aromática Negra — Modelo B">
+    <div class="thumbnails">
+      <img src="FOTOS/Belas/2/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Belas/2/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Belas/2/ML/2 (Embellecedor de Producto).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Vela HAVEN</div>
+      <div class="product-desc">Vela aromática en recipiente con textura en relieve · 7×7×5 cm · Ideal para iluminar y aromatizar tu espacio favorito con un toque de estilo boho y rústico</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Ambiente</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Belas/3/ML/1.jpg" alt="Vela Aromática Negra — Modelo C">
+    <div class="thumbnails">
+      <img src="FOTOS/Belas/3/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Belas/3/ML/2 (Embellecedor de Producto) (1).jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Vela AMBER</div>
+      <div class="product-desc">Vela aromática en recipiente con textura en relieve · 7×7×7 cm · Ideal para iluminar y aromatizar tu espacio favorito con un toque de estilo boho y rústico</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Ambiente</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/LIBROS/ML/1-copy-3.jpg" alt="Set x3 Libros Decorativos">
+    <div class="thumbnails">
+      <img src="FOTOS/LIBROS/ML/1-copy-3.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/LIBROS/ML/2.jpeg" onmouseover="changeMain(this)">
+      <img src="FOTOS/LIBROS/ML/3.jpeg" onmouseover="changeMain(this)">
+      <img src="FOTOS/LIBROS/ML/4.jpeg" onmouseover="changeMain(this)">
+      <img src="FOTOS/LIBROS/ML/5.jpeg" onmouseover="changeMain(this)">
+      <img src="FOTOS/LIBROS/ML/6.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Libros DUNE</div>
+      <div class="product-desc">Set de 3 libros decorativos para repisa y coffee table · 16×14×4 cm (set) · El accesorio favorito del home deco — aportan altura, textura y carácter a cualquier rincón del hogar</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Florero vidrio/BLANCO/ML/1.jpg" alt="Florero Vidrio Blanco Ondulado">
+    <div class="thumbnails">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/4.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/5.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/6.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/BLANCO/ML/7.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Florero BRISA</div>
+      <div class="product-desc">Florero vidrio blanco, forma ondulada orgánica, diseño contemporáneo · 8×12×20 cm · El acabado ondulado le da un carácter artístico único — hermoso con flores secas, pampas o solo en repisa</div>
+      <div class="product-price">$16.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/Florero vidrio/NEGRO/ML/1.jpg" alt="Florero Vidrio Negro Ondulado">
+    <div class="thumbnails">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/4.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/5.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/6.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/7.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/Florero vidrio/NEGRO/ML/8.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Florero COAL</div>
+      <div class="product-desc">Florero vidrio negro, forma ondulada orgánica, diseño contemporáneo · 8×12×20 cm · La versión en negro aporta un toque más dramático y sofisticado — ideal para ambientes modernos y minimalistas</div>
+      <div class="product-price">$16.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+  <div class="product">
+    <img class="main-photo" src="FOTOS/FUENTE CARAS/ML/1.jpg" alt="Maceta Con Cara Negro Mate">
+    <div class="thumbnails">
+      <img src="FOTOS/FUENTE CARAS/ML/1.jpg" class="active" onmouseover="changeMain(this)">
+      <img src="FOTOS/FUENTE CARAS/ML/2.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/FUENTE CARAS/ML/3.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/FUENTE CARAS/ML/4.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/FUENTE CARAS/ML/5.jpg" onmouseover="changeMain(this)">
+      <img src="FOTOS/FUENTE CARAS/ML/6.jpg" onmouseover="changeMain(this)">
+    </div>
+    <div class="product-info">
+      <div class="product-name">Maceta TERRA</div>
+      <div class="product-desc">Recipiente negro mate con rostro en relieve, ideal maceta, portavelas o decoración · 11×11×10 cm · Una pieza artística con personalidad — perfecta con una suculenta adentro o como objeto de arte solo</div>
+      <div class="product-price">$10.000</div>
+      <span class="product-tag">Decoración</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="max-width:900px; margin:0 auto; text-align:center; padding: 0 20px;">
+
+    <!-- Country text logo centrado -->
+    <div style="width:100%; display:flex; justify-content:center;">
+      <div style="font-family:'Dancing Script',cursive; font-size:3em; color:#f5ead8; letter-spacing:4px;">Country</div>
+    </div>
+    <p style="font-size:0.75em; letter-spacing:3px; color:#c4a87a; text-transform:uppercase; margin-top:2px;">Loving Every Day · Home &amp; Deco</p>
+
+    <!-- Info en dos columnas + QR -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:60px; margin-top:28px; flex-wrap:wrap;">
+
+      <!-- Izquierda -->
+      <div style="text-align:left; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="#c4a87a" stroke="none"/>
+          </svg>
+          <span style="font-size:0.82em; color:#e8d5b5;">@country.homedeco</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4a87a">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.524 5.845L.057 23.07a.75.75 0 0 0 .923.916l5.347-1.473A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+          </svg>
+          <span style="font-size:0.82em; color:#e8d5b5;">+54 9 11 XXXX-XXXX</span>
+        </div>
+      </div>
+
+      <!-- QR centrado -->
+      <div style="text-align:center;">
+        <div id="qrcode-footer"></div>
+        <p style="margin-top:6px; font-size:0.72em; letter-spacing:1px; text-transform:uppercase; color:#c4a87a;">Catálogo</p>
+      </div>
+
+      <!-- Derecha -->
+      <div style="text-align:left; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <!-- ML logo -->
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="16" fill="#FFE600"/>
+            <path d="M8 13l4 6 4-6 4 6 4-6" stroke="#2d3277" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span style="font-size:0.82em; color:#e8d5b5;">MercadoLibre · Country Home Deco</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><path d="M13 16l2 2 4-4"/>
+          </svg>
+          <span style="font-size:0.82em; color:#e8d5b5;">📦 Envíos a todo el país</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+function changeMain(thumb) {
+  const product = thumb.closest('.product');
+  const main = product.querySelector('.main-photo');
+  main.src = thumb.src;
+  product.querySelectorAll('.thumbnails img').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+new QRCode(document.getElementById("qrcode-footer"), {
+  text: "https://countryhomedeco.netlify.app",
+  width: 120,
+  height: 120,
+  colorDark: "#f5ead8",
+  colorLight: "#2c1f0e"
+});
+</script>
+
+<a class="whatsapp-btn" href="https://wa.me/541131655653?text=Hola!%20Vi%20el%20cat%C3%A1logo%20y%20me%20interesa%20un%20producto" target="_blank">
+  💬 Consultar por WhatsApp
+</a>
+
+</body>
+</html>
