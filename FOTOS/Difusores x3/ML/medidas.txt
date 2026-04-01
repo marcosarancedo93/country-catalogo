@@ -1,0 +1,5 @@
+largo+ancho+alto
+
+1-3x8x10
+2-6x6x9
+3-6x6x11

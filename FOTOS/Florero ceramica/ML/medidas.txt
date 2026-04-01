@@ -1,0 +1,3 @@
+largo+ancho+alto
+
+1-6x18x18

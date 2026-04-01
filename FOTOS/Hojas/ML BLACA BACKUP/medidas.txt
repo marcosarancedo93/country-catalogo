@@ -1,0 +1,3 @@
+largo+ancho+alto
+
+1-56x12x3

@@ -1,0 +1,4 @@
+largo+ancho+alto
+
+1-7x7x6
+

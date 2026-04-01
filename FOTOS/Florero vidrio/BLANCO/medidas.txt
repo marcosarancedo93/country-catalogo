@@ -1,0 +1,3 @@
+largo+ancho+alto
+
+1-8x12x20
