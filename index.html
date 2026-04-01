@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Country — Catálogo Home & Deco</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Jost', sans-serif; background: #f5f0eb; color: #3a2e20; }
@@ -19,20 +19,34 @@
     align-items: center;
   }
   header img.logo {
-    height: 130px;
+    height: 140px;
     width: auto;
-    margin-bottom: 6px;
+    margin-bottom: 0;
     mix-blend-mode: multiply;
   }
+  header .divider {
+    width: 260px;
+    height: 1px;
+    background: #c4a87a;
+    margin: 12px 0 10px;
+  }
   header h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 4em;
-    letter-spacing: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2em;
+    font-weight: 300;
+    letter-spacing: 14px;
     color: #2c1f0e;
     line-height: 1;
+    text-transform: uppercase;
   }
-  header p { font-size: 0.82em; letter-spacing: 3px; color: #8a6840; text-transform: uppercase; margin-top: 4px; }
-  header .tagline { margin-top: 8px; font-size: 0.8em; color: #6a4f30; }
+  header p { font-family: 'Jost', sans-serif; font-size: 0.72em; font-weight: 300; letter-spacing: 5px; color: #8a6840; text-transform: uppercase; margin-top: 6px; }
+  header .tagline { font-family: 'Jost', sans-serif; font-weight: 300; margin-top: 6px; font-size: 0.75em; color: #6a4f30; letter-spacing: 1px; }
+  header .divider-bottom {
+    width: 260px;
+    height: 1px;
+    background: #c4a87a;
+    margin-top: 14px;
+  }
 
   .catalog {
     max-width: 1100px;
@@ -147,9 +161,10 @@
 
   @media (max-width: 768px) {
     header { padding: 20px 16px 16px; }
-    header img.logo { height: 70px; }
-    header h1 { font-size: 2.8em; }
-    header p { font-size: 0.75em; }
+    header img.logo { height: 90px; }
+    header h1 { font-size: 2em; letter-spacing: 10px; }
+    header p { font-size: 0.65em; }
+    header .divider, header .divider-bottom { width: 180px; }
 
     .catalog {
       grid-template-columns: repeat(2, 1fr);
@@ -216,10 +231,12 @@
 <body>
 
 <header>
-  <img loading="lazy" class="logo" src="country_horse.png" alt="Country Horse">
+  <img class="logo" src="country_horse.png" alt="Country Horse">
+  <div class="divider"></div>
   <h1>Country</h1>
-  <p>Loving Every Day</p>
-  <div class="tagline">Home &amp; Deco · Piezas con calidez para cada rincón · Envíos a todo el país</div>
+  <p>Home &amp; Deco</p>
+  <div class="tagline">Piezas con calidez para cada rincón · Envíos a todo el país</div>
+  <div class="divider-bottom"></div>
 </header>
 
 <div style="background:#2c1f0e;color:#f5ead8;text-align:center;padding:12px 20px;font-size:0.82em;letter-spacing:1.5px;text-transform:uppercase;">
