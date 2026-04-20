@@ -18,11 +18,14 @@
     flex-direction: column;
     align-items: center;
   }
+  .logo-wrap {
+    mix-blend-mode: multiply;
+  }
   header img.logo {
     height: 200px;
     width: auto;
     margin-bottom: 0;
-    mix-blend-mode: multiply;
+    display: block;
     filter: brightness(0) saturate(100%) invert(47%) sepia(37%) saturate(520%) hue-rotate(352deg) brightness(88%);
   }
   header .divider {
@@ -659,7 +662,7 @@
 </div>
 
 <header>
-  <img class="logo" src="country_horse.png" alt="Country Horse">
+  <div class="logo-wrap"><img class="logo" src="country_horse.png" alt="Country Horse"></div>
   <div class="divider"></div>
   <h1>Country</h1>
   <p>Home &amp; Deco</p>
