@@ -470,7 +470,7 @@
     <div class="product-info">
       <div class="product-name">Deck GROVE</div>
       <div class="product-desc">Bandeja redonda negra con interior verde sage y tag HOME · 21×21×2 cm · El toque de color que transforma cualquier rincón — perfecta para agrupar velas, difusores o plantas pequeñas</div>
-      <div class="product-price">$40.900</div>
+      <div class="product-price">$24.900</div>
       <span class="product-tag">Home &amp; Deco</span>
     </div>
   </div>
@@ -742,7 +742,7 @@
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="1" fill="#c4a87a" stroke="none"/>
           </svg>
-          <span style="font-size:0.82em; color:#e8d5b5;">@country.homedeco</span>
+          <a href="https://instagram.com/country.homedeco" target="_blank" style="font-size:0.82em; color:#e8d5b5; text-decoration:none;">@country.homedeco</a>
         </div>
         <div style="display:flex; align-items:center; gap:10px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4a87a">
@@ -750,12 +750,12 @@
           </svg>
           <a href="https://wa.me/541136610709" style="font-size:0.82em; color:#e8d5b5; text-decoration:none;">+54 9 11 3661-0709</a>
         </div>
-      </div>
-
-      <!-- QR centrado -->
-      <div style="text-align:center;">
-        <div id="qrcode-footer"></div>
-        <p style="margin-top:6px; font-size:0.72em; letter-spacing:1px; text-transform:uppercase; color:#c4a87a;">Catálogo</p>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4a87a">
+            <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+          </svg>
+          <a href="https://www.facebook.com/profile.php?id=61572010690477" target="_blank" style="font-size:0.82em; color:#e8d5b5; text-decoration:none;">Country Home Deco</a>
+        </div>
       </div>
 
       <!-- Derecha -->
@@ -766,7 +766,7 @@
             <circle cx="16" cy="16" r="16" fill="#FFE600"/>
             <path d="M8 13l4 6 4-6 4 6 4-6" stroke="#2d3277" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
-          <span style="font-size:0.82em; color:#e8d5b5;">MercadoLibre · Country Home Deco</span>
+          <a href="https://listado.mercadolibre.com.ar/_CustId_3282679258" target="_blank" style="font-size:0.82em; color:#e8d5b5; text-decoration:none;">MercadoLibre · Country Home Deco</a>
         </div>
         <div style="display:flex; align-items:center; gap:10px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -780,7 +780,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 function changeMain(thumb) {
   const product = thumb.closest('.product');
@@ -790,13 +789,6 @@ function changeMain(thumb) {
   thumb.classList.add('active');
 }
 
-new QRCode(document.getElementById("qrcode-footer"), {
-  text: "https://countryhomedeco.vercel.app",
-  width: 120,
-  height: 120,
-  colorDark: "#f5ead8",
-  colorLight: "#2c1f0e"
-});
 </script>
 
 <a class="whatsapp-btn" href="https://wa.me/541131655653?text=Hola!%20Vi%20el%20cat%C3%A1logo%20y%20me%20interesa%20un%20producto" target="_blank">
