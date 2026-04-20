@@ -1,22 +1,28 @@
+const nodemailer = require('nodemailer');
+
 const fmt = n => '$' + Math.round(Number(n)).toLocaleString('es-AR');
 
-async function sendEmail(to, subject, html) {
-  const resp = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      from: 'Country Home Deco <onboarding@resend.dev>',
-      to: Array.isArray(to) ? to : [to],
-      subject,
-      html
-    })
+const GMAIL = 'country.homedeco.ar@gmail.com';
+
+function getTransporter() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: GMAIL,
+      pass: process.env.GMAIL_PASS
+    }
   });
-  const data = await resp.json();
-  if (!resp.ok) throw new Error(JSON.stringify(data));
-  return data;
+}
+
+async function sendEmail(to, subject, html) {
+  const transporter = getTransporter();
+  const result = await transporter.sendMail({
+    from: `Country Home Deco <${GMAIL}>`,
+    to: Array.isArray(to) ? to.join(',') : to,
+    subject,
+    html
+  });
+  return result;
 }
 
 // Email para Marco (interno)
