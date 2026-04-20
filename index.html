@@ -329,6 +329,19 @@
 
   .cart-empty { text-align: center; padding: 40px 20px; color: #8a6840; font-size: 0.88em; }
 
+  .fs-banner {
+    background: #f5ead8; border: 1px solid #c4a87a;
+    border-radius: 3px; padding: 10px 12px; margin-bottom: 10px;
+    font-size: 0.82em; color: #3a2e20;
+  }
+  .fs-banner.achieved {
+    background: #e8f5e0; border-color: #5a7a4a; color: #2a5a1a;
+    text-align: center; font-weight: 500;
+  }
+  .fs-text { margin-bottom: 5px; }
+  .fs-bar { background: #e8d5b5; border-radius: 10px; height: 5px; overflow: hidden; }
+  .fs-fill { background: #c4a87a; height: 100%; border-radius: 10px; transition: width 0.3s; }
+
   .cart-item {
     background: white; border-radius: 4px; padding: 12px 14px;
     margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
@@ -500,6 +513,7 @@
 
     <!-- STEP 1: Items -->
     <div class="step active" id="step-1">
+      <div id="fs-banner"></div>
       <div id="cart-items"></div>
     </div>
 
@@ -1132,18 +1146,39 @@ let selectedShipping = null;
 let selectedPay = null;
 
 const WA_MARCO = '541131655653';
+const FREE_SHIPPING_THRESHOLD = 70000;
 
 const SHIPPING = {
-  correo: { label: 'Correo Argentino Clásica', detail: '3 a 6 días hábiles', amba: 20600, nacional: 28500 },
-  andreani: { label: 'Andreani Pack', detail: '2 a 4 días hábiles', amba: 27500, nacional: 29000 }
+  correo:   { label: 'Correo Argentino Clásica', detail: '3 a 6 días hábiles',
+              amba:    { light: 17400, standard: 20600 },
+              nacional:{ light: 23500, standard: 28500 } },
+  andreani: { label: 'Andreani Pack',            detail: '2 a 4 días hábiles',
+              amba:    { light: 26000, standard: 27500 },
+              nacional:{ light: 26000, standard: 29000 } }
 };
 const AMBA_PROVINCES = ['Ciudad Autónoma de Buenos Aires', 'Buenos Aires'];
+
+// Pesos en gramos por producto
+const PRODUCT_WEIGHTS = {
+  'PAMPA': 1200, 'GROVE': 1200, 'CLAY': 1200, 'STONE': 1200,
+  'RANCH': 1500, 'LENA': 500,  'KURO': 400,  'WABI': 400,
+  'CLOVER': 1000,'LOVE': 500,  'EMBER': 280, 'HAVEN': 280,
+  'AMBER': 280,  'DUNE': 800,  'BRISA': 900, 'COAL': 900,
+  'TERRA': 700,  'HOME': 500,  'Esencia': 350
+};
+function getWeight(name) {
+  for (const [k, w] of Object.entries(PRODUCT_WEIGHTS)) if (name.includes(k)) return w;
+  return 600;
+}
+function cartWeightG() { return cart.reduce((s, i) => s + getWeight(i.name) * i.qty, 0); }
+function shippingTier() { return cartWeightG() <= 1000 ? 'light' : 'standard'; }
+function isFreeShipping() { return subtotal() >= FREE_SHIPPING_THRESHOLD; }
 
 // ─── UTILS ───────────────────────────────────────────────
 const fmt = n => '$' + Number(n).toLocaleString('es-AR');
 const zone = p => AMBA_PROVINCES.includes(p) ? 'amba' : 'nacional';
 const subtotal = () => cart.reduce((s, i) => s + i.price * i.qty, 0);
-const total = () => subtotal() + (selectedShipping ? selectedShipping.cost : 0);
+const total = () => subtotal() + (isFreeShipping() ? 0 : (selectedShipping ? selectedShipping.cost : 0));
 
 // ─── INJECT BUTTONS ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -1209,6 +1244,21 @@ function renderCart() {
   const badge = document.getElementById('cart-badge');
   badge.textContent = count;
   badge.classList.toggle('visible', count > 0);
+
+  // Banner envío gratis
+  const sub = subtotal();
+  const fsEl = document.getElementById('fs-banner');
+  if (fsEl) {
+    if (sub === 0) {
+      fsEl.innerHTML = `<div class="fs-banner"><div class="fs-text">Envío gratis en pedidos desde <strong>${fmt(FREE_SHIPPING_THRESHOLD)}</strong></div><div class="fs-bar"><div class="fs-fill" style="width:0%"></div></div></div>`;
+    } else if (sub >= FREE_SHIPPING_THRESHOLD) {
+      fsEl.innerHTML = `<div class="fs-banner achieved">🎉 ¡Tenés envío gratis!</div>`;
+    } else {
+      const pct = (sub / FREE_SHIPPING_THRESHOLD) * 100;
+      const falta = FREE_SHIPPING_THRESHOLD - sub;
+      fsEl.innerHTML = `<div class="fs-banner"><div class="fs-text">Te faltan <strong>${fmt(falta)}</strong> para envío gratis</div><div class="fs-bar"><div class="fs-fill" style="width:${pct.toFixed(0)}%"></div></div></div>`;
+    }
+  }
 
   const itemsEl = document.getElementById('cart-items');
   if (cart.length === 0) {
@@ -1321,14 +1371,20 @@ function getBuyer() {
 function renderShipping() {
   const province = document.getElementById('f-province').value;
   const z = zone(province);
+  const tier = shippingTier();
+  const free = isFreeShipping();
   const opts = Object.entries(SHIPPING).map(([key, s]) => {
-    const cost = s[z];
+    const baseCost = s[z][tier];
+    const cost = free ? 0 : baseCost;
     const sel = selectedShipping?.key === key;
+    const priceHTML = free
+      ? `<div class="shipping-opt-price" style="color:#5a7a4a;">ENVÍO GRATIS</div>`
+      : `<div class="shipping-opt-price">${fmt(cost)}</div>`;
     return `
       <div class="shipping-opt${sel ? ' selected' : ''}" onclick="selectShipping('${key}',${cost})">
         <div class="shipping-opt-name">${s.label}</div>
         <div class="shipping-opt-detail">${s.detail}</div>
-        <div class="shipping-opt-price">${fmt(cost)}</div>
+        ${priceHTML}
       </div>
     `;
   }).join('');
