@@ -580,11 +580,11 @@
       <div class="step-title">Forma de pago</div>
       <div id="resumen-pago" style="margin-bottom:14px;"></div>
       <div class="pay-opt" id="pay-mp" onclick="selectPay('mp')">
-        <span class="pay-opt-icon">💳</span>
+        <span class="pay-opt-icon">MP</span>
         <div><div class="pay-opt-name">Mercado Pago</div><div class="pay-opt-detail">Tarjetas, débito, cuotas sin interés</div></div>
       </div>
       <div class="pay-opt" id="pay-transfer" onclick="selectPay('transfer')">
-        <span class="pay-opt-icon">🏦</span>
+        <span class="pay-opt-icon">TR</span>
         <div><div class="pay-opt-name">Transferencia a Mercado Pago</div><div class="pay-opt-detail">Alias o CVU</div></div>
       </div>
       <div class="transfer-box" id="transfer-box">
@@ -593,7 +593,7 @@
         <div class="transfer-row" id="transfer-amount-row"><span class="transfer-label">Monto</span><span class="transfer-value" id="transfer-amount">—</span></div>
       </div>
       <button class="btn-mp visible" id="btn-pay-mp" onclick="payWithMP()">Pagar con Mercado Pago</button>
-      <button class="btn-transfer" id="btn-transfer" onclick="confirmTransfer()">✓ Ya transferí — Confirmar pedido</button>
+      <button class="btn-transfer" id="btn-transfer" onclick="confirmTransfer()">Ya transferí — Confirmar pedido</button>
     </div>
 
   </div>
@@ -609,7 +609,7 @@
 <!-- MODAL ÉXITO -->
 <div class="success-overlay" id="success-overlay">
   <div class="success-box">
-    <div class="success-icon">✅</div>
+    <div class="success-icon" style="font-size:2.5em;color:#5a7a4a;">&#10003;</div>
     <div class="success-title">¡Pago Confirmado!</div>
     <div class="success-sub" id="success-msg">Tu pedido fue registrado. Confirmalo por WhatsApp.</div>
     <a class="success-wa" id="success-wa-link" href="#" target="_blank">
@@ -629,23 +629,31 @@
     <div class="modal-sub">Catálogo Oficial · Home &amp; Deco</div>
     <div class="modal-items">
       <div class="modal-item">
-        <span class="modal-icon">💰</span>
         <span>Los precios que ves son <strong>precios directos</strong>, sin pasar por plataformas. Son más bajos que en MercadoLibre.</span>
       </div>
       <div class="modal-item">
-        <span class="modal-icon">📦</span>
         <span>El <strong>envío no está incluido</strong>. Se coordina y abona por separado al comprar (Andreani / Correo Argentino a todo el país).</span>
       </div>
       <div class="modal-item">
-        <span class="modal-icon">💬</span>
         <span>Para comprar, consultá por <strong>WhatsApp</strong> — te damos el precio de envío a tu zona al instante.</span>
       </div>
-      <div class="modal-item">
-        <span class="modal-icon">🛒</span>
-        <span>Si preferís envío gratis, encontranos en <strong>MercadoLibre</strong> como <em>Country Home Deco</em>.</span>
-      </div>
     </div>
-    <button class="modal-btn" onclick="document.getElementById('modalOverlay').classList.add('hidden')">Entendido</button>
+    <button class="modal-btn" onclick="document.getElementById('modalOverlay').classList.add('hidden');document.getElementById('modalShipping').classList.remove('hidden');">Entendido</button>
+  </div>
+</div>
+
+<!-- POPUP ENVÍO GRATIS -->
+<div class="modal-overlay hidden" id="modalShipping">
+  <div class="modal-box" style="text-align:center;">
+    <div class="modal-logo">Country</div>
+    <div class="modal-divider"></div>
+    <div style="font-size:2em;margin:12px 0 6px;color:#c4a87a;">&#9993;</div>
+    <h2 style="font-size:1.5em;margin-bottom:6px;">Envío Gratis</h2>
+    <div class="modal-sub" style="margin-bottom:16px;">en pedidos desde <strong style="color:#2c1f0e;">$70.000</strong></div>
+    <div style="font-size:0.85em;color:#6a4f30;line-height:1.7;margin-bottom:20px;">
+      Andreani · Correo Argentino<br>A todo el país
+    </div>
+    <button class="modal-btn" onclick="document.getElementById('modalShipping').classList.add('hidden')">Ver catálogo</button>
   </div>
 </div>
 
@@ -663,16 +671,16 @@
 </div>
 <div class="info-strip">
   <div class="info-strip-inner">
-    <div class="info-chip">💰 <span><strong>Precios directos</strong> — sin comisión de plataforma</span></div>
-    <div class="info-chip">📦 <span><strong>Envío no incluido</strong> — se coordina al comprar</span></div>
-    <div class="info-chip">💬 <span>Comprá por <strong>WhatsApp</strong> o encontranos en <strong>MercadoLibre</strong> con envío gratis</span></div>
+    <div class="info-chip"><span><strong>Precios directos</strong> — sin comisión de plataforma</span></div>
+    <div class="info-chip"><span><strong>Envío no incluido</strong> — se coordina al comprar</span></div>
+    <div class="info-chip"><span>Comprá por <strong>WhatsApp</strong> o encontranos en <strong>MercadoLibre</strong> con envío gratis</span></div>
   </div>
 </div>
 
 <!-- Banner envío gratis página principal -->
 <div style="background:linear-gradient(135deg,#2c1f0e 0%,#4a3520 100%);color:#f5ead8;text-align:center;padding:18px 20px;border-bottom:2px solid #c4a87a;">
   <div style="display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;">
-    <span style="font-size:1.5em;">🚚</span>
+    <span style="font-size:1.2em;font-weight:300;letter-spacing:2px;color:#c4a87a;">&#9993;</span>
     <div>
       <div style="font-size:1.05em;font-weight:600;letter-spacing:1px;">ENVÍO GRATIS en pedidos desde <span style="color:#c4a87a;">$70.000</span></div>
       <div style="font-size:0.75em;font-weight:300;letter-spacing:2px;margin-top:3px;color:#c4a87a;text-transform:uppercase;">Andreani · Correo Argentino · Todo el país</div>
@@ -1146,7 +1154,7 @@ function changeMain(thumb) {
 </script>
 
 <a class="whatsapp-btn" href="https://wa.me/541131655653?text=Hola!%20Vi%20el%20cat%C3%A1logo%20y%20me%20interesa%20un%20producto" target="_blank">
-  💬 Consultar por WhatsApp
+  Consultar por WhatsApp
 </a>
 
 <script>
@@ -1206,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const price = priceEl ? parseInt(priceEl.textContent.replace(/[^0-9]/g, '')) : 0;
       const id = `prod-${i}`;
       addToCart(id, name, price);
-      btn.textContent = '✓ Agregado';
+      btn.textContent = 'Agregado';
       btn.classList.add('added');
       setTimeout(() => { btn.textContent = '+ Agregar al carrito'; btn.classList.remove('added'); }, 1800);
     });
@@ -1263,7 +1271,7 @@ function renderCart() {
     if (sub === 0) {
       fsEl.innerHTML = `<div class="fs-banner"><div class="fs-text">Envío gratis en pedidos desde <strong>${fmt(FREE_SHIPPING_THRESHOLD)}</strong></div><div class="fs-bar"><div class="fs-fill" style="width:0%"></div></div></div>`;
     } else if (sub >= FREE_SHIPPING_THRESHOLD) {
-      fsEl.innerHTML = `<div class="fs-banner achieved">🎉 ¡Tenés envío gratis!</div>`;
+      fsEl.innerHTML = `<div class="fs-banner achieved">¡Tenés envío gratis!</div>`;
     } else {
       const pct = (sub / FREE_SHIPPING_THRESHOLD) * 100;
       const falta = FREE_SHIPPING_THRESHOLD - sub;
