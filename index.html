@@ -1288,6 +1288,7 @@ function openCart() {
   document.getElementById('cart-sidebar').classList.add('open');
   document.getElementById('cart-overlay').classList.add('open');
   goStep(1);
+  renderCart();
 }
 function closeCart() {
   document.getElementById('cart-sidebar').classList.remove('open');
