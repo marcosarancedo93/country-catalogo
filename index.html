@@ -194,6 +194,46 @@
     footer > div > div > div { justify-content: center !important; }
   }
 
+  /* MODAL BIENVENIDA */
+  .modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44,31,14,0.78); z-index: 1000;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.hidden { display: none; }
+  .modal-box {
+    background: #f5f0eb; border-radius: 14px; max-width: 400px; width: 100%;
+    padding: 32px 28px; text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  }
+  .modal-logo { font-family: 'Forum', serif; font-size: 1.3em; letter-spacing: 8px;
+    text-transform: uppercase; color: #c4a87a; margin-bottom: 16px; }
+  .modal-box h2 { font-family: 'Forum', serif; font-size: 1.4em; color: #2c1f0e;
+    letter-spacing: 2px; margin-bottom: 6px; }
+  .modal-sub { font-size: 0.75em; color: #8a6840; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 22px; }
+  .modal-items { text-align: left; display: flex; flex-direction: column;
+    gap: 13px; margin-bottom: 24px; }
+  .modal-item { display: flex; gap: 11px; align-items: flex-start;
+    font-size: 0.86em; color: #3a2e20; line-height: 1.55; }
+  .modal-icon { font-size: 1.05em; flex-shrink: 0; margin-top: 1px; }
+  .modal-divider { width: 60px; height: 1px; background: #c4a87a; margin: 0 auto 22px; }
+  .modal-btn { background: #2c1f0e; color: #f5ead8; border: none; border-radius: 8px;
+    padding: 13px 32px; font-family: 'Work Sans', sans-serif; font-size: 0.88em;
+    letter-spacing: 2px; text-transform: uppercase; cursor: pointer; width: 100%; }
+  .modal-btn:hover { background: #3d2c14; }
+
+  /* INFO STRIP */
+  .info-strip {
+    background: #f0e8d8; border-top: 1px solid #d4c4a8; border-bottom: 1px solid #d4c4a8;
+    padding: 14px 20px; text-align: center;
+  }
+  .info-strip-inner { max-width: 760px; margin: 0 auto; display: flex;
+    flex-wrap: wrap; justify-content: center; gap: 8px 32px; }
+  .info-chip { font-size: 0.78em; color: #5c3d1e; display: flex;
+    align-items: center; gap: 6px; }
+  .info-chip strong { color: #2c1f0e; }
+
   @media (max-width: 480px) {
     .catalog {
       grid-template-columns: 1fr;
@@ -230,6 +270,35 @@
 </head>
 <body>
 
+<!-- POPUP BIENVENIDA -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-logo">Country</div>
+    <div class="modal-divider"></div>
+    <h2>Precios Directos</h2>
+    <div class="modal-sub">Catálogo Oficial · Home &amp; Deco</div>
+    <div class="modal-items">
+      <div class="modal-item">
+        <span class="modal-icon">💰</span>
+        <span>Los precios que ves son <strong>precios directos</strong>, sin pasar por plataformas. Son más bajos que en MercadoLibre.</span>
+      </div>
+      <div class="modal-item">
+        <span class="modal-icon">📦</span>
+        <span>El <strong>envío no está incluido</strong>. Se coordina y abona por separado al comprar (Andreani / Correo Argentino a todo el país).</span>
+      </div>
+      <div class="modal-item">
+        <span class="modal-icon">💬</span>
+        <span>Para comprar, consultá por <strong>WhatsApp</strong> — te damos el precio de envío a tu zona al instante.</span>
+      </div>
+      <div class="modal-item">
+        <span class="modal-icon">🛒</span>
+        <span>Si preferís envío gratis, encontranos en <strong>MercadoLibre</strong> como <em>Country Home Deco</em>.</span>
+      </div>
+    </div>
+    <button class="modal-btn" onclick="document.getElementById('modalOverlay').classList.add('hidden')">Entendido</button>
+  </div>
+</div>
+
 <header>
   <img class="logo" src="country_horse.png" alt="Country Horse">
   <div class="divider"></div>
@@ -240,7 +309,14 @@
 </header>
 
 <div style="background:#2c1f0e;color:#f5ead8;text-align:center;padding:12px 20px;font-size:0.82em;letter-spacing:1.5px;text-transform:uppercase;">
-  Precios directos · Envío incluido a todo el país · Andreani / Correo Argentino
+  Precios directos · Sin envío incluido · Consultar envío por WhatsApp
+</div>
+<div class="info-strip">
+  <div class="info-strip-inner">
+    <div class="info-chip">💰 <span><strong>Precios directos</strong> — sin comisión de plataforma</span></div>
+    <div class="info-chip">📦 <span><strong>Envío no incluido</strong> — se coordina al comprar</span></div>
+    <div class="info-chip">💬 <span>Comprá por <strong>WhatsApp</strong> o encontranos en <strong>MercadoLibre</strong> con envío gratis</span></div>
+  </div>
 </div>
 
 <div class="catalog">
@@ -258,7 +334,7 @@
     <div class="product-info">
       <div class="product-name">Centro de Mesa PAMPA</div>
       <div class="product-desc">Bandeja hoja decorativa blanca · 56×12×3 cm · Ideal para decorar mesas, aparadores o repisas — combina perfectamente con velas y difusores de estilo rústico</div>
-      <div class="product-price">$29.500</div>
+      <div class="product-price">$44.900</div>
       <span class="product-tag">Home &amp; Deco</span>
     </div>
   </div>
@@ -277,7 +353,7 @@
     <div class="product-info">
       <div class="product-name">Centro de Mesa PAMPA</div>
       <div class="product-desc">Bandeja hoja decorativa negra · 56×12×3 cm · Ideal para decorar mesas, aparadores o repisas — combina perfectamente con velas y difusores de estilo rústico</div>
-      <div class="product-price">$29.500</div>
+      <div class="product-price">$44.900</div>
       <span class="product-tag">Home &amp; Deco</span>
     </div>
   </div>
@@ -294,7 +370,7 @@
     <div class="product-info">
       <div class="product-name">Florero CLAY</div>
       <div class="product-desc">Florero cerámica artesanal blanco · 6×18×18 cm · Cada pieza tiene carácter propio por su terminación única — ideal con flores secas, pampas o solo como objeto decorativo</div>
-      <div class="product-price">$31.000</div>
+      <div class="product-price">$33.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -312,7 +388,7 @@
     <div class="product-info">
       <div class="product-name">Florero STONE</div>
       <div class="product-desc">Florero vidrio ahumado gris · 12×12×16 cm · Aporta profundidad y textura a cualquier rincón — hermoso con ramas naturales, flores secas o como pieza sola</div>
-      <div class="product-price">$31.000</div>
+      <div class="product-price">$33.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -326,7 +402,7 @@
     <div class="product-info">
       <div class="product-name">Deck LENA</div>
       <div class="product-desc">Bandeja oval negra mate · 16×12×2 cm · Ideal para organizar difusores, jaboneras o pequeños accesorios en baño o mesita de luz</div>
-      <div class="product-price">$23.500</div>
+      <div class="product-price">$24.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -342,7 +418,7 @@
     <div class="product-info">
       <div class="product-name">Tabla KURO</div>
       <div class="product-desc">Tabla para sushi negra mate con textura estriada · Plástico premium estilo cerámica japonesa · Ideal para presentar nigiris, rolls y sashimi</div>
-      <div class="product-price">$28.000</div>
+      <div class="product-price">$24.900</div>
       <span class="product-tag">Mesa & Cocina</span>
     </div>
   </div>
@@ -358,7 +434,7 @@
     <div class="product-info">
       <div class="product-name">Tabla WABI</div>
       <div class="product-desc">Tabla para sushi negra mate con bordes orgánicos y bowl integrado para salsa · 31×12×2 cm · Plástico premium estilo cerámica japonesa · Todo en una sola pieza</div>
-      <div class="product-price">$28.000</div>
+      <div class="product-price">$24.900</div>
       <span class="product-tag">Mesa & Cocina</span>
     </div>
   </div>
@@ -375,7 +451,7 @@
     <div class="product-info">
       <div class="product-name">Deck RANCH</div>
       <div class="product-desc">Bandeja rectangular plástico premium, negro mate · 29.5×12×1 cm · Terminación de alta calidad que combina con ambientes modernos, nórdicos y country</div>
-      <div class="product-price">$30.000</div>
+      <div class="product-price">$36.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -394,7 +470,7 @@
     <div class="product-info">
       <div class="product-name">Deck GROVE</div>
       <div class="product-desc">Bandeja redonda negra con interior verde sage y tag HOME · 21×21×2 cm · El toque de color que transforma cualquier rincón — perfecta para agrupar velas, difusores o plantas pequeñas</div>
-      <div class="product-price">$26.000</div>
+      <div class="product-price">$40.900</div>
       <span class="product-tag">Home &amp; Deco</span>
     </div>
   </div>
@@ -410,7 +486,7 @@
     <div class="product-info">
       <div class="product-name">Set x3 CLOVER</div>
       <div class="product-desc">Set de 3 difusores negros con palitos de bambú, tres tamaños distintos · Solo recipientes — no incluye aromatizante · El combo ideal para decorar y personalizar baño, living y dormitorio</div>
-      <div class="product-price">$31.000</div>
+      <div class="product-price">$29.900</div>
       <span class="product-tag">Bundle</span>
     </div>
   </div>
@@ -426,7 +502,7 @@
     <div class="product-info">
       <div class="product-name">Pieza de Decoración LOVE</div>
       <div class="product-desc">Letras LOVE 3D en cerámica, acabado plateado brillante · 17×4×8 cm · Un detalle que llena de calidez cualquier mesita de luz, escritorio o repisa — también ideal como regalo</div>
-      <div class="product-price">$28.500</div>
+      <div class="product-price">$24.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -442,7 +518,7 @@
     <div class="product-info">
       <div class="product-name">Vela EMBER</div>
       <div class="product-desc">Vela aromática en recipiente con textura en relieve · 7×7×6 cm · Ideal para iluminar y aromatizar tu espacio favorito con un toque de estilo boho y rústico</div>
-      <div class="product-price">$14.000</div>
+      <div class="product-price">$14.900</div>
       <span class="product-tag">Ambiente</span>
     </div>
   </div>
@@ -457,7 +533,7 @@
     <div class="product-info">
       <div class="product-name">Vela HAVEN</div>
       <div class="product-desc">Vela aromática en recipiente con textura en relieve · 7×7×5 cm · Ideal para iluminar y aromatizar tu espacio favorito con un toque de estilo boho y rústico</div>
-      <div class="product-price">$14.000</div>
+      <div class="product-price">$14.900</div>
       <span class="product-tag">Ambiente</span>
     </div>
   </div>
@@ -471,7 +547,7 @@
     <div class="product-info">
       <div class="product-name">Vela AMBER</div>
       <div class="product-desc">Vela aromática en recipiente con textura en relieve · 7×7×7 cm · Ideal para iluminar y aromatizar tu espacio favorito con un toque de estilo boho y rústico</div>
-      <div class="product-price">$14.000</div>
+      <div class="product-price">$14.900</div>
       <span class="product-tag">Ambiente</span>
     </div>
   </div>
@@ -489,7 +565,7 @@
     <div class="product-info">
       <div class="product-name">Libros DUNE</div>
       <div class="product-desc">Set de 3 libros decorativos para repisa y coffee table · 16×14×4 cm (set) · El accesorio favorito del home deco — aportan altura, textura y carácter a cualquier rincón del hogar</div>
-      <div class="product-price">$34.500</div>
+      <div class="product-price">$29.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -508,7 +584,7 @@
     <div class="product-info">
       <div class="product-name">Florero BRISA</div>
       <div class="product-desc">Florero vidrio blanco, forma ondulada orgánica, diseño contemporáneo · 8×12×20 cm · El acabado ondulado le da un carácter artístico único — hermoso con flores secas, pampas o solo en repisa</div>
-      <div class="product-price">$25.500</div>
+      <div class="product-price">$26.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -528,7 +604,7 @@
     <div class="product-info">
       <div class="product-name">Florero COAL</div>
       <div class="product-desc">Florero vidrio negro, forma ondulada orgánica, diseño contemporáneo · 8×12×20 cm · La versión en negro aporta un toque más dramático y sofisticado — ideal para ambientes modernos y minimalistas</div>
-      <div class="product-price">$25.500</div>
+      <div class="product-price">$26.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -546,7 +622,7 @@
     <div class="product-info">
       <div class="product-name">Maceta TERRA</div>
       <div class="product-desc">Recipiente negro mate con rostro en relieve, ideal maceta, portavelas o decoración · 11×11×10 cm · Una pieza artística con personalidad — perfecta con una suculenta adentro o como objeto de arte solo</div>
-      <div class="product-price">$28.000</div>
+      <div class="product-price">$25.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -565,7 +641,7 @@
     <div class="product-info">
       <div class="product-name">Pieza de Decoración HOME</div>
       <div class="product-desc">Letras decorativas HOME en cerámica dorada · 17×4×8 cm · Perfectas para una repisa, mesita de luz o estantería — suman ese toque cálido y hogareño que transforma cualquier rincón</div>
-      <div class="product-price">$28.500</div>
+      <div class="product-price">$25.900</div>
       <span class="product-tag">Decoración</span>
     </div>
   </div>
@@ -584,7 +660,7 @@
     <div class="product-info">
       <div class="product-name">Esencia Pepino Sandía</div>
       <div class="product-desc">Difusor de ambiente 200ml · Aroma Pepino y Sandía · Incluye tapón con varillas · Abrí la petaca, colocá las varillas y listo — fragancia continua sin enchufar nada</div>
-      <div class="product-price">$12.000</div>
+      <div class="product-price">$12.900</div>
       <span class="product-tag">Aromas</span>
     </div>
   </div>
@@ -602,7 +678,7 @@
     <div class="product-info">
       <div class="product-name">Esencia Moras y Fresas</div>
       <div class="product-desc">Difusor de ambiente 200ml · Aroma Moras y Fresas · Incluye tapón con varillas · Abrí la petaca, colocá las varillas y listo — fragancia continua sin enchufar nada</div>
-      <div class="product-price">$12.000</div>
+      <div class="product-price">$12.900</div>
       <span class="product-tag">Aromas</span>
     </div>
   </div>
@@ -620,7 +696,7 @@
     <div class="product-info">
       <div class="product-name">Esencia Frutal de la Pasión</div>
       <div class="product-desc">Difusor de ambiente 200ml · Aroma Frutal de la Pasión · Incluye tapón con varillas · Abrí la petaca, colocá las varillas y listo — fragancia continua sin enchufar nada</div>
-      <div class="product-price">$12.000</div>
+      <div class="product-price">$12.900</div>
       <span class="product-tag">Aromas</span>
     </div>
   </div>
@@ -639,7 +715,7 @@
     <div class="product-info">
       <div class="product-name">Esencia Tilo Bamboo</div>
       <div class="product-desc">Difusor de ambiente 200ml · Aroma Tilo y Bamboo · Incluye tapón con varillas · Abrí la petaca, colocá las varillas y listo — fragancia continua sin enchufar nada</div>
-      <div class="product-price">$12.000</div>
+      <div class="product-price">$12.900</div>
       <span class="product-tag">Aromas</span>
     </div>
   </div>
