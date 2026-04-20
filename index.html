@@ -266,9 +266,345 @@
     letter-spacing: 0.5px;
   }
   .whatsapp-btn:hover { background: #1ebe5d; }
+
+  /* ===== CARRITO ===== */
+  .cart-fab {
+    position: fixed; top: 16px; right: 16px;
+    background: #2c1f0e; color: #f5ead8;
+    border: none; border-radius: 50px;
+    padding: 10px 16px; font-family: 'Work Sans', sans-serif;
+    font-size: 0.82em; letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; z-index: 1000;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.25);
+    transition: background 0.2s;
+  }
+  .cart-fab:hover { background: #3a2e20; }
+  .cart-badge {
+    background: #c4a87a; color: #2c1f0e;
+    border-radius: 50%; width: 20px; height: 20px;
+    display: none; align-items: center; justify-content: center;
+    font-size: 0.75em; font-weight: 700;
+  }
+  .cart-badge.visible { display: flex; }
+
+  .add-to-cart {
+    margin-top: 12px; width: 100%; padding: 11px;
+    background: #2c1f0e; color: #f5ead8;
+    border: none; border-radius: 3px;
+    font-family: 'Work Sans', sans-serif; font-size: 0.8em;
+    letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .add-to-cart:hover { background: #3a2e20; }
+  .add-to-cart.added { background: #5a7a4a; }
+
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 1001; display: none; opacity: 0; transition: opacity 0.25s;
+  }
+  .cart-overlay.open { display: block; opacity: 1; }
+
+  .cart-sidebar {
+    position: fixed; top: 0; right: -100%; width: 400px; max-width: 100vw;
+    height: 100vh; background: #faf7f3;
+    z-index: 1002; display: flex; flex-direction: column;
+    transition: right 0.3s ease;
+    box-shadow: -4px 0 28px rgba(0,0,0,0.18);
+  }
+  .cart-sidebar.open { right: 0; }
+
+  .cart-head {
+    padding: 18px 20px; background: #2c1f0e; color: #f5ead8;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-shrink: 0;
+  }
+  .cart-head h3 { font-family: 'Forum', serif; font-size: 1.2em; letter-spacing: 3px; }
+  .cart-head-close {
+    background: none; border: none; color: #f5ead8;
+    font-size: 1.4em; cursor: pointer; line-height: 1;
+  }
+
+  .cart-body { flex: 1; overflow-y: auto; padding: 16px; }
+
+  .cart-empty { text-align: center; padding: 40px 20px; color: #8a6840; font-size: 0.88em; }
+
+  .cart-item {
+    background: white; border-radius: 4px; padding: 12px 14px;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .ci-info { flex: 1; min-width: 0; }
+  .ci-name { font-size: 0.87em; font-weight: 500; color: #2c1f0e; }
+  .ci-price { font-size: 0.8em; color: #8a6840; margin-top: 2px; }
+  .ci-qty { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .qty-btn {
+    width: 26px; height: 26px; border: 1px solid #c4a87a;
+    background: none; border-radius: 3px; cursor: pointer;
+    font-size: 1em; color: #2c1f0e; line-height: 1;
+  }
+  .qty-num { font-size: 0.88em; min-width: 18px; text-align: center; }
+  .ci-remove {
+    background: none; border: none; color: #c4a87a;
+    cursor: pointer; font-size: 1.1em; flex-shrink: 0;
+  }
+
+  .cart-foot {
+    padding: 14px 16px; background: white;
+    border-top: 1px solid #e8d5b5; flex-shrink: 0;
+  }
+  .cart-subtotal-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.9em; font-weight: 500; color: #2c1f0e; margin-bottom: 12px;
+  }
+
+  /* Form steps */
+  .step { display: none; }
+  .step.active { display: block; }
+
+  .step-back {
+    background: none; border: none; color: #8a6840; font-size: 0.8em;
+    cursor: pointer; margin-bottom: 14px; padding: 0; text-decoration: underline;
+  }
+  .step-title {
+    font-family: 'Forum', serif; font-size: 1.05em; letter-spacing: 2px;
+    color: #2c1f0e; text-transform: uppercase; margin-bottom: 14px;
+  }
+
+  .fg { margin-bottom: 12px; }
+  .fg label {
+    display: block; font-size: 0.72em; text-transform: uppercase;
+    letter-spacing: 1px; color: #8a6840; margin-bottom: 4px;
+  }
+  .fg input, .fg select, .fg textarea {
+    width: 100%; padding: 9px 11px;
+    border: 1px solid #d4c4a0; border-radius: 3px;
+    font-family: 'Work Sans', sans-serif; font-size: 0.88em;
+    background: white; color: #2c1f0e;
+  }
+  .fg textarea { resize: vertical; min-height: 60px; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .shipping-opt {
+    border: 1px solid #d4c4a0; border-radius: 3px; padding: 12px 14px;
+    cursor: pointer; background: white; margin-bottom: 8px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .shipping-opt.selected { border-color: #2c1f0e; background: #f5ead8; }
+  .shipping-opt-name { font-size: 0.88em; font-weight: 500; color: #2c1f0e; }
+  .shipping-opt-detail { font-size: 0.76em; color: #8a6840; margin-top: 2px; }
+  .shipping-opt-price { font-size: 0.9em; font-weight: 600; color: #2c1f0e; margin-top: 5px; }
+
+  .order-total-bar {
+    background: #2c1f0e; color: #f5ead8; padding: 12px 16px;
+    border-radius: 3px; display: flex; justify-content: space-between;
+    align-items: center; margin: 14px 0; font-size: 0.95em; font-weight: 500;
+  }
+
+  .pay-opt {
+    border: 1px solid #d4c4a0; border-radius: 3px; padding: 14px;
+    cursor: pointer; background: white; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .pay-opt.selected { border-color: #2c1f0e; background: #f5ead8; }
+  .pay-opt-icon { font-size: 1.4em; flex-shrink: 0; }
+  .pay-opt-name { font-size: 0.9em; font-weight: 500; color: #2c1f0e; }
+  .pay-opt-detail { font-size: 0.78em; color: #8a6840; margin-top: 2px; }
+
+  .transfer-box {
+    background: #f5ead8; border: 1px solid #c4a87a;
+    border-radius: 3px; padding: 14px; margin: 12px 0; display: none;
+  }
+  .transfer-box.visible { display: block; }
+  .transfer-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.85em; margin-bottom: 7px;
+  }
+  .transfer-label { color: #8a6840; }
+  .transfer-value { font-weight: 600; color: #2c1f0e; }
+
+  .btn-primary {
+    width: 100%; padding: 13px; background: #2c1f0e; color: #f5ead8;
+    border: none; border-radius: 3px; font-family: 'Work Sans', sans-serif;
+    font-size: 0.88em; letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #3a2e20; }
+  .btn-primary:disabled { background: #b0a090; cursor: not-allowed; }
+
+  .btn-mp {
+    width: 100%; padding: 13px; background: #009ee3; color: white;
+    border: none; border-radius: 3px; font-family: 'Work Sans', sans-serif;
+    font-size: 0.88em; letter-spacing: 1px; cursor: pointer;
+    transition: background 0.2s; display: none;
+  }
+  .btn-mp:hover { background: #007fc0; }
+  .btn-mp.visible { display: block; }
+
+  .btn-transfer {
+    width: 100%; padding: 13px; background: #5a7a4a; color: white;
+    border: none; border-radius: 3px; font-family: 'Work Sans', sans-serif;
+    font-size: 0.88em; letter-spacing: 1px; cursor: pointer;
+    transition: background 0.2s; display: none; margin-top: 8px;
+  }
+  .btn-transfer:hover { background: #496040; }
+  .btn-transfer.visible { display: block; }
+
+  /* Resumen */
+  .resumen-item {
+    display: flex; justify-content: space-between;
+    font-size: 0.85em; padding: 5px 0; border-bottom: 1px solid #f0e8d8;
+  }
+  .resumen-item:last-child { border-bottom: none; }
+
+  /* Success modal */
+  .success-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 2000; display: none; align-items: center; justify-content: center;
+  }
+  .success-overlay.open { display: flex; }
+  .success-box {
+    background: white; border-radius: 8px; padding: 32px 28px;
+    max-width: 380px; width: 90%; text-align: center;
+  }
+  .success-icon { font-size: 3em; margin-bottom: 12px; }
+  .success-title { font-family: 'Forum', serif; font-size: 1.5em; color: #2c1f0e; margin-bottom: 8px; }
+  .success-sub { font-size: 0.88em; color: #8a6840; margin-bottom: 20px; }
+  .success-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #25D366; color: white; padding: 12px 20px;
+    border-radius: 50px; text-decoration: none; font-size: 0.9em; font-weight: 600;
+  }
 </style>
 </head>
 <body>
+
+<!-- CARRITO FAB -->
+<button class="cart-fab" onclick="openCart()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+  Carrito
+  <span class="cart-badge" id="cart-badge">0</span>
+</button>
+
+<!-- OVERLAY -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+<!-- SIDEBAR CARRITO -->
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-head">
+    <h3>Mi Carrito</h3>
+    <button class="cart-head-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+
+    <!-- STEP 1: Items -->
+    <div class="step active" id="step-1">
+      <div id="cart-items"></div>
+    </div>
+
+    <!-- STEP 2: Datos personales -->
+    <div class="step" id="step-2">
+      <button class="step-back" onclick="goStep(1)">← Volver al carrito</button>
+      <div class="step-title">Datos de envío</div>
+      <div class="fg"><label>Nombre completo *</label><input type="text" id="f-name" placeholder="Tu nombre"></div>
+      <div class="fg-row">
+        <div class="fg"><label>Teléfono *</label><input type="tel" id="f-phone" placeholder="11 xxxx-xxxx"></div>
+        <div class="fg"><label>Email *</label><input type="email" id="f-email" placeholder="tu@email.com"></div>
+      </div>
+      <div class="fg"><label>Dirección *</label><input type="text" id="f-address" placeholder="Calle y número"></div>
+      <div class="fg-row">
+        <div class="fg"><label>Ciudad *</label><input type="text" id="f-city" placeholder="Ciudad"></div>
+        <div class="fg">
+          <label>Provincia *</label>
+          <select id="f-province">
+            <option value="">Seleccioná...</option>
+            <option value="Ciudad Autónoma de Buenos Aires">Ciudad Autónoma de Buenos Aires</option>
+            <option value="Buenos Aires">Buenos Aires</option>
+            <option value="Catamarca">Catamarca</option>
+            <option value="Chaco">Chaco</option>
+            <option value="Chubut">Chubut</option>
+            <option value="Córdoba">Córdoba</option>
+            <option value="Corrientes">Corrientes</option>
+            <option value="Entre Ríos">Entre Ríos</option>
+            <option value="Formosa">Formosa</option>
+            <option value="Jujuy">Jujuy</option>
+            <option value="La Pampa">La Pampa</option>
+            <option value="La Rioja">La Rioja</option>
+            <option value="Mendoza">Mendoza</option>
+            <option value="Misiones">Misiones</option>
+            <option value="Neuquén">Neuquén</option>
+            <option value="Río Negro">Río Negro</option>
+            <option value="Salta">Salta</option>
+            <option value="San Juan">San Juan</option>
+            <option value="San Luis">San Luis</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+            <option value="Santa Fe">Santa Fe</option>
+            <option value="Santiago del Estero">Santiago del Estero</option>
+            <option value="Tierra del Fuego">Tierra del Fuego</option>
+            <option value="Tucumán">Tucumán</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label>Notas (opcional)</label><textarea id="f-notes" placeholder="Color, variante, instrucciones especiales..."></textarea></div>
+    </div>
+
+    <!-- STEP 3: Envío + Total -->
+    <div class="step" id="step-3">
+      <button class="step-back" onclick="goStep(2)">← Volver</button>
+      <div class="step-title">Elegí el envío</div>
+      <div id="shipping-opts"></div>
+      <div class="order-total-bar">
+        <span>Total</span>
+        <span id="total-display">$0</span>
+      </div>
+    </div>
+
+    <!-- STEP 4: Pago -->
+    <div class="step" id="step-4">
+      <button class="step-back" onclick="goStep(3)">← Volver</button>
+      <div class="step-title">Forma de pago</div>
+      <div id="resumen-pago" style="margin-bottom:14px;"></div>
+      <div class="pay-opt" id="pay-mp" onclick="selectPay('mp')">
+        <span class="pay-opt-icon">💳</span>
+        <div><div class="pay-opt-name">Mercado Pago</div><div class="pay-opt-detail">Tarjetas, débito, cuotas sin interés</div></div>
+      </div>
+      <div class="pay-opt" id="pay-transfer" onclick="selectPay('transfer')">
+        <span class="pay-opt-icon">🏦</span>
+        <div><div class="pay-opt-name">Transferencia a Mercado Pago</div><div class="pay-opt-detail">Alias o CVU</div></div>
+      </div>
+      <div class="transfer-box" id="transfer-box">
+        <div class="transfer-row"><span class="transfer-label">Alias</span><span class="transfer-value">countryhomedeco</span></div>
+        <div class="transfer-row"><span class="transfer-label">CVU</span><span class="transfer-value" style="font-size:0.82em;">0000003100099040747536</span></div>
+        <div class="transfer-row" id="transfer-amount-row"><span class="transfer-label">Monto</span><span class="transfer-value" id="transfer-amount">—</span></div>
+      </div>
+      <button class="btn-mp visible" id="btn-pay-mp" onclick="payWithMP()">Pagar con Mercado Pago</button>
+      <button class="btn-transfer" id="btn-transfer" onclick="confirmTransfer()">✓ Ya transferí — Confirmar pedido</button>
+    </div>
+
+  </div>
+  <div class="cart-foot" id="cart-foot">
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <span id="subtotal-display">$0</span>
+    </div>
+    <button class="btn-primary" id="btn-next" onclick="nextStep()">Continuar →</button>
+  </div>
+</div>
+
+<!-- MODAL ÉXITO -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <div class="success-title">¡Pago Confirmado!</div>
+    <div class="success-sub" id="success-msg">Tu pedido fue registrado. Confirmalo por WhatsApp.</div>
+    <a class="success-wa" id="success-wa-link" href="#" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.524 5.845L.057 23.07a.75.75 0 0 0 .923.916l5.347-1.473A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      Confirmar por WhatsApp
+    </a>
+    <button onclick="closeSuccess()" style="margin-top:14px;background:none;border:none;color:#8a6840;cursor:pointer;font-size:0.85em;">Cerrar</button>
+  </div>
+</div>
 
 <!-- POPUP BIENVENIDA -->
 <div class="modal-overlay" id="modalOverlay">
@@ -787,6 +1123,364 @@ function changeMain(thumb) {
 <a class="whatsapp-btn" href="https://wa.me/541131655653?text=Hola!%20Vi%20el%20cat%C3%A1logo%20y%20me%20interesa%20un%20producto" target="_blank">
   💬 Consultar por WhatsApp
 </a>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────
+let cart = JSON.parse(localStorage.getItem('country_cart') || '[]');
+let currentStep = 1;
+let selectedShipping = null;
+let selectedPay = null;
+
+const WA_MARCO = '541131655653';
+
+const SHIPPING = {
+  correo: { label: 'Correo Argentino Clásica', detail: '3 a 6 días hábiles', amba: 20600, nacional: 28500 },
+  andreani: { label: 'Andreani Pack', detail: '2 a 4 días hábiles', amba: 27500, nacional: 29000 }
+};
+const AMBA_PROVINCES = ['Ciudad Autónoma de Buenos Aires', 'Buenos Aires'];
+
+// ─── UTILS ───────────────────────────────────────────────
+const fmt = n => '$' + Number(n).toLocaleString('es-AR');
+const zone = p => AMBA_PROVINCES.includes(p) ? 'amba' : 'nacional';
+const subtotal = () => cart.reduce((s, i) => s + i.price * i.qty, 0);
+const total = () => subtotal() + (selectedShipping ? selectedShipping.cost : 0);
+
+// ─── INJECT BUTTONS ──────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.product').forEach((prod, i) => {
+    const info = prod.querySelector('.product-info');
+    if (!info) return;
+    const btn = document.createElement('button');
+    btn.className = 'add-to-cart';
+    btn.textContent = '+ Agregar al carrito';
+    btn.addEventListener('click', () => {
+      const nameEl = prod.querySelector('.product-name');
+      const priceEl = prod.querySelector('.product-price');
+      const name = nameEl ? nameEl.textContent.trim() : `Producto ${i+1}`;
+      const price = priceEl ? parseInt(priceEl.textContent.replace(/[^0-9]/g, '')) : 0;
+      const id = `prod-${i}`;
+      addToCart(id, name, price);
+      btn.textContent = '✓ Agregado';
+      btn.classList.add('added');
+      setTimeout(() => { btn.textContent = '+ Agregar al carrito'; btn.classList.remove('added'); }, 1800);
+    });
+    info.appendChild(btn);
+  });
+
+  // Check payment return from MP
+  const params = new URLSearchParams(window.location.search);
+  const payStatus = params.get('payment');
+  if (payStatus === 'success') showSuccessMP();
+  else if (payStatus === 'failure') alert('El pago no se pudo procesar. Intentá nuevamente o elegí transferencia.');
+  else if (payStatus === 'pending') showSuccessMP('pending');
+
+  renderCart();
+});
+
+// ─── CART MANAGEMENT ─────────────────────────────────────
+function addToCart(id, name, price) {
+  const ex = cart.find(i => i.id === id);
+  if (ex) ex.qty++;
+  else cart.push({ id, name, price, qty: 1 });
+  save();
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  save();
+  renderCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else { save(); renderCart(); }
+}
+
+function save() { localStorage.setItem('country_cart', JSON.stringify(cart)); }
+
+// ─── RENDER ───────────────────────────────────────────────
+function renderCart() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('cart-badge');
+  badge.textContent = count;
+  badge.classList.toggle('visible', count > 0);
+
+  const itemsEl = document.getElementById('cart-items');
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<div class="cart-empty">Tu carrito está vacío.<br>Agregá productos para continuar.</div>';
+  } else {
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="ci-info">
+          <div class="ci-name">${item.name}</div>
+          <div class="ci-price">${fmt(item.price)} c/u</div>
+        </div>
+        <div class="ci-qty">
+          <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+        </div>
+        <button class="ci-remove" onclick="removeFromCart('${item.id}')">✕</button>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('subtotal-display').textContent = fmt(subtotal());
+}
+
+// ─── SIDEBAR ─────────────────────────────────────────────
+function openCart() {
+  document.getElementById('cart-sidebar').classList.add('open');
+  document.getElementById('cart-overlay').classList.add('open');
+  goStep(1);
+}
+function closeCart() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+
+// ─── STEPS ───────────────────────────────────────────────
+function goStep(n) {
+  currentStep = n;
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(`step-${n}`).classList.add('active');
+
+  const foot = document.getElementById('cart-foot');
+  const btnNext = document.getElementById('btn-next');
+
+  if (n === 1) {
+    foot.style.display = 'block';
+    btnNext.textContent = 'Continuar →';
+    btnNext.disabled = cart.length === 0;
+  } else if (n === 2) {
+    foot.style.display = 'block';
+    btnNext.textContent = 'Ver opciones de envío →';
+    btnNext.disabled = false;
+  } else if (n === 3) {
+    foot.style.display = 'block';
+    renderShipping();
+    btnNext.textContent = 'Elegir forma de pago →';
+    btnNext.disabled = !selectedShipping;
+  } else if (n === 4) {
+    foot.style.display = 'none';
+    renderResumen();
+  }
+}
+
+function nextStep() {
+  if (currentStep === 1) {
+    if (cart.length === 0) return alert('Agregá al menos un producto.');
+    goStep(2);
+  } else if (currentStep === 2) {
+    if (!validateForm()) return;
+    goStep(3);
+  } else if (currentStep === 3) {
+    if (!selectedShipping) return alert('Seleccioná un método de envío.');
+    goStep(4);
+  }
+}
+
+// ─── FORM VALIDATION ─────────────────────────────────────
+function validateForm() {
+  const fields = [
+    { id: 'f-name', label: 'Nombre' },
+    { id: 'f-phone', label: 'Teléfono' },
+    { id: 'f-email', label: 'Email' },
+    { id: 'f-address', label: 'Dirección' },
+    { id: 'f-city', label: 'Ciudad' },
+    { id: 'f-province', label: 'Provincia' }
+  ];
+  for (const f of fields) {
+    if (!document.getElementById(f.id).value.trim()) {
+      alert(`Por favor ingresá: ${f.label}`);
+      document.getElementById(f.id).focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+function getBuyer() {
+  return {
+    name: document.getElementById('f-name').value.trim(),
+    phone: document.getElementById('f-phone').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    address: document.getElementById('f-address').value.trim(),
+    city: document.getElementById('f-city').value.trim(),
+    province: document.getElementById('f-province').value,
+    notes: document.getElementById('f-notes').value.trim()
+  };
+}
+
+// ─── SHIPPING ────────────────────────────────────────────
+function renderShipping() {
+  const province = document.getElementById('f-province').value;
+  const z = zone(province);
+  const opts = Object.entries(SHIPPING).map(([key, s]) => {
+    const cost = s[z];
+    const sel = selectedShipping?.key === key;
+    return `
+      <div class="shipping-opt${sel ? ' selected' : ''}" onclick="selectShipping('${key}',${cost})">
+        <div class="shipping-opt-name">${s.label}</div>
+        <div class="shipping-opt-detail">${s.detail}</div>
+        <div class="shipping-opt-price">${fmt(cost)}</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('shipping-opts').innerHTML = opts;
+  updateTotalDisplay();
+}
+
+function selectShipping(key, cost) {
+  selectedShipping = { key, cost, label: SHIPPING[key].label };
+  document.getElementById('btn-next').disabled = false;
+  document.querySelectorAll('.shipping-opt').forEach(el => el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  updateTotalDisplay();
+}
+
+function updateTotalDisplay() {
+  document.getElementById('total-display').textContent = fmt(total());
+}
+
+// ─── PAYMENT ─────────────────────────────────────────────
+function renderResumen() {
+  const buyer = getBuyer();
+  const html = `
+    ${cart.map(i => `<div class="resumen-item"><span>${i.name} x${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')}
+    <div class="resumen-item"><span>Envío — ${selectedShipping?.label}</span><span>${fmt(selectedShipping?.cost||0)}</span></div>
+    <div class="resumen-item" style="font-weight:600"><span>TOTAL</span><span>${fmt(total())}</span></div>
+  `;
+  document.getElementById('resumen-pago').innerHTML = html;
+  document.getElementById('transfer-amount').textContent = fmt(total());
+}
+
+function selectPay(type) {
+  selectedPay = type;
+  document.getElementById('pay-mp').classList.toggle('selected', type === 'mp');
+  document.getElementById('pay-transfer').classList.toggle('selected', type === 'transfer');
+  document.getElementById('transfer-box').classList.toggle('visible', type === 'transfer');
+  document.getElementById('btn-pay-mp').classList.toggle('visible', type === 'mp');
+  document.getElementById('btn-transfer').classList.toggle('visible', type === 'transfer');
+  document.getElementById('btn-transfer').style.display = type === 'transfer' ? 'block' : 'none';
+}
+
+// ─── PAY WITH MP ─────────────────────────────────────────
+async function payWithMP() {
+  const btn = document.getElementById('btn-pay-mp');
+  btn.disabled = true;
+  btn.textContent = 'Procesando...';
+
+  const buyer = getBuyer();
+  sessionStorage.setItem('country_order', JSON.stringify({ cart, buyer, shipping: selectedShipping, total: total() }));
+
+  try {
+    const resp = await fetch('/api/create-preference', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cart, shipping: selectedShipping, buyer })
+    });
+    const data = await resp.json();
+    if (data.init_point) {
+      window.location.href = data.init_point;
+    } else {
+      throw new Error(data.error || 'Error al crear preferencia');
+    }
+  } catch (err) {
+    alert('No se pudo conectar con Mercado Pago. Intentá con transferencia o contactanos por WhatsApp.');
+    btn.disabled = false;
+    btn.textContent = 'Pagar con Mercado Pago';
+  }
+}
+
+// ─── TRANSFER ────────────────────────────────────────────
+function confirmTransfer() {
+  const buyer = getBuyer();
+  const lines = [
+    `Hola! Acabo de hacer una transferencia para mi pedido:`,
+    ``,
+    `*Comprador:* ${buyer.name}`,
+    `*Tel:* ${buyer.phone}`,
+    `*Email:* ${buyer.email}`,
+    `*Dirección:* ${buyer.address}, ${buyer.city}, ${buyer.province}`,
+    buyer.notes ? `*Notas:* ${buyer.notes}` : '',
+    `*Envío:* ${selectedShipping?.label}`,
+    ``,
+    `*Productos:*`,
+    ...cart.map(i => `• ${i.name} x${i.qty} — ${fmt(i.price * i.qty)}`),
+    ``,
+    `*Subtotal:* ${fmt(subtotal())}`,
+    `*Envío:* ${fmt(selectedShipping?.cost || 0)}`,
+    `*TOTAL transferido:* ${fmt(total())}`,
+    ``,
+    `Alias: countryhomedeco`
+  ].filter(l => l !== undefined).join('\n');
+
+  const url = `https://wa.me/${WA_MARCO}?text=${encodeURIComponent(lines)}`;
+  window.open(url, '_blank');
+
+  // Clear cart
+  cart = [];
+  save();
+  renderCart();
+  closeCart();
+}
+
+// ─── SUCCESS MP ──────────────────────────────────────────
+function showSuccessMP(status) {
+  const order = JSON.parse(sessionStorage.getItem('country_order') || 'null');
+  const overlay = document.getElementById('success-overlay');
+  const msg = document.getElementById('success-msg');
+  const waLink = document.getElementById('success-wa-link');
+
+  if (status === 'pending') {
+    msg.textContent = 'Tu pago está pendiente de acreditación. Te confirmamos cuando se procese.';
+  } else {
+    msg.textContent = 'Tu pago fue acreditado. Confirmanos el pedido por WhatsApp.';
+  }
+
+  if (order) {
+    const lines = [
+      `Hola! Acabo de pagar con Mercado Pago.`,
+      ``,
+      `*Comprador:* ${order.buyer.name}`,
+      `*Tel:* ${order.buyer.phone}`,
+      `*Dirección:* ${order.buyer.address}, ${order.buyer.city}, ${order.buyer.province}`,
+      order.buyer.notes ? `*Notas:* ${order.buyer.notes}` : '',
+      `*Envío:* ${order.shipping?.label}`,
+      ``,
+      `*Productos:*`,
+      ...order.cart.map(i => `• ${i.name} x${i.qty} — ${fmt(i.price * i.qty)}`),
+      ``,
+      `*TOTAL pagado:* ${fmt(order.total)}`
+    ].filter(Boolean).join('\n');
+
+    waLink.href = `https://wa.me/${WA_MARCO}?text=${encodeURIComponent(lines)}`;
+
+    // Clear cart and order
+    cart = [];
+    save();
+    sessionStorage.removeItem('country_order');
+    renderCart();
+  } else {
+    waLink.href = `https://wa.me/${WA_MARCO}?text=${encodeURIComponent('Hola! Acabo de realizar un pago con Mercado Pago en el catálogo.')}`;
+  }
+
+  overlay.classList.add('open');
+
+  // Clean URL
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+
+function closeSuccess() {
+  document.getElementById('success-overlay').classList.remove('open');
+}
+</script>
 
 </body>
 </html>
