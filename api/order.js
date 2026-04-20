@@ -1,4 +1,4 @@
-const { sendEmail, buildHTML } = require('./_email');
+const { sendEmail, buildAdminHTML, buildBuyerHTML } = require('./_email');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -13,18 +13,23 @@ module.exports = async (req, res) => {
 
     const { cart, buyer, shipping, total } = body;
 
+    // Email a Marco
     await sendEmail(
+      'country.homedeco.ar@gmail.com',
       `🏦 Transferencia pendiente — $${Math.round(total).toLocaleString('es-AR')}`,
-      buildHTML({
-        type: 'transfer',
-        buyer,
-        items: cart,
-        shipping,
-        total
-      })
+      buildAdminHTML({ type: 'transfer', buyer, items: cart, shipping, total })
     );
 
-    console.log('[Email sent] Transfer order from', buyer?.name);
+    // Email al comprador
+    if (buyer?.email) {
+      await sendEmail(
+        buyer.email,
+        '¡Gracias por tu compra! — Country Home & Deco',
+        buildBuyerHTML({ type: 'transfer', buyerName: buyer.name, items: cart, shipping, total })
+      );
+    }
+
+    console.log('[Emails sent] Transfer order from', buyer?.name);
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error('[Order error]', err.message);
