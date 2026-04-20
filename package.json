@@ -1,0 +1,7 @@
+{
+  "name": "country-catalogo",
+  "version": "1.0.0",
+  "dependencies": {
+    "mercadopago": "^2.4.0"
+  }
+}
