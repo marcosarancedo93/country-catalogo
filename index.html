@@ -1399,8 +1399,18 @@ async function payWithMP() {
 }
 
 // ─── TRANSFER ────────────────────────────────────────────
-function confirmTransfer() {
+async function confirmTransfer() {
   const buyer = getBuyer();
+
+  // Notificar por email
+  try {
+    await fetch('/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cart, buyer, shipping: selectedShipping, total: total() })
+    });
+  } catch(e) { console.warn('Email no enviado:', e); }
+
   const lines = [
     `Hola! Acabo de hacer una transferencia para mi pedido:`,
     ``,
