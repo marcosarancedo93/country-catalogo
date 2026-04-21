@@ -1215,6 +1215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = nameEl ? nameEl.textContent.trim() : `Producto ${i+1}`;
       const price = priceEl ? parseInt(priceEl.textContent.replace(/[^0-9]/g, '')) : 0;
       const id = `prod-${i}`;
+      fbq('track', 'ViewContent', { content_ids: [id], content_name: name, value: price, currency: 'ARS', content_type: 'product' });
       addToCart(id, name, price);
       btn.textContent = 'Agregado';
       btn.classList.add('added');
