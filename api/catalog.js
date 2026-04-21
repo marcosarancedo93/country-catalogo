@@ -208,7 +208,7 @@ module.exports = (req, res) => {
       <g:id>${escapeXml(p.id)}</g:id>
       <g:title>${escapeXml(p.title)}</g:title>
       <g:description>${escapeXml(p.description)}</g:description>
-      <g:link>${BASE}</g:link>
+      <g:link>${BASE}#${escapeXml(p.id)}</g:link>
       <g:image_link>${encodeImageUrl(p.image)}</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
