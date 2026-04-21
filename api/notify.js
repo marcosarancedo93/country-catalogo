@@ -1,4 +1,5 @@
 const { sendEmail, buildAdminHTML, buildBuyerHTML } = require('./_email');
+const { sendCAPIEvent } = require('./_capi');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
@@ -53,6 +54,13 @@ module.exports = async (req, res) => {
             buildBuyerHTML({ type: 'mp', buyerName: buyer.name, items, shipping, total })
           );
         }
+
+        // CAPI Purchase event
+        await sendCAPIEvent({
+          eventName: 'Purchase',
+          userData: { email: buyer.email, phone: buyer.phone, name: buyer.name },
+          customData: { value: total, currency: 'ARS', content_ids: items.map(i => i.id || i.name), content_type: 'product', num_items: items.reduce((s,i) => s + (i.qty||1), 0) }
+        });
 
         console.log('[Emails sent] MP payment', data.id);
       }
