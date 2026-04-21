@@ -489,6 +489,19 @@
     border-radius: 50px; text-decoration: none; font-size: 0.9em; font-weight: 600;
   }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1479825037203290');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -1228,6 +1241,7 @@ function addToCart(id, name, price) {
   save();
   renderCart();
   openCart();
+  fbq('track', 'AddToCart', { content_ids: [id], content_name: name, value: price, currency: 'ARS', content_type: 'product' });
 }
 
 function removeFromCart(id) {
@@ -1437,6 +1451,7 @@ function selectPay(type) {
 
 // ─── PAY WITH MP ─────────────────────────────────────────
 async function payWithMP() {
+  fbq('track', 'InitiateCheckout', { value: total(), currency: 'ARS', num_items: cart.reduce((s,i)=>s+i.qty,0) });
   const btn = document.getElementById('btn-pay-mp');
   btn.disabled = true;
   btn.textContent = 'Procesando...';
@@ -1465,6 +1480,7 @@ async function payWithMP() {
 
 // ─── TRANSFER ────────────────────────────────────────────
 async function confirmTransfer() {
+  fbq('track', 'Purchase', { value: total(), currency: 'ARS', content_ids: cart.map(i=>i.id), content_type: 'product' });
   const buyer = getBuyer();
 
   // Notificar por email
@@ -1517,6 +1533,10 @@ function showSuccessMP(status) {
     msg.textContent = 'Tu pago está pendiente de acreditación. Te confirmamos cuando se procese.';
   } else {
     msg.textContent = 'Tu pago fue acreditado. Confirmanos el pedido por WhatsApp.';
+  }
+
+  if (order && status === 'success') {
+    fbq('track', 'Purchase', { value: order.total, currency: 'ARS', content_ids: order.cart.map(i=>i.id), content_type: 'product' });
   }
 
   if (order) {
