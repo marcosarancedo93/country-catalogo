@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Country Home & Deco</title>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1e1208;
+    font-family: 'Work Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* LOGO */
+  .logo-wrap {
+    margin-bottom: 6px;
+  }
+
+  .logo-wrap img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #c4a87a;
+  }
+
+  /* BRAND NAME */
+  .brand {
+    font-family: 'Forum', serif;
+    font-size: 1.7em;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #f5ead8;
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .tagline {
+    font-size: 0.68em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6840;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: #c4a87a;
+    margin: 22px auto 26px;
+    opacity: 0.6;
+  }
+
+  /* LINKS */
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(245, 234, 216, 0.06);
+    border: 1px solid rgba(196, 168, 122, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #f5ead8;
+    font-size: 0.88em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .link-btn:hover {
+    background: rgba(245, 234, 216, 0.11);
+    border-color: rgba(196, 168, 122, 0.6);
+  }
+
+  .link-btn .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .icon-catalog { background: rgba(196, 168, 122, 0.15); }
+  .icon-wa      { background: rgba(37, 211, 102, 0.12); }
+  .icon-ml      { background: rgba(255, 230, 0, 0.10); }
+  .icon-ig      { background: rgba(193, 53, 132, 0.12); }
+  .icon-fb      { background: rgba(24, 119, 242, 0.12); }
+
+  .link-btn .label {
+    flex: 1;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #e8d5b5;
+  }
+
+  .link-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  /* SOCIAL ICONS ROW */
+  .social-row {
+    display: flex;
+    gap: 18px;
+    margin-top: 28px;
+    justify-content: center;
+  }
+
+  .social-row a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 168, 122, 0.35);
+    color: #8a6840;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .social-row a:hover {
+    color: #f5ead8;
+    border-color: #c4a87a;
+  }
+
+  .social-row svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 32px;
+    font-size: 0.62em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(138, 104, 64, 0.5);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- LOGO -->
+  <div class="logo-wrap">
+    <img src="country_horse.png" alt="Country" onerror="this.style.display='none'">
+  </div>
+
+  <!-- BRAND -->
+  <div class="brand">Country</div>
+  <div class="tagline">Home &amp; Deco · Feel at Home</div>
+
+  <div class="divider"></div>
+
+  <!-- LINKS -->
+  <div class="links">
+
+    <!-- CATÁLOGO -->
+    <a class="link-btn" href="https://countryhomedeco.vercel.app" target="_blank">
+      <div class="icon icon-catalog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <span class="label">Ver Catálogo</span>
+    </a>
+
+    <!-- WHATSAPP -->
+    <a class="link-btn" href="https://wa.me/541131655653?text=Hola!%20Vi%20el%20Instagram%20y%20me%20interesa%20un%20producto%20de%20Country%20Home%20%26%20Deco" target="_blank">
+      <div class="icon icon-wa">
+        <svg viewBox="0 0 24 24" fill="#25d366">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+        </svg>
+      </div>
+      <span class="label">Escribinos por WhatsApp</span>
+    </a>
+
+    <!-- MERCADO LIBRE -->
+    <a class="link-btn" href="https://listado.mercadolibre.com.ar/_CustId_3282679258" target="_blank">
+      <div class="icon icon-ml">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffe600" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </div>
+      <span class="label">Tienda MercadoLibre</span>
+    </a>
+
+    <!-- FACEBOOK -->
+    <a class="link-btn" href="https://www.facebook.com/profile.php?id=61572010690477" target="_blank">
+      <div class="icon icon-fb">
+        <svg viewBox="0 0 24 24" fill="#1877f2">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </div>
+      <span class="label">Seguinos en Facebook</span>
+    </a>
+
+    <!-- INSTAGRAM -->
+    <a class="link-btn" href="https://instagram.com/country.homedeco" target="_blank">
+      <div class="icon icon-ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.8" fill="#e1306c" stroke="none"/>
+        </svg>
+      </div>
+      <span class="label">Seguinos en Instagram</span>
+    </a>
+
+  </div>
+
+  <!-- SOCIAL ROW -->
+  <div class="social-row">
+    <a href="https://instagram.com/country.homedeco" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://wa.me/541131655653" target="_blank" title="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.41A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61572010690477" target="_blank" title="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="mailto:country.homedeco.ar@gmail.com" title="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="footer">country home &amp; deco · argentina</div>
+
+</div>
+
+</body>
+</html>
