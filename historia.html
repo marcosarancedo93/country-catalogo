@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historia — Country Home & Deco</title>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background: #f5f0eb;
+    color: #3a2e20;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: #f5ead8;
+    border-bottom: 3px solid #2c1f0e;
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-header a.back {
+    font-size: 0.72em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6840;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .site-header a.back:hover { color: #2c1f0e; }
+
+  .site-header .brand {
+    font-family: 'Forum', serif;
+    font-size: 1.6em;
+    font-weight: 300;
+    letter-spacing: 10px;
+    color: #2c1f0e;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .site-header .spacer { width: 80px; }
+
+  /* HERO */
+  .hero {
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+  }
+
+  .hero-text h1 {
+    font-family: 'Forum', serif;
+    font-size: clamp(2em, 5vw, 3.5em);
+    font-weight: 300;
+    color: #f5ead8;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .hero-text p {
+    font-size: 0.78em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(245, 234, 216, 0.75);
+    margin-top: 8px;
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  .content p {
+    font-size: 1.05em;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #3a2e20;
+    margin-bottom: 28px;
+  }
+
+  .content p.intro {
+    font-family: 'Forum', serif;
+    font-size: 1.35em;
+    line-height: 1.65;
+    color: #2c1f0e;
+    margin-bottom: 36px;
+  }
+
+  .content p strong {
+    font-weight: 500;
+    color: #2c1f0e;
+  }
+
+  /* FOTOS INLINE */
+  .photo-full {
+    width: 100%;
+    margin: 40px 0;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .photo-full img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 40px 0;
+  }
+
+  .photo-pair img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .photo-caption {
+    font-size: 0.68em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a08060;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* CIERRE */
+  .closing {
+    border-top: 1px solid #c4a87a;
+    margin-top: 60px;
+    padding-top: 48px;
+    text-align: center;
+  }
+
+  .closing .brand-name {
+    font-family: 'Forum', serif;
+    font-size: 2.2em;
+    font-weight: 300;
+    letter-spacing: 12px;
+    color: #2c1f0e;
+    text-transform: uppercase;
+  }
+
+  .closing .brand-sub {
+    font-size: 0.72em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6840;
+    margin-top: 8px;
+  }
+
+  .closing a.cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 36px;
+    background: #2c1f0e;
+    color: #f5ead8;
+    font-size: 0.75em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .closing a.cta:hover { background: #4a3520; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .hero { height: 55vh; }
+    .hero-overlay { padding: 24px; }
+    .photo-full img { height: 280px; }
+    .photo-pair img { height: 180px; }
+    .content { padding: 40px 18px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a class="back" href="/">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Colección
+  </a>
+  <a class="brand" href="/">Country</a>
+  <div class="spacer"></div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="historia/IMG_5471.jpeg" alt="Marco en Estados Unidos">
+  <div class="hero-overlay">
+    <div class="hero-text">
+      <h1>Historia</h1>
+      <p>Nueve años en la ruta</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <p class="intro">Me fui de Argentina con ganas de ver. Terminé viendo más de lo que esperaba.</p>
+
+  <p>Durante casi nueve años recorrí Estados Unidos por ruta — no de avión, sino manejando. Esa diferencia importa. La ruta te muestra la transición: cómo un paisaje se convierte en otro, cómo cambia el color de la tierra, la altura del cielo, la textura de todo.</p>
+
+  <div class="photo-full">
+    <img src="historia/IMG_4870.jpeg" alt="Montaña">
+  </div>
+
+  <p>Las Grandes Llanuras te aplanan la cabeza. Kansas, Nebraska, las Dakotas — horizonte perfecto, pasto amarillo, silencio enorme. Colorado te saca el aire: las Rocosas aparecen de golpe cuando venís del este, primero pensás que es nube, después entendés que es nieve sobre piedra a cuatro mil metros. Montana, Wyoming, Idaho — tierra ocre, ríos entre cañones, luz rasante que al atardecer convierte todo en naranja y marrón. Arizona agrega el rojo. Una roca roja que no parece real hasta que la tenés en frente.</p>
+
+  <div class="photo-pair">
+    <img src="historia/IMG_1623.jpeg" alt="Yellowstone">
+    <img src="historia/IMG_4900.jpeg" alt="Paisaje">
+  </div>
+
+  <p>También el este: Pennsylvania, Virginia, las Carolinas, Georgia. Humedad, madera oscura, colinas verdes, casas viejas con porche. Nueva York una sola vez, pero me alcanzó.</p>
+
+  <div class="photo-full">
+    <img src="historia/IMG_7104.jpeg" alt="New York">
+  </div>
+
+  <p>Viví en Las Vegas, en Pennsylvania, en Virginia y en Florida. Cuatro lugares muy distintos. En todos conocí hogares — cada uno con su estilo, su luz, su manera de acomodar las cosas. Pero había algo que se repetía siempre: el olor a pan tostado y café por la mañana.</p>
+
+  <div class="photo-pair">
+    <img src="historia/IMG_8958.jpeg" alt="">
+    <img src="historia/IMG_6108.jpeg" alt="">
+  </div>
+
+  <p>Cuando volví a Argentina traía todo eso encima. La madera sin pintar, la piedra, la cerámica, el lino. Los colores que vienen de la tierra. Ese ambiente que hace que una casa se sienta hogar desde temprano.</p>
+
+  <div class="closing">
+    <div class="brand-name">Country</div>
+    <div class="brand-sub">Home &amp; Deco · Feel at Home</div>
+    <a class="cta" href="/">Ver Colección</a>
+  </div>
+
+</div>
+
+</body>
+</html>
