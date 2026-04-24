@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Historia — Country Home & Deco</title>
-<link href="https://fonts.googleapis.com/css2?family=Forum&family=Work+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,25 +17,23 @@
   /* HEADER */
   .site-header {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 32px;
-    background: transparent;
+    padding: 22px 36px;
     transition: background 0.4s, border-color 0.4s;
   }
 
   .site-header.scrolled {
-    background: rgba(247, 242, 236, 0.97);
+    background: rgba(247,242,236,0.96);
     border-bottom: 1px solid #d4c4a8;
+    backdrop-filter: blur(8px);
   }
 
   .site-header a.back {
-    font-size: 0.68em;
+    font-size: 0.65em;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: #f5ead8;
@@ -43,31 +41,26 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: color 0.2s;
   }
-
   .site-header.scrolled a.back { color: #8a6840; }
-  .site-header a.back:hover { opacity: 0.7; }
 
   .site-header .brand {
     font-family: 'Forum', serif;
-    font-size: 1.4em;
+    font-size: 1.35em;
     letter-spacing: 10px;
     color: #f5ead8;
     text-transform: uppercase;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.3s;
   }
-
   .site-header.scrolled .brand { color: #2c1f0e; }
-
-  .site-header .spacer { width: 80px; }
+  .spacer { width: 80px; }
 
   /* HERO */
   .hero {
     width: 100%;
     height: 100vh;
-    min-height: 600px;
+    min-height: 560px;
     position: relative;
     overflow: hidden;
   }
@@ -76,7 +69,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 40%;
+    object-position: center 45%;
     display: block;
   }
 
@@ -84,254 +77,180 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom,
-      rgba(0,0,0,0.15) 0%,
-      rgba(0,0,0,0.1) 40%,
-      rgba(0,0,0,0.6) 100%);
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.08) 50%,
+      rgba(0,0,0,0.65) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    padding: 64px 32px;
+    padding: 72px 32px;
     text-align: center;
   }
 
   .hero-eyebrow {
-    font-size: 0.65em;
+    font-size: 0.62em;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: rgba(245, 234, 216, 0.7);
-    margin-bottom: 16px;
+    color: rgba(245,234,216,0.65);
+    margin-bottom: 14px;
   }
 
   .hero h1 {
     font-family: 'Forum', serif;
-    font-size: clamp(3em, 8vw, 5.5em);
-    font-weight: 400;
+    font-size: clamp(3.5em, 9vw, 6em);
     color: #f5ead8;
-    letter-spacing: 16px;
+    letter-spacing: 18px;
     text-transform: uppercase;
     line-height: 1;
   }
 
   .hero-sub {
-    font-size: 0.72em;
+    font-size: 0.68em;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: rgba(245, 234, 216, 0.65);
-    margin-top: 16px;
+    color: rgba(245,234,216,0.55);
+    margin-top: 14px;
   }
 
-  .hero-scroll {
-    margin-top: 48px;
+  .scroll-indicator {
+    margin-top: 52px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    color: rgba(245, 234, 216, 0.5);
-    font-size: 0.6em;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    gap: 6px;
   }
 
-  .hero-scroll span {
+  .scroll-indicator span {
     display: block;
     width: 1px;
-    height: 40px;
-    background: rgba(245, 234, 216, 0.4);
-    animation: scrollLine 1.8s ease-in-out infinite;
+    height: 44px;
+    background: rgba(245,234,216,0.35);
+    animation: grow 2s ease-in-out infinite;
   }
 
-  @keyframes scrollLine {
-    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+  @keyframes grow {
+    0%   { transform: scaleY(0); transform-origin: top; opacity:0; }
+    50%  { transform: scaleY(1); transform-origin: top; opacity:1; }
+    100% { transform: scaleY(1); transform-origin: bottom; opacity:0; }
   }
 
   /* INTRO */
-  .intro-block {
-    max-width: 680px;
+  .intro {
+    max-width: 660px;
     margin: 0 auto;
-    padding: 100px 32px 80px;
+    padding: 110px 28px 80px;
     text-align: center;
   }
 
-  .intro-block .label {
-    font-size: 0.62em;
-    letter-spacing: 4px;
+  .eyebrow {
+    font-size: 0.6em;
+    letter-spacing: 4.5px;
     text-transform: uppercase;
     color: #a08060;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    display: block;
   }
 
-  .intro-block p.lead {
+  .intro .lead {
     font-family: 'Forum', serif;
-    font-size: clamp(1.4em, 3vw, 1.9em);
-    font-weight: 400;
+    font-size: clamp(1.5em, 3.2vw, 2em);
     line-height: 1.6;
     color: #2c1f0e;
   }
 
-  /* FOTO FULL BLEED */
-  .photo-bleed {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .photo-bleed img {
-    width: 100%;
-    height: 75vh;
-    min-height: 400px;
-    max-height: 700px;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* EDITORIAL 2 COL */
-  .editorial {
+  /* COLLAGE GRID */
+  .collage {
+    padding: 0 20px;
+    margin: 20px auto 0;
+    max-width: 1200px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 600px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 340px 280px 360px;
+    gap: 12px;
   }
 
-  .editorial .editorial-text {
-    padding: 80px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #f7f2ec;
-  }
+  .collage .cell { overflow: hidden; position: relative; }
 
-  .editorial .editorial-text .label {
-    font-size: 0.62em;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #a08060;
-    margin-bottom: 24px;
-  }
-
-  .editorial .editorial-text p {
-    font-size: 1em;
-    font-weight: 300;
-    line-height: 1.9;
-    color: #3a2e20;
-    margin-bottom: 20px;
-  }
-
-  .editorial .editorial-text p:last-child { margin-bottom: 0; }
-
-  .editorial .editorial-photo {
-    overflow: hidden;
-  }
-
-  .editorial .editorial-photo img {
+  .collage .cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.6s ease;
   }
 
-  .editorial.reverse { }
-  .editorial.reverse .editorial-photo { order: -1; }
+  .collage .cell:hover img { transform: scale(1.03); }
 
-  /* QUOTE */
-  .quote-block {
-    padding: 100px 32px;
-    text-align: center;
-    background: #2c1f0e;
-  }
+  /* Distribución de celdas */
+  /* Fila 1 */
+  .cell-1 { grid-column: 1 / 8;  grid-row: 1; } /* Yellowstone  — 7 cols */
+  .cell-2 { grid-column: 8 / 13; grid-row: 1; } /* Times Square — 5 cols */
 
-  .quote-block blockquote {
-    font-family: 'Forum', serif;
-    font-size: clamp(1.5em, 3.5vw, 2.2em);
-    font-weight: 400;
-    color: #f5ead8;
-    line-height: 1.55;
-    max-width: 720px;
+  /* Fila 2 */
+  .cell-3 { grid-column: 1 / 5;  grid-row: 2; } /* Sunset       — 4 cols */
+  .cell-4 { grid-column: 5 / 9;  grid-row: 2; } /* Hiking       — 4 cols */
+  .cell-5 { grid-column: 9 / 13; grid-row: 2; } /* Snow + dog   — 4 cols */
+
+  /* Fila 3 — franja ancha de texto */
+  .cell-text { grid-column: 1 / 6; grid-row: 3; background: #2c1f0e; display: flex; flex-direction: column; justify-content: center; padding: 56px 52px; }
+  .cell-text .label { font-size: 0.58em; letter-spacing: 4px; text-transform: uppercase; color: #a08060; margin-bottom: 20px; }
+  .cell-text p { font-family: 'Forum', serif; font-size: 1.35em; line-height: 1.65; color: #f5ead8; font-weight: 400; }
+  .cell-6 { grid-column: 6 / 13; grid-row: 3; } /* Yellowstone grande de nuevo / panorama */
+
+  /* TEXTO NARRATIVO */
+  .narrative {
+    max-width: 700px;
     margin: 0 auto;
-    letter-spacing: 1px;
+    padding: 100px 28px 80px;
   }
 
-  .quote-block .quote-dash {
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: #8a6840;
-    margin: 32px auto 0;
-  }
-
-  /* FOTO CENTTRADA */
-  .photo-centered {
-    padding: 80px 32px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .photo-centered .inner {
-    max-width: 560px;
-    width: 100%;
-  }
-
-  .photo-centered img {
-    width: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
-    display: block;
-  }
-
-  .photo-centered .caption {
-    font-size: 0.65em;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #a08060;
-    margin-top: 14px;
-    text-align: center;
-  }
-
-  /* TEXTO CENTRAL */
-  .text-center {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 80px 32px;
-  }
-
-  .text-center p {
+  .narrative p {
     font-size: 1.02em;
     font-weight: 300;
-    line-height: 1.9;
+    line-height: 1.95;
     color: #3a2e20;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
-  .text-center p:last-child { margin-bottom: 0; }
+  .narrative p:last-child { margin-bottom: 0; }
+
+  .narrative .highlight {
+    font-family: 'Forum', serif;
+    font-size: 1.3em;
+    line-height: 1.65;
+    color: #2c1f0e;
+    border-left: 2px solid #c4a87a;
+    padding-left: 24px;
+    margin: 40px 0;
+  }
 
   /* CIERRE */
   .closing {
-    padding: 100px 32px 120px;
     text-align: center;
+    padding: 100px 28px 120px;
     border-top: 1px solid #d4c4a8;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .closing .brand-name {
     font-family: 'Forum', serif;
-    font-size: clamp(2em, 5vw, 3em);
-    font-weight: 400;
+    font-size: clamp(2.2em, 5vw, 3.2em);
     letter-spacing: 16px;
     color: #2c1f0e;
     text-transform: uppercase;
   }
 
   .closing .brand-sub {
-    font-size: 0.68em;
+    font-size: 0.67em;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: #a08060;
     margin-top: 10px;
   }
 
-  .closing .divider {
-    width: 40px;
+  .closing .rule {
+    width: 36px;
     height: 1px;
     background: #c4a87a;
     margin: 36px auto;
@@ -342,16 +261,16 @@
     font-weight: 300;
     line-height: 1.8;
     color: #6a5840;
-    max-width: 420px;
-    margin: 0 auto 36px;
+    max-width: 380px;
+    margin: 0 auto 40px;
   }
 
   .closing a.cta {
     display: inline-block;
-    padding: 16px 44px;
+    padding: 16px 48px;
     background: #2c1f0e;
     color: #f5ead8;
-    font-size: 0.68em;
+    font-size: 0.65em;
     letter-spacing: 4px;
     text-transform: uppercase;
     text-decoration: none;
@@ -363,22 +282,28 @@
   /* MOBILE */
   @media (max-width: 768px) {
     .site-header { padding: 18px 20px; }
-    .site-header .spacer { width: 40px; }
+    .spacer { width: 36px; }
     .hero { height: 100svh; }
-    .intro-block { padding: 72px 24px 60px; }
-    .photo-bleed img { height: 55vw; min-height: 280px; }
+    .intro { padding: 80px 22px 60px; }
 
-    .editorial {
-      grid-template-columns: 1fr;
+    .collage {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 220px 200px 200px auto;
+      gap: 8px;
+      padding: 0 12px;
     }
-    .editorial .editorial-text { padding: 48px 24px; }
-    .editorial .editorial-photo { min-height: 300px; }
-    .editorial.reverse .editorial-photo { order: 0; }
 
-    .quote-block { padding: 72px 24px; }
-    .photo-centered { padding: 48px 24px; }
-    .text-center { padding: 60px 24px; }
-    .closing { padding: 72px 24px 100px; }
+    .cell-1 { grid-column: 1 / 3; grid-row: 1; }
+    .cell-2 { grid-column: 1 / 2; grid-row: 2; }
+    .cell-3 { grid-column: 2 / 3; grid-row: 2; }
+    .cell-4 { grid-column: 1 / 2; grid-row: 3; }
+    .cell-5 { grid-column: 2 / 3; grid-row: 3; }
+    .cell-text { grid-column: 1 / 3; grid-row: 4; padding: 40px 28px; }
+    .cell-text p { font-size: 1.1em; }
+    .cell-6 { grid-column: 1 / 3; grid-row: 5; height: 220px; }
+
+    .narrative { padding: 72px 22px 60px; }
+    .closing { padding: 72px 22px 100px; }
   }
 </style>
 </head>
@@ -394,81 +319,77 @@
   <div class="spacer"></div>
 </header>
 
-<!-- HERO — Yellowstone -->
+<!-- HERO -->
 <section class="hero">
-  <img src="historia/IMG_1623.jpeg" alt="Yellowstone, Wyoming">
+  <img src="historia/IMG_4900.jpeg" alt="Atardecer, Estados Unidos">
   <div class="hero-overlay">
     <div class="hero-eyebrow">Country Home & Deco</div>
     <h1>Historia</h1>
     <div class="hero-sub">Nueve años en la ruta</div>
-    <div class="hero-scroll">
-      <span></span>
-    </div>
+    <div class="scroll-indicator"><span></span></div>
   </div>
 </section>
 
 <!-- INTRO -->
-<section class="intro-block">
-  <div class="label">El origen</div>
-  <p class="lead">Me fui de Argentina con ganas de ver. Terminé viendo más de lo que esperaba.</p>
+<section class="intro">
+  <span class="eyebrow">El origen</span>
+  <p class="lead">Me fui de Argentina con ganas de ver.<br>Terminé viendo más de lo que esperaba.</p>
 </section>
 
-<!-- FOTO FULL — Montaña, hiking -->
-<div class="photo-bleed">
-  <img src="historia/IMG_4870.jpeg" alt="Colorado, Estados Unidos">
-</div>
+<!-- COLLAGE -->
+<div class="collage">
 
-<!-- TEXTO CENTRAL -->
-<section class="text-center">
-  <p>Durante casi nueve años recorrí Estados Unidos por ruta — no de avión, sino manejando. Esa diferencia importa. La ruta te muestra la transición: cómo un paisaje se convierte en otro, cómo cambia el color de la tierra, la altura del cielo, la textura de todo.</p>
-  <p>Las Grandes Llanuras te aplanan la cabeza. Kansas, Nebraska, las Dakotas — horizonte perfecto, pasto amarillo, silencio enorme. Colorado te saca el aire: las Rocosas aparecen de golpe cuando venís del este, primero pensás que es nube, después entendés que es nieve sobre piedra a cuatro mil metros.</p>
-</section>
-
-<!-- EDITORIAL — texto derecha, foto izquierda (sunset) -->
-<div class="editorial reverse">
-  <div class="editorial-photo">
-    <img src="historia/IMG_4900.jpeg" alt="Atardecer en las llanuras">
+  <div class="cell cell-1">
+    <img src="historia/IMG_1623.jpeg" alt="Yellowstone, Wyoming">
   </div>
-  <div class="editorial-text">
-    <div class="label">El oeste</div>
-    <p>Montana, Wyoming, Idaho — tierra ocre, ríos entre cañones, luz rasante que al atardecer convierte todo en naranja y marrón.</p>
-    <p>Arizona agrega el rojo. Una roca roja que no parece real hasta que la tenés en frente.</p>
-    <p>También el este: Pennsylvania, Virginia, las Carolinas, Georgia. Humedad, madera oscura, colinas verdes, casas viejas con porche. Nueva York una sola vez, pero me alcanzó.</p>
+
+  <div class="cell cell-2">
+    <img src="historia/IMG_7104.jpeg" alt="Nueva York">
   </div>
-</div>
 
-<!-- FOTO FULL — New York -->
-<div class="photo-bleed">
-  <img src="historia/IMG_7104.jpeg" alt="Nueva York">
-</div>
+  <div class="cell cell-3">
+    <img src="historia/IMG_4870.jpeg" alt="Colorado, montañas">
+  </div>
 
-<!-- QUOTE -->
-<div class="quote-block">
-  <blockquote>
-    "Viví en Las Vegas, en Pennsylvania, en Virginia y en Florida. Cuatro lugares muy distintos. En todos conocí hogares — cada uno con su estilo, su luz, su manera de acomodar las cosas."
-  </blockquote>
-  <span class="quote-dash"></span>
-</div>
-
-<!-- FOTO CENTRADA — Marco en la nieve -->
-<div class="photo-centered">
-  <div class="inner">
+  <div class="cell cell-4">
     <img src="historia/IMG_8958.jpeg" alt="Pennsylvania, invierno">
-    <div class="caption">Pennsylvania · Invierno</div>
   </div>
+
+  <div class="cell cell-5">
+    <img src="historia/IMG_5471.jpeg" style="object-position: center top;" alt="Florida">
+  </div>
+
+  <div class="cell-text">
+    <span class="label">Nueve años en ruta</span>
+    <p>"Había algo que se repetía siempre: el olor a pan tostado y café por la mañana."</p>
+  </div>
+
+  <div class="cell cell-6">
+    <img src="historia/IMG_4900.jpeg" style="object-position: center 20%;" alt="Atardecer">
+  </div>
+
 </div>
 
-<!-- TEXTO FINAL -->
-<section class="text-center">
-  <p>Pero había algo que se repetía siempre, sin importar el lugar: el olor a pan tostado y café por la mañana. Ese aroma que te hace sentir que estás en el lugar correcto.</p>
-  <p>Cuando volví a Argentina traía todo eso encima. La madera sin pintar, la piedra, la cerámica, el lino. Los colores que vienen de la tierra. Ese ambiente que hace que una casa se sienta hogar desde temprano.</p>
+<!-- NARRATIVA -->
+<section class="narrative">
+
+  <p>Durante casi nueve años recorrí Estados Unidos por ruta — no de avión, sino manejando. Esa diferencia importa. La ruta te muestra la transición: cómo un paisaje se convierte en otro, cómo cambia el color de la tierra, la altura del cielo, la textura de todo.</p>
+
+  <p>Las Grandes Llanuras te aplanan la cabeza. Kansas, Nebraska, las Dakotas — horizonte perfecto, pasto amarillo, silencio enorme. Colorado te saca el aire: las Rocosas aparecen de golpe cuando venís del este, primero pensás que es nube, después entendés que es nieve sobre piedra a cuatro mil metros. Montana, Wyoming, Idaho — tierra ocre, ríos entre cañones, luz rasante que al atardecer convierte todo en naranja y marrón. Arizona agrega el rojo.</p>
+
+  <p class="highlight">También el este: Pennsylvania, Virginia, las Carolinas, Georgia. Humedad, madera oscura, colinas verdes, casas viejas con porche. Nueva York una sola vez, pero me alcanzó.</p>
+
+  <p>Viví en Las Vegas, en Pennsylvania, en Virginia y en Florida. Cuatro lugares muy distintos. En todos conocí hogares — cada uno con su estilo, su luz, su manera de acomodar las cosas. Pero había algo que se repetía siempre: el olor a pan tostado y café por la mañana.</p>
+
+  <p>Cuando volví a Argentina traía todo eso encima. La madera sin pintar, la piedra, la cerámica, el lino. Los colores que vienen de la tierra. Ese ambiente que hace que una casa se sienta hogar desde temprano. Eso es Country.</p>
+
 </section>
 
 <!-- CIERRE -->
 <section class="closing">
   <div class="brand-name">Country</div>
   <div class="brand-sub">Home & Deco · Feel at Home</div>
-  <div class="divider"></div>
+  <div class="rule"></div>
   <p>Cada objeto que elegimos lleva un poco de todo eso.</p>
   <a class="cta" href="/">Ver Colección</a>
 </section>
@@ -477,7 +398,7 @@
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 80);
-  });
+  }, { passive: true });
 </script>
 
 </body>
