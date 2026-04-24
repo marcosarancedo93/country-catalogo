@@ -23,15 +23,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 22px 36px;
-    transition: background 0.4s, border-color 0.4s;
+    transition: background 0.4s;
   }
-
   .site-header.scrolled {
     background: rgba(247,242,236,0.96);
     border-bottom: 1px solid #d4c4a8;
     backdrop-filter: blur(8px);
   }
-
   .site-header a.back {
     font-size: 0.65em;
     letter-spacing: 2.5px;
@@ -43,7 +41,6 @@
     gap: 6px;
   }
   .site-header.scrolled a.back { color: #8a6840; }
-
   .site-header .brand {
     font-family: 'Forum', serif;
     font-size: 1.35em;
@@ -64,20 +61,18 @@
     position: relative;
     overflow: hidden;
   }
-
   .hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 45%;
+    object-position: center 30%;
     display: block;
   }
-
   .hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom,
-      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.05) 0%,
       rgba(0,0,0,0.08) 50%,
       rgba(0,0,0,0.65) 100%);
     display: flex;
@@ -87,7 +82,6 @@
     padding: 72px 32px;
     text-align: center;
   }
-
   .hero-eyebrow {
     font-size: 0.62em;
     letter-spacing: 5px;
@@ -95,7 +89,6 @@
     color: rgba(245,234,216,0.65);
     margin-bottom: 14px;
   }
-
   .hero h1 {
     font-family: 'Forum', serif;
     font-size: clamp(3.5em, 9vw, 6em);
@@ -104,7 +97,6 @@
     text-transform: uppercase;
     line-height: 1;
   }
-
   .hero-sub {
     font-size: 0.68em;
     letter-spacing: 4px;
@@ -112,15 +104,12 @@
     color: rgba(245,234,216,0.55);
     margin-top: 14px;
   }
-
   .scroll-indicator {
     margin-top: 52px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
   }
-
   .scroll-indicator span {
     display: block;
     width: 1px;
@@ -128,7 +117,6 @@
     background: rgba(245,234,216,0.35);
     animation: grow 2s ease-in-out infinite;
   }
-
   @keyframes grow {
     0%   { transform: scaleY(0); transform-origin: top; opacity:0; }
     50%  { transform: scaleY(1); transform-origin: top; opacity:1; }
@@ -139,10 +127,9 @@
   .intro {
     max-width: 660px;
     margin: 0 auto;
-    padding: 110px 28px 80px;
+    padding: 110px 28px 70px;
     text-align: center;
   }
-
   .eyebrow {
     font-size: 0.6em;
     letter-spacing: 4.5px;
@@ -151,7 +138,6 @@
     margin-bottom: 24px;
     display: block;
   }
-
   .intro .lead {
     font-family: 'Forum', serif;
     font-size: clamp(1.5em, 3.2vw, 2em);
@@ -159,50 +145,104 @@
     color: #2c1f0e;
   }
 
-  /* COLLAGE GRID */
+  /* ═══ COLLAGE PRINCIPAL ═══
+     12 columnas, 4 filas
+     Fila 1: Horseshoe Bend (grande) | Times Square
+     Fila 2: Burning Man (wide) | Chicago
+     Fila 3: Washington Monument | Yellowstone | hiking
+     Fila 4: sunset atardecer (wide) | snow
+  */
   .collage {
+    max-width: 1240px;
+    margin: 0 auto;
     padding: 0 20px;
-    margin: 20px auto 0;
-    max-width: 1200px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 340px 280px 360px;
-    gap: 12px;
+    grid-auto-rows: auto;
+    gap: 10px;
   }
 
-  .collage .cell { overflow: hidden; position: relative; }
-
-  .collage .cell img {
+  .cell { overflow: hidden; position: relative; min-height: 200px; }
+  .cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s ease;
+    transition: transform 0.7s ease;
   }
+  .cell:hover img { transform: scale(1.04); }
 
-  .collage .cell:hover img { transform: scale(1.03); }
-
-  /* Distribución de celdas */
   /* Fila 1 */
-  .cell-1 { grid-column: 1 / 8;  grid-row: 1; } /* Yellowstone  — 7 cols */
-  .cell-2 { grid-column: 8 / 13; grid-row: 1; } /* Times Square — 5 cols */
+  .c1 { grid-column: 1 / 8;  height: 500px; } /* Horseshoe Bend — protagonista */
+  .c2 { grid-column: 8 / 13; height: 500px; } /* Times Square */
 
   /* Fila 2 */
-  .cell-3 { grid-column: 1 / 5;  grid-row: 2; } /* Sunset       — 4 cols */
-  .cell-4 { grid-column: 5 / 9;  grid-row: 2; } /* Hiking       — 4 cols */
-  .cell-5 { grid-column: 9 / 13; grid-row: 2; } /* Snow + dog   — 4 cols */
+  .c3 { grid-column: 1 / 6;  height: 320px; } /* Burning Man */
+  .c4 { grid-column: 6 / 13; height: 320px; } /* Chicago L train */
 
-  /* Fila 3 — franja ancha de texto */
-  .cell-text { grid-column: 1 / 6; grid-row: 3; background: #2c1f0e; display: flex; flex-direction: column; justify-content: center; padding: 56px 52px; }
-  .cell-text .label { font-size: 0.58em; letter-spacing: 4px; text-transform: uppercase; color: #a08060; margin-bottom: 20px; }
-  .cell-text p { font-family: 'Forum', serif; font-size: 1.35em; line-height: 1.65; color: #f5ead8; font-weight: 400; }
-  .cell-6 { grid-column: 6 / 13; grid-row: 3; } /* Yellowstone grande de nuevo / panorama */
+  /* Fila 3 */
+  .c5 { grid-column: 1 / 5;  height: 380px; } /* Washington Monument */
+  .c6 { grid-column: 5 / 9;  height: 380px; } /* Yellowstone */
+  .c7 { grid-column: 9 / 13; height: 380px; } /* Hiking montaña */
 
-  /* TEXTO NARRATIVO */
+  /* Fila 4 */
+  .c8 { grid-column: 1 / 7;  height: 300px; } /* Snow + dog */
+  .c9 { grid-column: 7 / 13; height: 300px; } /* Florida selfie */
+
+  /* NARRATIVA con fotos al costado */
   .narrative {
-    max-width: 700px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 100px 28px 80px;
+    padding: 100px 40px 60px;
+  }
+
+  /* párrafo con foto flotando a la derecha */
+  .with-photo-right {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 72px;
+  }
+  .with-photo-right .text { }
+  .with-photo-right .side-photo {
+    position: relative;
+    top: 20px;
+  }
+  .with-photo-right .side-photo img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
+  }
+  .with-photo-right .side-photo .caption {
+    font-size: 0.6em;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #a08060;
+    margin-top: 10px;
+  }
+
+  /* párrafo con foto flotando a la izquierda */
+  .with-photo-left {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 72px;
+  }
+  .with-photo-left .side-photo img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+  .with-photo-left .side-photo .caption {
+    font-size: 0.6em;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #a08060;
+    margin-top: 10px;
   }
 
   .narrative p {
@@ -210,9 +250,8 @@
     font-weight: 300;
     line-height: 1.95;
     color: #3a2e20;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
-
   .narrative p:last-child { margin-bottom: 0; }
 
   .narrative .highlight {
@@ -222,7 +261,38 @@
     color: #2c1f0e;
     border-left: 2px solid #c4a87a;
     padding-left: 24px;
-    margin: 40px 0;
+    margin: 20px 0 32px;
+  }
+
+  /* FOTO FULL BLEED */
+  .photo-bleed {
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  .photo-bleed img {
+    width: 100%;
+    height: 60vh;
+    min-height: 320px;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* MINI TIRA de 3 fotos */
+  .photo-strip {
+    max-width: 1240px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .photo-strip img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
   }
 
   /* CIERRE */
@@ -230,9 +300,8 @@
     text-align: center;
     padding: 100px 28px 120px;
     border-top: 1px solid #d4c4a8;
-    margin-top: 20px;
+    margin-top: 60px;
   }
-
   .closing .brand-name {
     font-family: 'Forum', serif;
     font-size: clamp(2.2em, 5vw, 3.2em);
@@ -240,7 +309,6 @@
     color: #2c1f0e;
     text-transform: uppercase;
   }
-
   .closing .brand-sub {
     font-size: 0.67em;
     letter-spacing: 4px;
@@ -248,14 +316,12 @@
     color: #a08060;
     margin-top: 10px;
   }
-
   .closing .rule {
     width: 36px;
     height: 1px;
     background: #c4a87a;
     margin: 36px auto;
   }
-
   .closing p {
     font-size: 0.95em;
     font-weight: 300;
@@ -264,7 +330,6 @@
     max-width: 380px;
     margin: 0 auto 40px;
   }
-
   .closing a.cta {
     display: inline-block;
     padding: 16px 48px;
@@ -276,33 +341,44 @@
     text-decoration: none;
     transition: background 0.25s;
   }
-
   .closing a.cta:hover { background: #4a3520; }
 
   /* MOBILE */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .site-header { padding: 18px 20px; }
     .spacer { width: 36px; }
     .hero { height: 100svh; }
-    .intro { padding: 80px 22px 60px; }
+    .intro { padding: 80px 22px 56px; }
 
     .collage {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 220px 220px 200px 200px auto;
+      grid-auto-rows: auto;
       gap: 8px;
       padding: 0 12px;
     }
+    .c1 { grid-column: 1 / 3; height: 260px; }
+    .c2 { grid-column: 1 / 2; height: 220px; }
+    .c3 { grid-column: 2 / 3; height: 220px; }
+    .c4 { grid-column: 1 / 3; height: 220px; }
+    .c5 { grid-column: 1 / 2; height: 200px; }
+    .c6 { grid-column: 2 / 3; height: 200px; }
+    .c7 { grid-column: 1 / 2; height: 200px; }
+    .c8 { grid-column: 2 / 3; height: 200px; }
+    .c9 { grid-column: 1 / 3; height: 200px; }
 
-    .cell-1 { grid-column: 1 / 3; grid-row: 1; }
-    .cell-2 { grid-column: 1 / 2; grid-row: 2; }
-    .cell-3 { grid-column: 2 / 3; grid-row: 2; }
-    .cell-4 { grid-column: 1 / 2; grid-row: 3; }
-    .cell-5 { grid-column: 2 / 3; grid-row: 3; }
-    .cell-text { grid-column: 1 / 3; grid-row: 4; padding: 40px 28px; }
-    .cell-text p { font-size: 1.1em; }
-    .cell-6 { grid-column: 1 / 3; grid-row: 5; height: 220px; }
+    .narrative { padding: 60px 20px 40px; }
+    .with-photo-right,
+    .with-photo-left {
+      grid-template-columns: 1fr;
+    }
+    .with-photo-right .side-photo,
+    .with-photo-left .side-photo { top: 0; }
+    .with-photo-right .side-photo img,
+    .with-photo-left .side-photo img { height: 280px; }
 
-    .narrative { padding: 72px 22px 60px; }
+    .photo-strip { grid-template-columns: 1fr; padding: 0 12px; }
+    .photo-strip img { height: 220px; }
+
     .closing { padding: 72px 22px 100px; }
   }
 </style>
@@ -319,9 +395,9 @@
   <div class="spacer"></div>
 </header>
 
-<!-- HERO -->
+<!-- HERO — Horseshoe Bend como opening -->
 <section class="hero">
-  <img src="historia/IMG_4900.jpeg" alt="Atardecer, Estados Unidos">
+  <img src="historia/IMG_4002.JPG" alt="Horseshoe Bend, Arizona">
   <div class="hero-overlay">
     <div class="hero-eyebrow">Country Home & Deco</div>
     <h1>Historia</h1>
@@ -336,53 +412,91 @@
   <p class="lead">Me fui de Argentina con ganas de ver.<br>Terminé viendo más de lo que esperaba.</p>
 </section>
 
-<!-- COLLAGE -->
+<!-- COLLAGE PRINCIPAL -->
 <div class="collage">
 
-  <div class="cell cell-1">
-    <img src="historia/IMG_1623.jpeg" alt="Yellowstone, Wyoming">
+  <div class="cell c1">
+    <img src="historia/IMG_4002.JPG" alt="Horseshoe Bend, Arizona" style="object-position: center 20%;">
   </div>
 
-  <div class="cell cell-2">
+  <div class="cell c2">
     <img src="historia/IMG_7104.jpeg" alt="Nueva York">
   </div>
 
-  <div class="cell cell-3">
+  <div class="cell c3">
+    <img src="historia/IMG_1231.JPG" alt="Burning Man, Nevada" style="object-position: center 40%;">
+  </div>
+
+  <div class="cell c4">
+    <img src="historia/IMG_0608.jpeg" alt="Chicago">
+  </div>
+
+  <div class="cell c5">
+    <img src="historia/IMG_0825.jpeg" alt="Washington Monument, Virginia" style="object-position: center 20%;">
+  </div>
+
+  <div class="cell c6">
+    <img src="historia/IMG_1623.jpeg" alt="Yellowstone, Wyoming">
+  </div>
+
+  <div class="cell c7">
     <img src="historia/IMG_4870.jpeg" alt="Colorado, montañas">
   </div>
 
-  <div class="cell cell-4">
-    <img src="historia/IMG_8958.jpeg" alt="Pennsylvania, invierno">
+  <div class="cell c8">
+    <img src="historia/IMG_8958.jpeg" alt="Pennsylvania, invierno" style="object-position: center 20%;">
   </div>
 
-  <div class="cell cell-5">
-    <img src="historia/IMG_5471.jpeg" style="object-position: right center;" alt="Florida">
-  </div>
-
-  <div class="cell-text">
-    <span class="label">Nueve años en ruta</span>
-    <p>"Había algo que se repetía siempre: el olor a pan tostado y café por la mañana."</p>
-  </div>
-
-  <div class="cell cell-6">
-    <img src="historia/IMG_4900.jpeg" style="object-position: center 20%;" alt="Atardecer">
+  <div class="cell c9">
+    <img src="historia/IMG_5471.jpeg" alt="Florida" style="object-position: right center;">
   </div>
 
 </div>
 
-<!-- NARRATIVA -->
+<!-- NARRATIVA CON FOTOS AL COSTADO -->
 <section class="narrative">
 
-  <p>Durante casi nueve años recorrí Estados Unidos por ruta — no de avión, sino manejando. Esa diferencia importa. La ruta te muestra la transición: cómo un paisaje se convierte en otro, cómo cambia el color de la tierra, la altura del cielo, la textura de todo.</p>
+  <!-- BLOQUE 1: texto izquierda, glaciar derecha -->
+  <div class="with-photo-right">
+    <div class="text">
+      <p>Durante casi nueve años recorrí Estados Unidos por ruta — no de avión, sino manejando. Esa diferencia importa. La ruta te muestra la transición: cómo un paisaje se convierte en otro, cómo cambia el color de la tierra, la altura del cielo, la textura de todo.</p>
+      <p class="highlight">Las Grandes Llanuras te aplanan la cabeza. Kansas, Nebraska, las Dakotas — horizonte perfecto, pasto amarillo, silencio enorme.</p>
+      <p>Colorado te saca el aire: las Rocosas aparecen de golpe cuando venís del este, primero pensás que es nube, después entendés que es nieve sobre piedra a cuatro mil metros.</p>
+    </div>
+    <div class="side-photo">
+      <img src="historia/IMG_glacier.JPG" alt="Glaciar, montaña" style="object-position: center 30%;">
+      <div class="caption">Montana · Glaciar</div>
+    </div>
+  </div>
 
-  <p>Las Grandes Llanuras te aplanan la cabeza. Kansas, Nebraska, las Dakotas — horizonte perfecto, pasto amarillo, silencio enorme. Colorado te saca el aire: las Rocosas aparecen de golpe cuando venís del este, primero pensás que es nube, después entendés que es nieve sobre piedra a cuatro mil metros. Montana, Wyoming, Idaho — tierra ocre, ríos entre cañones, luz rasante que al atardecer convierte todo en naranja y marrón. Arizona agrega el rojo.</p>
+  <!-- BLOQUE 2: bici Florida izquierda, texto derecha -->
+  <div class="with-photo-left">
+    <div class="side-photo">
+      <img src="historia/IMG_8341.jpeg" alt="Florida Keys, bicicleta" style="object-position: center 60%;">
+      <div class="caption">Florida Keys</div>
+    </div>
+    <div class="text">
+      <p>Montana, Wyoming, Idaho — tierra ocre, ríos entre cañones, luz rasante que al atardecer convierte todo en naranja y marrón. Arizona agrega el rojo. Una roca roja que no parece real hasta que la tenés en frente.</p>
+      <p>También el este: Pennsylvania, Virginia, las Carolinas, Georgia. Humedad, madera oscura, colinas verdes, casas viejas con porche. Nueva York una sola vez, pero me alcanzó.</p>
+      <p>Viví en Las Vegas, en Pennsylvania, en Virginia y en Florida. Cuatro lugares muy distintos.</p>
+    </div>
+  </div>
 
-  <p class="highlight">También el este: Pennsylvania, Virginia, las Carolinas, Georgia. Humedad, madera oscura, colinas verdes, casas viejas con porche. Nueva York una sola vez, pero me alcanzó.</p>
+</section>
 
-  <p>Viví en Las Vegas, en Pennsylvania, en Virginia y en Florida. Cuatro lugares muy distintos. En todos conocí hogares — cada uno con su estilo, su luz, su manera de acomodar las cosas. Pero había algo que se repetía siempre: el olor a pan tostado y café por la mañana.</p>
+<!-- TIRA DE FOTOS — árbol, playa, pies en arena -->
+<div class="photo-strip">
+  <img src="historia/IMG_7563.jpeg" alt="California, árbol" style="object-position: center 30%;">
+  <img src="historia/IMG_4900.jpeg" alt="Atardecer" style="object-position: center 20%;">
+  <img src="historia/IMG_7406.jpeg" alt="Florida, playa" style="object-position: center 40%;">
+</div>
 
-  <p>Cuando volví a Argentina traía todo eso encima. La madera sin pintar, la piedra, la cerámica, el lino. Los colores que vienen de la tierra. Ese ambiente que hace que una casa se sienta hogar desde temprano. Eso es Country.</p>
-
+<!-- CIERRE NARRATIVO -->
+<section class="narrative" style="padding-top: 60px;">
+  <div style="max-width: 680px; margin: 0 auto; text-align: center;">
+    <p style="font-family: 'Forum', serif; font-size: clamp(1.2em, 2.5vw, 1.6em); line-height: 1.7; color: #2c1f0e; font-weight: 400;">En todos esos hogares había algo que se repetía siempre: el olor a pan tostado y café por la mañana.</p>
+    <p style="margin-top: 28px;">Cuando volví a Argentina traía todo eso encima. La madera sin pintar, la piedra, la cerámica, el lino. Los colores que vienen de la tierra. Ese ambiente que hace que una casa se sienta hogar desde temprano.</p>
+  </div>
 </section>
 
 <!-- CIERRE -->
