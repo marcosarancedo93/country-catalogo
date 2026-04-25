@@ -115,8 +115,8 @@ const PRODUCTS = [
   },
   {
     id: 'dune',
-    title: 'Libros DUNE',
-    description: 'Set x3 libros decorativos. Detalle elegante para estantes, mesas y ambientaciones estilo home.',
+    title: 'Libros DUNE — Set x4',
+    description: 'Set x4 libros decorativos. Detalle elegante para estantes, mesas y ambientaciones estilo home.',
     price: 29900,
     image: 'FOTOS/LIBROS/ML/1-copy-3.jpg',
     category: 'Hogar > Decoración > Libros decorativos'
