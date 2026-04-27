@@ -488,6 +488,266 @@
     background: #25D366; color: white; padding: 12px 20px;
     border-radius: 50px; text-decoration: none; font-size: 0.9em; font-weight: 600;
   }
+
+  /* ===== TOP NAV ===== */
+  .cart-fab { display: none !important; }
+
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: #2c1f0e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    height: 54px;
+    border-bottom: 1px solid rgba(196,168,122,0.2);
+    flex-shrink: 0;
+  }
+  .tn-btn {
+    background: none;
+    border: none;
+    color: #f5ead8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    position: relative;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tn-btn:hover { background: rgba(255,255,255,0.08); }
+  .tn-logo {
+    font-family: 'Forum', serif;
+    font-size: 1.25em;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: #f5ead8;
+    user-select: none;
+  }
+  .tn-badge {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background: #c4a87a;
+    color: #2c1f0e;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 0.62em;
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .tn-badge.visible { display: flex; }
+
+  /* ===== NAV DRAWER ===== */
+  .nav-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .nav-drawer-overlay.open { opacity: 1; pointer-events: all; }
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: min(300px, 82vw);
+    height: 100dvh;
+    background: #2c1f0e;
+    z-index: 700;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+  .nav-drawer.open { left: 0; }
+  .nav-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(196,168,122,0.2);
+    flex-shrink: 0;
+  }
+  .nav-drawer-logo {
+    font-family: 'Forum', serif;
+    font-size: 1.05em;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #f5ead8;
+  }
+  .nav-drawer-close {
+    background: none;
+    border: none;
+    color: rgba(245,234,216,0.55);
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 6px;
+    line-height: 1;
+  }
+  .nav-drawer-items { flex: 1; padding: 6px 0; }
+  .nav-drawer-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 17px 24px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(196,168,122,0.1);
+    color: rgba(245,234,216,0.65);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.88em;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-drawer-item:hover { background: rgba(255,255,255,0.04); color: #f5ead8; }
+  .nav-drawer-item.active { color: #f5ead8; background: rgba(196,168,122,0.08); }
+  .nav-drawer-social {
+    padding: 20px 24px 32px;
+    border-top: 1px solid rgba(196,168,122,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .nav-drawer-social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(245,234,216,0.45);
+    text-decoration: none;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-drawer-social-link:hover { color: rgba(245,234,216,0.8); }
+
+  /* ===== PAGE SECTIONS ===== */
+  .page-section { display: none; }
+  .page-section.active { display: block; }
+
+  /* ===== NOSOTROS ===== */
+  .nosotros-section {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 52px 24px 72px;
+  }
+  .nos-eyebrow {
+    font-size: 0.68em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a87a;
+    margin-bottom: 10px;
+  }
+  .nos-title {
+    font-family: 'Forum', serif;
+    font-size: 2em;
+    color: #2c1f0e;
+    letter-spacing: 3px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .nos-divider { width: 44px; height: 1px; background: #c4a87a; margin-bottom: 28px; }
+  .nos-body { font-size: 0.95em; line-height: 1.9; color: #4a3520; font-weight: 300; }
+  .nos-body p + p { margin-top: 18px; }
+  .nos-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 44px;
+  }
+  .nos-card {
+    text-align: center;
+    padding: 22px 12px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .nos-card-icon { font-size: 1.4em; margin-bottom: 10px; }
+  .nos-card-title {
+    font-family: 'Forum', serif;
+    font-size: 0.85em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2c1f0e;
+    margin-bottom: 5px;
+  }
+  .nos-card-desc { font-size: 0.74em; color: #8a7060; line-height: 1.5; }
+  @media (max-width: 560px) {
+    .nos-title { font-size: 1.5em; }
+    .nos-values { grid-template-columns: 1fr; gap: 10px; }
+    .nosotros-section { padding: 32px 18px 56px; }
+  }
+
+  /* ===== CONTACTO ===== */
+  .contacto-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 52px 24px 72px;
+    text-align: center;
+  }
+  .con-eyebrow {
+    font-size: 0.68em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a87a;
+    margin-bottom: 10px;
+  }
+  .con-title {
+    font-family: 'Forum', serif;
+    font-size: 2em;
+    color: #2c1f0e;
+    letter-spacing: 3px;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+  .con-sub { font-size: 0.8em; color: #8a6840; margin-bottom: 36px; line-height: 1.7; }
+  .con-divider { width: 44px; height: 1px; background: #c4a87a; margin: 0 auto 36px; }
+  .con-cards { display: flex; flex-direction: column; gap: 12px; }
+  .con-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    border: 1px solid #e8d5b5;
+    border-radius: 8px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: #2c1f0e;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: left;
+  }
+  .con-card:hover { border-color: #c4a87a; box-shadow: 0 3px 14px rgba(0,0,0,0.08); }
+  .con-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .con-card-label {
+    font-size: 0.66em; letter-spacing: 2px; text-transform: uppercase;
+    color: #8a6840; margin-bottom: 3px;
+  }
+  .con-card-value { font-size: 0.88em; font-weight: 500; color: #2c1f0e; }
+  @media (max-width: 480px) {
+    .contacto-section { padding: 32px 18px 56px; }
+    .con-title { font-size: 1.6em; }
+  }
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -504,6 +764,73 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
 <!-- End Meta Pixel -->
 </head>
 <body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <button class="tn-btn" onclick="toggleDrawer()" aria-label="Menú">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+  <div class="tn-logo">Country</div>
+  <button class="tn-btn" onclick="openCart()" aria-label="Carrito">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+    </svg>
+    <span class="tn-badge" id="tn-badge"></span>
+  </button>
+</nav>
+
+<!-- NAV DRAWER OVERLAY -->
+<div class="nav-drawer-overlay" id="nav-drawer-overlay" onclick="closeDrawer()"></div>
+
+<!-- NAV DRAWER -->
+<div class="nav-drawer" id="nav-drawer">
+  <div class="nav-drawer-head">
+    <div class="nav-drawer-logo">Country</div>
+    <button class="nav-drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="nav-drawer-items">
+    <button class="nav-drawer-item active" data-section="coleccion" onclick="showSection('coleccion')">
+      <span>Colección</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <button class="nav-drawer-item" data-section="nosotros" onclick="showSection('nosotros')">
+      <span>Nosotros</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <button class="nav-drawer-item" data-section="contacto" onclick="showSection('contacto')">
+      <span>Contacto</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="nav-drawer-social">
+    <a href="https://instagram.com/country.homedeco" target="_blank" class="nav-drawer-social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+      @country.homedeco
+    </a>
+    <a href="https://wa.me/541131655653" target="_blank" class="nav-drawer-social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.41A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+      WhatsApp
+    </a>
+    <a href="https://listado.mercadolibre.com.ar/_CustId_3282679258" target="_blank" class="nav-drawer-social-link">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="16" fill="#FFE600"/>
+        <path d="M8 13l4 6 4-6 4 6 4-6" stroke="#2d3277" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      MercadoLibre
+    </a>
+  </div>
+</div>
 
 <!-- CARRITO FAB -->
 <button class="cart-fab" onclick="openCart()">
@@ -635,37 +962,47 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
 <!-- POPUP BIENVENIDA -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
+    <img src="country_horse.png" alt="Country" style="width:64px;height:64px;object-fit:contain;margin:0 auto 10px;display:block;border-radius:12px;">
     <div class="modal-logo">Country</div>
     <div class="modal-divider"></div>
-    <h2>Precios Directos</h2>
-    <div class="modal-sub">Colección Privada · Home &amp; Deco</div>
+    <h2>Tienda Oficial</h2>
+    <div class="modal-sub">Home &amp; Deco · Argentina</div>
     <div class="modal-items">
       <div class="modal-item">
-        <span>Los precios que ves son <strong>precios directos</strong>, sin pasar por plataformas. Son más bajos que en MercadoLibre.</span>
+        <span style="color:#5a7a4a;font-weight:600;margin-right:6px;">✓</span>
+        <span>Precios <strong>directos</strong> — más bajos que en MercadoLibre, sin intermediarios.</span>
       </div>
       <div class="modal-item">
-        <span>Podés comprar directo desde la tienda con <strong>Mercado Pago</strong>. Rápido, seguro y sin intermediarios.</span>
+        <span style="color:#5a7a4a;font-weight:600;margin-right:6px;">✓</span>
+        <span>Pagá con <strong>Mercado Pago</strong> o transferencia bancaria. Rápido y seguro.</span>
       </div>
       <div class="modal-item">
-        <span>El envío se calcula al finalizar la compra. Enviamos a todo el país por <strong>Andreani y Correo Argentino</strong>.</span>
+        <span style="color:#5a7a4a;font-weight:600;margin-right:6px;">✓</span>
+        <span>Enviamos a todo el país — <strong>Andreani y Correo Argentino</strong>.</span>
       </div>
     </div>
-    <button class="modal-btn" onclick="document.getElementById('modalOverlay').classList.add('hidden');document.getElementById('modalShipping').classList.remove('hidden');">Entendido</button>
+    <button class="modal-btn" onclick="document.getElementById('modalOverlay').classList.add('hidden');document.getElementById('modalShipping').classList.remove('hidden');">Ver la colección</button>
   </div>
 </div>
 
 <!-- POPUP ENVÍO GRATIS -->
 <div class="modal-overlay hidden" id="modalShipping">
   <div class="modal-box" style="text-align:center;">
+    <img src="country_horse.png" alt="Country" style="width:64px;height:64px;object-fit:contain;margin:0 auto 10px;display:block;border-radius:12px;">
     <div class="modal-logo">Country</div>
     <div class="modal-divider"></div>
-    <div style="font-size:2em;margin:12px 0 6px;color:#c4a87a;">&#9993;</div>
-    <h2 style="font-size:1.5em;margin-bottom:6px;">Envío Gratis</h2>
-    <div class="modal-sub" style="margin-bottom:16px;">en pedidos desde <strong style="color:#2c1f0e;">$70.000</strong></div>
-    <div style="font-size:0.85em;color:#6a4f30;line-height:1.7;margin-bottom:20px;">
+    <div style="background:#f0e8da;border-radius:10px;padding:20px 18px;margin-bottom:20px;">
+      <div style="font-size:0.68em;letter-spacing:3px;text-transform:uppercase;color:#8a6840;margin-bottom:8px;">Beneficio exclusivo</div>
+      <div style="font-family:'Forum',serif;font-size:1.8em;letter-spacing:2px;color:#2c1f0e;line-height:1.1;margin-bottom:6px;">Envío Gratis</div>
+      <div style="font-size:0.85em;color:#5c3d1e;margin-bottom:14px;">en pedidos desde <strong>$70.000</strong></div>
+      <div style="background:#e8d5b5;border-radius:10px;height:5px;overflow:hidden;">
+        <div style="background:#c4a87a;width:0%;height:100%;border-radius:10px;"></div>
+      </div>
+    </div>
+    <div style="font-size:0.8em;color:#8a6840;letter-spacing:1px;margin-bottom:20px;line-height:1.8;">
       Andreani · Correo Argentino<br>A todo el país
     </div>
-    <button class="modal-btn" onclick="document.getElementById('modalShipping').classList.add('hidden')">Ver catálogo</button>
+    <button class="modal-btn" onclick="document.getElementById('modalShipping').classList.add('hidden')">Explorar colección</button>
   </div>
 </div>
 
@@ -677,6 +1014,8 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
   <div class="tagline">Piezas con calidez para cada rincón</div>
   <div class="divider-bottom"></div>
 </header>
+
+<div id="section-coleccion" class="page-section active">
 
 <div style="background:#2c1f0e;color:#f5ead8;text-align:center;padding:12px 20px;font-size:0.82em;letter-spacing:1.5px;text-transform:uppercase;">
   Precios directos · Consultá por WhatsApp
@@ -1093,6 +1432,88 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
 
 </div>
 
+</div><!-- /section-coleccion -->
+
+<!-- SECCIÓN NOSOTROS -->
+<div id="section-nosotros" class="page-section" style="background:#f5f0eb;min-height:60vh;">
+  <div class="nosotros-section">
+    <div class="nos-eyebrow">Nuestra historia</div>
+    <h2 class="nos-title">Country<br>Home &amp; Deco</h2>
+    <div class="nos-divider"></div>
+    <div class="nos-body">
+      <p>Country nació de nueve años viviendo en Estados Unidos.</p>
+      <p>Durante ese tiempo aprendimos a ver el hogar de otra manera: como un espacio que habla, que genera calma, que refleja quiénes somos. El estilo que encontramos allá — madera con historia, cerámica artesanal, texturas naturales, objetos que duran décadas — era difícil de conseguir acá.</p>
+      <p>Country Home &amp; Deco es nuestra forma de cambiar eso. Seleccionamos cada pieza con criterio: materiales reales, formas con carácter y una estética que no grita, sino que invita. Nada pensado para durar una temporada.</p>
+      <p>El objetivo siempre fue el mismo: que cuando entres a tu casa, la sientas tuya.</p>
+    </div>
+    <div class="nos-values">
+      <div class="nos-card">
+        <div class="nos-card-icon">&#9632;</div>
+        <div class="nos-card-title">Curaduría</div>
+        <div class="nos-card-desc">Cada pieza elegida con criterio — no compramos volumen, elegimos carácter.</div>
+      </div>
+      <div class="nos-card">
+        <div class="nos-card-icon">&#9651;</div>
+        <div class="nos-card-title">Calidad</div>
+        <div class="nos-card-desc">Materiales naturales y duraderos. Piezas que mejoran con el tiempo.</div>
+      </div>
+      <div class="nos-card">
+        <div class="nos-card-icon">&#9675;</div>
+        <div class="nos-card-title">Cercanía</div>
+        <div class="nos-card-desc">Atención directa, sin intermediarios. Hablás con quien eligió cada producto.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN CONTACTO -->
+<div id="section-contacto" class="page-section" style="background:#f5f0eb;min-height:60vh;">
+  <div class="contacto-section">
+    <div class="con-eyebrow">Estamos para ayudarte</div>
+    <h2 class="con-title">Contacto</h2>
+    <div class="con-sub">Respondemos rápido — generalmente en menos de una hora.</div>
+    <div class="con-divider"></div>
+    <div class="con-cards">
+      <a class="con-card" href="https://wa.me/541131655653?text=Hola!%20Vi%20el%20cat%C3%A1logo%20y%20quiero%20consultar" target="_blank">
+        <div class="con-card-icon" style="background:rgba(37,211,102,0.12);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.41A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="con-card-label">WhatsApp</div>
+          <div class="con-card-value">+54 9 11 3165-5653</div>
+        </div>
+      </a>
+      <a class="con-card" href="mailto:country.homedeco.ar@gmail.com">
+        <div class="con-card-icon" style="background:rgba(196,168,122,0.12);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div>
+          <div class="con-card-label">Email</div>
+          <div class="con-card-value">country.homedeco.ar@gmail.com</div>
+        </div>
+      </a>
+      <a class="con-card" href="https://instagram.com/country.homedeco" target="_blank">
+        <div class="con-card-icon" style="background:rgba(193,53,132,0.10);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.8" fill="#e1306c" stroke="none"/>
+          </svg>
+        </div>
+        <div>
+          <div class="con-card-label">Instagram</div>
+          <div class="con-card-value">@country.homedeco</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div style="max-width:900px; margin:0 auto; text-align:center; padding: 0 20px;">
 
@@ -1267,6 +1688,8 @@ function renderCart() {
   const badge = document.getElementById('cart-badge');
   badge.textContent = count;
   badge.classList.toggle('visible', count > 0);
+  const tnBadge = document.getElementById('tn-badge');
+  if (tnBadge) { tnBadge.textContent = count; tnBadge.classList.toggle('visible', count > 0); }
 
   // Banner envío gratis
   const sub = subtotal();
@@ -1575,6 +1998,32 @@ function showSuccessMP(status) {
 
 function closeSuccess() {
   document.getElementById('success-overlay').classList.remove('open');
+}
+
+// ─── NAV DRAWER ──────────────────────────────────────────
+function toggleDrawer() {
+  const drawer = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('nav-drawer-overlay');
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) closeDrawer();
+  else { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeDrawer() {
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.getElementById('nav-drawer-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── SECTION SWITCHING ───────────────────────────────────
+function showSection(name) {
+  ['coleccion','nosotros','contacto'].forEach(s => {
+    document.getElementById('section-'+s).classList.toggle('active', s === name);
+  });
+  document.querySelectorAll('.nav-drawer-item').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('data-section') === name);
+  });
+  closeDrawer();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
