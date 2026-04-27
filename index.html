@@ -832,6 +832,37 @@
     .main-photo { aspect-ratio: 3 / 4; }
   }
 
+  /* ===== COLECCIÓN SUBNAV ===== */
+  .coleccion-subnav {
+    display: flex;
+    justify-content: center;
+    background: #f5f0eb;
+    border-bottom: 1px solid #d4c4a8;
+    position: sticky;
+    top: 54px;
+    z-index: 400;
+  }
+  .csn-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #8a6840;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.72em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+  }
+  .csn-btn:hover { color: #2c1f0e; }
+  .csn-btn.active { color: #2c1f0e; border-bottom-color: #2c1f0e; font-weight: 600; }
+  @media (max-width: 480px) {
+    .csn-btn { font-size: 0.66em; padding: 11px 14px; letter-spacing: 1.5px; }
+  }
+
   /* ===== PRODUCT DETAIL PAGE ===== */
   .product { cursor: pointer; }
   .product-modal-overlay {
@@ -1540,6 +1571,12 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
   <div class="coleccion-header-eyebrow">Tienda oficial · Argentina</div>
   <div class="coleccion-header-title">Colección</div>
   <div class="coleccion-header-sub">Piezas con calidez para cada rincón de tu hogar</div>
+</div>
+
+<div class="coleccion-subnav">
+  <button class="csn-btn" data-cat="mesa" onclick="filterCat('mesa')">Mesa y Cocina</button>
+  <button class="csn-btn" data-cat="decoracion" onclick="filterCat('decoracion')">Decoración</button>
+  <button class="csn-btn" data-cat="ambiente" onclick="filterCat('ambiente')">Ambiente</button>
 </div>
 
 <div class="catalog">
@@ -2697,8 +2734,36 @@ function showSection(name) {
   document.querySelectorAll('.nav-drawer-item').forEach(t => {
     t.classList.toggle('active', t.getAttribute('data-section') === name);
   });
+  if (name === 'coleccion') resetCatFilter();
   closeDrawer();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── COLECCIÓN SUBNAV FILTER ─────────────────────────────
+let _activeCat = null;
+
+function getProductCat(p) {
+  const tag = p.querySelector('.product-tag')?.textContent.trim() || '';
+  if (tag === 'Mesa & Cocina') return 'mesa';
+  if (['Ambiente', 'Aromas', 'Bundle'].includes(tag)) return 'ambiente';
+  return 'decoracion';
+}
+
+function filterCat(cat) {
+  if (_activeCat === cat) { resetCatFilter(); return; }
+  _activeCat = cat;
+  document.querySelectorAll('.csn-btn').forEach(b =>
+    b.classList.toggle('active', b.getAttribute('data-cat') === cat)
+  );
+  document.querySelectorAll('#section-coleccion .product').forEach(p => {
+    p.style.display = getProductCat(p) === cat ? '' : 'none';
+  });
+}
+
+function resetCatFilter() {
+  _activeCat = null;
+  document.querySelectorAll('.csn-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#section-coleccion .product').forEach(p => p.style.display = '');
 }
 </script>
 
