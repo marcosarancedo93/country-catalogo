@@ -838,6 +838,169 @@
     .main-photo { aspect-ratio: 3 / 4; }
   }
 
+  /* ===== PRODUCT DETAIL MODAL ===== */
+  .product { cursor: pointer; }
+  .product-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1500;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .product-modal-overlay.open { display: flex; }
+  .product-modal {
+    background: #f5f0eb;
+    width: 100%;
+    max-width: 560px;
+    max-height: 93dvh;
+    border-radius: 18px 18px 0 0;
+    overflow-y: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    animation: pmSlideUp 0.28s ease;
+  }
+  @keyframes pmSlideUp {
+    from { transform: translateY(60px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .pm-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.38);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 0.9em;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pm-photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 56vh;
+    overflow: hidden;
+    background: #ede8e0;
+    flex-shrink: 0;
+  }
+  .pm-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.15s;
+  }
+  .pm-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.78);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c1f0e;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pm-prev { left: 10px; }
+  .pm-next { right: 10px; }
+  .pm-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    background: rgba(0,0,0,0.42);
+    color: white;
+    font-size: 0.72em;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+  .pm-thumbs {
+    display: flex;
+    gap: 5px;
+    padding: 8px 10px;
+    background: #e8e0d5;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .pm-thumbs::-webkit-scrollbar { display: none; }
+  .pm-thumb {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pm-thumb.active { border-color: #2c1f0e; }
+  .pm-info { padding: 20px 20px 36px; }
+  .pm-tag {
+    font-size: 0.65em;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c4a87a;
+    margin-bottom: 7px;
+  }
+  .pm-name {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #2c1f0e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .pm-price {
+    font-size: 1.5em;
+    color: #2c1f0e;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .pm-divider { width: 40px; height: 1px; background: #c4a87a; margin-bottom: 16px; }
+  .pm-desc {
+    font-size: 0.88em;
+    color: #5a4a38;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .pm-add-btn {
+    width: 100%;
+    padding: 15px;
+    background: #2c1f0e;
+    color: #f5ead8;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.84em;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pm-add-btn:hover { background: #3a2e20; }
+  .pm-add-btn.added { background: #5a7a4a; }
+
   /* ===== PORTADA ===== */
   .portada-hero {
     position: relative;
@@ -1820,6 +1983,28 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
   </div>
 </div>
 
+<!-- PRODUCT DETAIL MODAL -->
+<div class="product-modal-overlay" id="product-modal" onclick="pmOverlayClick(event)">
+  <div class="product-modal" id="product-modal-inner">
+    <button class="pm-close" onclick="closeProductModal()">✕</button>
+    <div class="pm-photo-wrap" id="pm-photo-wrap">
+      <img class="pm-photo" id="pm-photo" src="" alt="">
+      <button class="pm-arrow pm-prev" id="pm-prev" onclick="pmNav(-1)">&#8249;</button>
+      <button class="pm-arrow pm-next" id="pm-next" onclick="pmNav(1)">&#8250;</button>
+      <div class="pm-counter" id="pm-counter">1 / 1</div>
+    </div>
+    <div class="pm-thumbs" id="pm-thumbs"></div>
+    <div class="pm-info">
+      <div class="pm-tag" id="pm-tag"></div>
+      <div class="pm-name" id="pm-name"></div>
+      <div class="pm-price" id="pm-price"></div>
+      <div class="pm-divider"></div>
+      <div class="pm-desc" id="pm-desc"></div>
+      <button class="pm-add-btn" id="pm-add-btn">+ Agregar al carrito</button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div style="max-width:900px; margin:0 auto; text-align:center; padding: 0 20px;">
 
@@ -1936,7 +2121,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.createElement('button');
     btn.className = 'add-to-cart';
     btn.textContent = '+ Agregar al carrito';
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const nameEl = prod.querySelector('.product-name');
       const priceEl = prod.querySelector('.product-price');
       const name = nameEl ? nameEl.textContent.trim() : `Producto ${i+1}`;
@@ -1949,6 +2135,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { btn.textContent = '+ Agregar al carrito'; btn.classList.remove('added'); }, 1800);
     });
     info.appendChild(btn);
+
+    // Open product detail modal on card click
+    prod.addEventListener('click', () => openProductModal(prod, i));
   });
 
   // Check payment return from MP
@@ -2305,6 +2494,94 @@ function showSuccessMP(status) {
 function closeSuccess() {
   document.getElementById('success-overlay').classList.remove('open');
 }
+
+// ─── PRODUCT DETAIL MODAL ────────────────────────────────
+let pmPhotos = [], pmIndex = 0, pmProdEl = null, pmProdId = null, pmProdPrice = 0, pmProdName = '';
+
+function openProductModal(prod, idx) {
+  pmProdEl = prod;
+  pmProdId = `prod-${idx}`;
+  pmProdName = prod.querySelector('.product-name')?.textContent.trim() || '';
+  pmProdPrice = parseInt((prod.querySelector('.product-price')?.textContent || '0').replace(/[^0-9]/g, ''));
+  const desc = prod.querySelector('.product-desc')?.textContent.trim() || '';
+  const tag  = prod.querySelector('.product-tag')?.textContent.trim()  || '';
+
+  // Collect photos from thumbnails
+  const thumbEls = prod.querySelectorAll('.thumbnails img');
+  pmPhotos = thumbEls.length > 0
+    ? Array.from(thumbEls).map(t => t.src)
+    : [prod.querySelector('.main-photo')?.src].filter(Boolean);
+  pmIndex = 0;
+
+  document.getElementById('pm-name').textContent  = pmProdName;
+  document.getElementById('pm-price').textContent = prod.querySelector('.product-price')?.textContent.trim() || '';
+  document.getElementById('pm-desc').textContent  = desc;
+  document.getElementById('pm-tag').textContent   = tag;
+
+  // Thumbnail strip
+  const strip = document.getElementById('pm-thumbs');
+  strip.innerHTML = pmPhotos.map((src, i) =>
+    `<img class="pm-thumb${i===0?' active':''}" src="${src}" onclick="pmGoTo(${i})" alt="">`
+  ).join('');
+  strip.style.display = pmPhotos.length > 1 ? 'flex' : 'none';
+
+  pmRefresh();
+
+  // Add to cart button
+  const btn = document.getElementById('pm-add-btn');
+  btn.textContent = '+ Agregar al carrito';
+  btn.classList.remove('added');
+  btn.onclick = () => {
+    fbq('track', 'ViewContent', { content_ids:[pmProdId], content_name:pmProdName, value:pmProdPrice, currency:'ARS', content_type:'product' });
+    addToCart(pmProdId, pmProdName, pmProdPrice);
+    btn.textContent = 'Agregado ✓';
+    btn.classList.add('added');
+    setTimeout(() => { btn.textContent = '+ Agregar al carrito'; btn.classList.remove('added'); }, 2000);
+  };
+
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function pmOverlayClick(e) {
+  if (e.target === document.getElementById('product-modal')) closeProductModal();
+}
+
+function pmRefresh() {
+  document.getElementById('pm-photo').src = pmPhotos[pmIndex];
+  document.getElementById('pm-counter').textContent = `${pmIndex + 1} / ${pmPhotos.length}`;
+  const show = pmPhotos.length > 1;
+  document.getElementById('pm-prev').style.display = show ? 'flex' : 'none';
+  document.getElementById('pm-next').style.display = show ? 'flex' : 'none';
+  document.getElementById('pm-counter').style.display = show ? 'block' : 'none';
+  document.querySelectorAll('.pm-thumb').forEach((t,i) => t.classList.toggle('active', i === pmIndex));
+}
+
+function pmNav(dir) {
+  pmIndex = (pmIndex + dir + pmPhotos.length) % pmPhotos.length;
+  pmRefresh();
+}
+
+function pmGoTo(i) { pmIndex = i; pmRefresh(); }
+
+// Touch swipe on product modal photo
+(function() {
+  let sx = 0;
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrap = document.getElementById('pm-photo-wrap');
+    if (!wrap) return;
+    wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    wrap.addEventListener('touchend', e => {
+      const diff = sx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) pmNav(diff > 0 ? 1 : -1);
+    }, { passive: true });
+  });
+})();
 
 // ─── NAV DRAWER ──────────────────────────────────────────
 function toggleDrawer() {
