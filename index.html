@@ -742,6 +742,172 @@
     .contacto-section { padding: 32px 18px 56px; }
     .con-title { font-size: 1.6em; }
   }
+
+  /* ===== PORTADA ===== */
+  .portada-hero {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 500px;
+    max-height: 820px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .portada-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .portada-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.05) 35%,
+      rgba(20,12,4,0.55) 70%,
+      rgba(20,12,4,0.82) 100%
+    );
+  }
+  .portada-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 28px 52px;
+    width: 100%;
+    text-align: center;
+  }
+  .portada-hero-eyebrow {
+    font-size: 0.68em;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(245,234,216,0.75);
+    margin-bottom: 10px;
+  }
+  .portada-hero-title {
+    font-family: 'Forum', serif;
+    font-size: 3.8em;
+    font-weight: 400;
+    letter-spacing: 14px;
+    text-transform: uppercase;
+    color: #f5ead8;
+    line-height: 1;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    margin-bottom: 8px;
+  }
+  .portada-hero-sub {
+    font-size: 0.75em;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(245,234,216,0.8);
+    margin-bottom: 24px;
+  }
+  .portada-hero-divider {
+    width: 48px;
+    height: 1px;
+    background: #c4a87a;
+    margin: 0 auto 24px;
+    opacity: 0.8;
+  }
+  .portada-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(245,234,216,0.12);
+    border: 1px solid rgba(245,234,216,0.5);
+    backdrop-filter: blur(4px);
+    color: #f5ead8;
+    border-radius: 2px;
+    padding: 15px 36px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .portada-hero-cta:hover { background: rgba(245,234,216,0.22); border-color: rgba(245,234,216,0.8); }
+
+  .portada-info {
+    background: #2c1f0e;
+    color: #f5ead8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    font-size: 0.78em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .portada-info span { color: #c4a87a; }
+
+  .portada-features {
+    background: #f5f0eb;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .portada-feat {
+    text-align: center;
+    padding: 34px 18px 30px;
+    border-right: 1px solid #e0d4c0;
+  }
+  .portada-feat:last-child { border-right: none; }
+  .portada-feat-icon { margin-bottom: 12px; display: flex; justify-content: center; }
+  .portada-feat-title {
+    font-family: 'Forum', serif;
+    font-size: 0.92em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2c1f0e;
+    margin-bottom: 7px;
+  }
+  .portada-feat-desc { font-size: 0.75em; color: #8a7060; line-height: 1.6; font-weight: 300; }
+
+  .portada-cta-bar {
+    background: #f5f0eb;
+    text-align: center;
+    padding: 40px 20px 56px;
+    border-top: 1px solid #e0d4c0;
+  }
+  .portada-cta-bar p {
+    font-size: 0.8em;
+    color: #8a6840;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+  .portada-cta-bar button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #2c1f0e;
+    color: #f5ead8;
+    border: none;
+    border-radius: 2px;
+    padding: 16px 40px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.84em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .portada-cta-bar button:hover { background: #3a2e20; }
+
+  @media (max-width: 768px) {
+    .portada-hero { height: 88vh; }
+    .portada-hero-title { font-size: 2.6em; letter-spacing: 8px; }
+    .portada-hero-content { padding: 0 20px 44px; }
+    .portada-features { grid-template-columns: 1fr; }
+    .portada-feat { border-right: none; border-bottom: 1px solid #e0d4c0; padding: 26px 24px; }
+    .portada-feat:last-child { border-bottom: none; }
+  }
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -768,7 +934,7 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
       <line x1="3" y1="18" x2="21" y2="18"/>
     </svg>
   </button>
-  <div class="tn-logo">Country</div>
+  <div class="tn-logo" onclick="showSection('portada')" style="cursor:pointer;">Country</div>
   <button class="tn-btn" onclick="openCart()" aria-label="Carrito">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
@@ -788,7 +954,7 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
     <button class="nav-drawer-close" onclick="closeDrawer()">✕</button>
   </div>
   <div class="nav-drawer-items">
-    <button class="nav-drawer-item active" data-section="coleccion" onclick="showSection('coleccion')">
+    <button class="nav-drawer-item" data-section="coleccion" onclick="showSection('coleccion')">
       <span>Colección</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
@@ -1000,16 +1166,77 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
   </div>
 </div>
 
-<header>
-  <img class="logo" src="country_horse.png" alt="Country Horse">
-  <div class="divider"></div>
-  <h1>Country</h1>
-  <p>Home &amp; Deco</p>
-  <div class="tagline">Piezas con calidez para cada rincón</div>
-  <div class="divider-bottom"></div>
-</header>
+<!-- ===== PORTADA ===== -->
+<div id="section-portada" class="page-section active">
 
-<div id="section-coleccion" class="page-section active">
+  <div class="portada-hero">
+    <img src="hero_trail.jpg" alt="Country — Feel at Home">
+    <div class="portada-hero-overlay"></div>
+    <div class="portada-hero-content">
+      <div class="portada-hero-eyebrow">Home &amp; Deco · Argentina</div>
+      <div class="portada-hero-title">Country</div>
+      <div class="portada-hero-sub">Feel at Home</div>
+      <div class="portada-hero-divider"></div>
+      <button class="portada-hero-cta" onclick="showSection('coleccion')">
+        Explorar Colección
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="portada-info">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+      <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+    </svg>
+    Envío gratis desde <span>$70.000</span> &nbsp;·&nbsp; Andreani · Correo Argentino
+  </div>
+
+  <div class="portada-features">
+    <div class="portada-feat">
+      <div class="portada-feat-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <div class="portada-feat-title">Selección curada</div>
+      <div class="portada-feat-desc">Cada pieza elegida a mano. Materiales reales, formas con carácter.</div>
+    </div>
+    <div class="portada-feat">
+      <div class="portada-feat-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+      </div>
+      <div class="portada-feat-title">Pago seguro</div>
+      <div class="portada-feat-desc">Mercado Pago o transferencia. Sin vueltas, sin riesgos.</div>
+    </div>
+    <div class="portada-feat">
+      <div class="portada-feat-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c4a87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div class="portada-feat-title">Envío nacional</div>
+      <div class="portada-feat-desc">A todo el país. Seguimiento en tiempo real.</div>
+    </div>
+  </div>
+
+  <div class="portada-cta-bar">
+    <p>Piezas con calidez para cada rincón de tu hogar</p>
+    <button onclick="showSection('coleccion')">
+      Ver la colección
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+</div><!-- /section-portada -->
+
+<!-- ===== COLECCIÓN ===== -->
+<div id="section-coleccion" class="page-section">
 
 <div style="background:#2c1f0e;color:#f5ead8;text-align:center;padding:12px 20px;font-size:0.82em;letter-spacing:1.5px;text-transform:uppercase;">
   Precios directos · Consultá por WhatsApp
@@ -1994,7 +2221,7 @@ function closeDrawer() {
 
 // ─── SECTION SWITCHING ───────────────────────────────────
 function showSection(name) {
-  ['coleccion','nosotros','contacto'].forEach(s => {
+  ['portada','coleccion','nosotros','contacto'].forEach(s => {
     document.getElementById('section-'+s).classList.toggle('active', s === name);
   });
   document.querySelectorAll('.nav-drawer-item').forEach(t => {
