@@ -642,56 +642,50 @@
 
   /* ===== NOSOTROS ===== */
   .nosotros-section {
-    max-width: 680px;
+    max-width: 640px;
     margin: 0 auto;
-    padding: 52px 24px 72px;
+    padding: 56px 24px 80px;
+    text-align: center;
   }
   .nos-eyebrow {
     font-size: 0.68em;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: #c4a87a;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
   }
   .nos-title {
     font-family: 'Forum', serif;
-    font-size: 2em;
+    font-size: 3.2em;
     color: #2c1f0e;
-    letter-spacing: 3px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
-  .nos-divider { width: 44px; height: 1px; background: #c4a87a; margin-bottom: 28px; }
-  .nos-body { font-size: 0.95em; line-height: 1.9; color: #4a3520; font-weight: 300; }
-  .nos-body p + p { margin-top: 18px; }
-  .nos-values {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 44px;
-  }
-  .nos-card {
-    text-align: center;
-    padding: 22px 12px;
-    background: white;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  }
-  .nos-card-icon { font-size: 1.4em; margin-bottom: 10px; }
-  .nos-card-title {
-    font-family: 'Forum', serif;
-    font-size: 0.85em;
-    letter-spacing: 2px;
+    letter-spacing: 6px;
+    font-weight: 400;
+    line-height: 1.1;
     text-transform: uppercase;
-    color: #2c1f0e;
-    margin-bottom: 5px;
+    margin-bottom: 36px;
   }
-  .nos-card-desc { font-size: 0.74em; color: #8a7060; line-height: 1.5; }
+  .nos-hero-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 16px;
+    margin: 0 auto 36px;
+    display: block;
+    opacity: 0.92;
+  }
+  .nos-divider { width: 44px; height: 1px; background: #c4a87a; margin: 0 auto 32px; }
+  .nos-body {
+    font-size: 1.02em;
+    line-height: 1.95;
+    color: #4a3520;
+    font-weight: 300;
+    text-align: center;
+  }
+  .nos-body p + p { margin-top: 20px; }
   @media (max-width: 560px) {
-    .nos-title { font-size: 1.5em; }
-    .nos-values { grid-template-columns: 1fr; gap: 10px; }
-    .nosotros-section { padding: 32px 18px 56px; }
+    .nos-title { font-size: 2.2em; letter-spacing: 3px; }
+    .nos-hero-img { width: 150px; height: 150px; }
+    .nosotros-section { padding: 36px 20px 60px; }
   }
 
   /* ===== CONTACTO ===== */
@@ -1439,29 +1433,13 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
   <div class="nosotros-section">
     <div class="nos-eyebrow">Nuestra historia</div>
     <h2 class="nos-title">Country<br>Home &amp; Deco</h2>
+    <img src="country_horse.png" alt="Country" class="nos-hero-img">
     <div class="nos-divider"></div>
     <div class="nos-body">
       <p>Country nació de nueve años viviendo en Estados Unidos.</p>
       <p>Durante ese tiempo aprendimos a ver el hogar de otra manera: como un espacio que habla, que genera calma, que refleja quiénes somos. El estilo que encontramos allá — madera con historia, cerámica artesanal, texturas naturales, objetos que duran décadas — era difícil de conseguir acá.</p>
       <p>Country Home &amp; Deco es nuestra forma de cambiar eso. Seleccionamos cada pieza con criterio: materiales reales, formas con carácter y una estética que no grita, sino que invita. Nada pensado para durar una temporada.</p>
       <p>El objetivo siempre fue el mismo: que cuando entres a tu casa, la sientas tuya.</p>
-    </div>
-    <div class="nos-values">
-      <div class="nos-card">
-        <div class="nos-card-icon">&#9632;</div>
-        <div class="nos-card-title">Curaduría</div>
-        <div class="nos-card-desc">Cada pieza elegida con criterio — no compramos volumen, elegimos carácter.</div>
-      </div>
-      <div class="nos-card">
-        <div class="nos-card-icon">&#9651;</div>
-        <div class="nos-card-title">Calidad</div>
-        <div class="nos-card-desc">Materiales naturales y duraderos. Piezas que mejoran con el tiempo.</div>
-      </div>
-      <div class="nos-card">
-        <div class="nos-card-icon">&#9675;</div>
-        <div class="nos-card-title">Cercanía</div>
-        <div class="nos-card-desc">Atención directa, sin intermediarios. Hablás con quien eligió cada producto.</div>
-      </div>
     </div>
   </div>
 </div>
