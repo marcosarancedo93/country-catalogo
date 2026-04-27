@@ -636,6 +636,35 @@
   }
   .nav-drawer-social-link:hover { color: rgba(245,234,216,0.8); }
 
+  /* Colección submenu */
+  .nav-drawer-submenu {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.28s ease;
+    background: rgba(0,0,0,0.15);
+  }
+  .nav-drawer-submenu.open { max-height: 180px; }
+  .nav-drawer-subitem {
+    display: block;
+    width: 100%;
+    padding: 14px 24px 14px 38px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(196,168,122,0.08);
+    color: rgba(245,234,216,0.5);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-drawer-subitem:hover { color: #f5ead8; background: rgba(255,255,255,0.04); }
+  .col-chevron { transition: transform 0.25s ease; }
+  .col-chevron.open { transform: rotate(90deg); }
+
   /* ===== PAGE SECTIONS ===== */
   .page-section { display: none; }
   .page-section.active { display: block; }
@@ -1282,10 +1311,15 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
     <button class="nav-drawer-close" onclick="closeDrawer()">✕</button>
   </div>
   <div class="nav-drawer-items">
-    <button class="nav-drawer-item" data-section="coleccion" onclick="showSection('coleccion')">
+    <button class="nav-drawer-item" data-section="coleccion" onclick="toggleColeccionMenu()">
       <span>Colección</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <svg class="col-chevron" id="col-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
+    <div class="nav-drawer-submenu" id="coleccion-submenu">
+      <button class="nav-drawer-subitem" onclick="goToColeccion('mesa')">Mesa y Cocina</button>
+      <button class="nav-drawer-subitem" onclick="goToColeccion('decoracion')">Decoración</button>
+      <button class="nav-drawer-subitem" onclick="goToColeccion('ambiente')">Ambiente</button>
+    </div>
     <button class="nav-drawer-item" data-section="nosotros" onclick="showSection('nosotros')">
       <span>Nosotros</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -2735,8 +2769,25 @@ function showSection(name) {
     t.classList.toggle('active', t.getAttribute('data-section') === name);
   });
   if (name === 'coleccion') resetCatFilter();
+  if (name !== 'coleccion') {
+    document.getElementById('coleccion-submenu')?.classList.remove('open');
+    document.getElementById('col-chevron')?.classList.remove('open');
+  }
   closeDrawer();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── COLECCIÓN DRAWER SUBMENU ────────────────────────────
+function toggleColeccionMenu() {
+  const sub = document.getElementById('coleccion-submenu');
+  const chev = document.getElementById('col-chevron');
+  sub.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+
+function goToColeccion(cat) {
+  showSection('coleccion');
+  if (cat) filterCat(cat);
 }
 
 // ─── COLECCIÓN SUBNAV FILTER ─────────────────────────────
