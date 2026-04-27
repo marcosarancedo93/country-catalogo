@@ -694,18 +694,14 @@
     }, 80);
   }
 
-  // Hint play — una sola vez
-  (function() {
-    if (localStorage.getItem('cty_music_hint')) return;
-    const hint = document.getElementById('music-hint');
+  // Hint play — siempre al abrir
+  const hint = document.getElementById('music-hint');
+  setTimeout(function() {
+    hint.style.opacity = '1';
     setTimeout(function() {
-      hint.style.opacity = '1';
-      setTimeout(function() {
-        hint.style.opacity = '0';
-        localStorage.setItem('cty_music_hint', '1');
-      }, 5000);
-    }, 900);
-  })();
+      hint.style.opacity = '0';
+    }, 5000);
+  }, 900);
 </script>
 
 </body>
