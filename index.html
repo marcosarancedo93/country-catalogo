@@ -832,59 +832,70 @@
     .main-photo { aspect-ratio: 3 / 4; }
   }
 
-  /* ===== PRODUCT DETAIL MODAL ===== */
+  /* ===== PRODUCT DETAIL PAGE ===== */
   .product { cursor: pointer; }
   .product-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: #f5f0eb;
     z-index: 1500;
     display: none;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  .product-modal-overlay.open { display: flex; }
-  .product-modal {
-    background: #f5f0eb;
-    width: 100%;
-    max-width: 560px;
-    max-height: 93dvh;
-    border-radius: 18px 18px 0 0;
     overflow-y: auto;
-    position: relative;
     -webkit-overflow-scrolling: touch;
-    animation: pmSlideUp 0.28s ease;
   }
-  @keyframes pmSlideUp {
-    from { transform: translateY(60px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
+  .product-modal-overlay.open { display: block; }
+  .product-modal {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    background: #f5f0eb;
   }
-  .pm-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(0,0,0,0.38);
-    border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    font-size: 0.9em;
-    cursor: pointer;
+  @keyframes pmSlideIn {
+    from { transform: translateX(24px); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+  .product-modal-overlay.open .product-modal { animation: pmSlideIn 0.22s ease; }
+
+  /* Top bar */
+  .pm-topbar {
+    position: sticky;
+    top: 0;
     z-index: 10;
+    background: #f5f0eb;
+    border-bottom: 1px solid #e0d6c8;
+    padding: 14px 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+  }
+  .pm-back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6em;
+    color: #2c1f0e;
+    line-height: 1;
+    padding: 2px 12px 2px 0;
     -webkit-tap-highlight-color: transparent;
   }
+  .pm-topbar-brand {
+    font-family: 'Forum', serif;
+    font-size: 0.95em;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #2c1f0e;
+    flex: 1;
+    text-align: center;
+    padding-right: 28px;
+  }
+
+  /* Photo */
   .pm-photo-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4;
-    max-height: 56vh;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     background: #ede8e0;
-    flex-shrink: 0;
   }
   .pm-photo {
     width: 100%;
@@ -897,12 +908,12 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.78);
+    background: rgba(255,255,255,0.82);
     border: none;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    font-size: 1.2em;
+    font-size: 1.4em;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -911,75 +922,109 @@
     box-shadow: 0 1px 6px rgba(0,0,0,0.15);
     -webkit-tap-highlight-color: transparent;
   }
-  .pm-prev { left: 10px; }
-  .pm-next { right: 10px; }
+  .pm-prev { left: 12px; }
+  .pm-next { right: 12px; }
   .pm-counter {
     position: absolute;
-    bottom: 10px;
-    right: 12px;
+    bottom: 12px;
+    right: 14px;
     background: rgba(0,0,0,0.42);
     color: white;
     font-size: 0.72em;
-    padding: 3px 9px;
+    padding: 4px 10px;
     border-radius: 20px;
     letter-spacing: 1px;
   }
+
+  /* Thumbnails */
   .pm-thumbs {
     display: flex;
     gap: 5px;
-    padding: 8px 10px;
-    background: #e8e0d5;
+    padding: 10px 14px;
+    background: #ede8e0;
     overflow-x: auto;
     scrollbar-width: none;
   }
   .pm-thumbs::-webkit-scrollbar { display: none; }
   .pm-thumb {
-    width: 52px;
-    height: 52px;
+    width: 58px;
+    height: 58px;
     flex-shrink: 0;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
     border: 2px solid transparent;
     transition: border-color 0.15s;
     -webkit-tap-highlight-color: transparent;
   }
   .pm-thumb.active { border-color: #2c1f0e; }
-  .pm-info { padding: 20px 20px 36px; }
+
+  /* Product info */
+  .pm-info { padding: 22px 20px 4px; }
   .pm-tag {
     font-size: 0.65em;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: #c4a87a;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
   }
   .pm-name {
     font-family: 'Work Sans', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.35em;
     font-weight: 700;
     color: #2c1f0e;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.2;
-    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    margin-bottom: 12px;
   }
   .pm-price {
-    font-size: 1.5em;
+    font-size: 1.75em;
     color: #2c1f0e;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
-  .pm-divider { width: 40px; height: 1px; background: #c4a87a; margin-bottom: 16px; }
-  .pm-desc {
-    font-size: 0.88em;
-    color: #5a4a38;
-    line-height: 1.75;
+
+  /* Description section — Outback style */
+  .pm-section { border-top: 1px solid #d4c8b8; }
+  .pm-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pm-section-title {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #2c1f0e;
+  }
+  .pm-section-icon {
+    font-size: 1.4em;
     font-weight: 300;
-    margin-bottom: 24px;
+    color: #2c1f0e;
+    line-height: 1;
   }
+  .pm-desc {
+    font-size: 0.9em;
+    color: #5a4a38;
+    line-height: 1.85;
+    font-weight: 300;
+    padding: 0 20px 24px;
+  }
+  .pm-desc.hidden { display: none; }
+
+  /* Add to cart */
   .pm-add-btn {
-    width: 100%;
-    padding: 15px;
+    display: block;
+    width: calc(100% - 40px);
+    margin: 24px 20px 56px;
+    padding: 16px;
     background: #2c1f0e;
     color: #f5ead8;
     border: none;
@@ -1977,10 +2022,13 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
   </div>
 </div>
 
-<!-- PRODUCT DETAIL MODAL -->
-<div class="product-modal-overlay" id="product-modal" onclick="pmOverlayClick(event)">
+<!-- PRODUCT DETAIL PAGE -->
+<div class="product-modal-overlay" id="product-modal">
   <div class="product-modal" id="product-modal-inner">
-    <button class="pm-close" onclick="closeProductModal()">✕</button>
+    <div class="pm-topbar">
+      <button class="pm-back" onclick="closeProductModal()">&#8592;</button>
+      <div class="pm-topbar-brand">Country</div>
+    </div>
     <div class="pm-photo-wrap" id="pm-photo-wrap">
       <img class="pm-photo" id="pm-photo" src="" alt="">
       <button class="pm-arrow pm-prev" id="pm-prev" onclick="pmNav(-1)">&#8249;</button>
@@ -1992,10 +2040,15 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
       <div class="pm-tag" id="pm-tag"></div>
       <div class="pm-name" id="pm-name"></div>
       <div class="pm-price" id="pm-price"></div>
-      <div class="pm-divider"></div>
-      <div class="pm-desc" id="pm-desc"></div>
-      <button class="pm-add-btn" id="pm-add-btn">+ Agregar al carrito</button>
     </div>
+    <div class="pm-section">
+      <div class="pm-section-header" onclick="pmToggleDesc()">
+        <span class="pm-section-title">Descripción</span>
+        <span class="pm-section-icon" id="pm-section-icon">−</span>
+      </div>
+      <div class="pm-desc" id="pm-desc"></div>
+    </div>
+    <button class="pm-add-btn" id="pm-add-btn">+ Agregar al carrito</button>
   </div>
 </div>
 
@@ -2533,7 +2586,12 @@ function openProductModal(prod, idx) {
     setTimeout(() => { btn.textContent = '+ Agregar al carrito'; btn.classList.remove('added'); }, 2000);
   };
 
+  // Reset description to visible
+  document.getElementById('pm-desc').classList.remove('hidden');
+  document.getElementById('pm-section-icon').textContent = '−';
+
   document.getElementById('product-modal').classList.add('open');
+  document.getElementById('product-modal').scrollTop = 0;
   document.body.style.overflow = 'hidden';
 }
 
@@ -2542,8 +2600,11 @@ function closeProductModal() {
   document.body.style.overflow = '';
 }
 
-function pmOverlayClick(e) {
-  if (e.target === document.getElementById('product-modal')) closeProductModal();
+function pmToggleDesc() {
+  const desc = document.getElementById('pm-desc');
+  const icon = document.getElementById('pm-section-icon');
+  const hidden = desc.classList.toggle('hidden');
+  icon.textContent = hidden ? '+' : '−';
 }
 
 function pmRefresh() {
