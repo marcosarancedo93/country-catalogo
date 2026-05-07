@@ -59,7 +59,10 @@ module.exports = async (req, res) => {
           shipping_label: shipping.label,
           shipping_cost: shipping.cost
         },
-        statement_descriptor: 'Country Home Deco'
+        statement_descriptor: 'Country Home Deco',
+        payment_methods: {
+          installments: 12
+        }
       }
     });
 
