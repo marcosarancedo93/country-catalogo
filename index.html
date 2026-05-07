@@ -1389,6 +1389,10 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
       </div>
       <div class="fg"><label>Dirección *</label><input type="text" id="f-address" placeholder="Calle y número"></div>
       <div class="fg-row">
+        <div class="fg"><label>Piso / Dpto</label><input type="text" id="f-floor" placeholder="Ej: 3° B"></div>
+        <div class="fg"><label>Edificio / Torre</label><input type="text" id="f-building" placeholder="Opcional"></div>
+      </div>
+      <div class="fg-row">
         <div class="fg"><label>Ciudad *</label><input type="text" id="f-city" placeholder="Ciudad"></div>
         <div class="fg">
           <label>Provincia *</label>
@@ -2465,7 +2469,11 @@ function getBuyer() {
     name: document.getElementById('f-name').value.trim(),
     phone: document.getElementById('f-phone').value.trim(),
     email: document.getElementById('f-email').value.trim(),
-    address: document.getElementById('f-address').value.trim(),
+    address: [
+      document.getElementById('f-address').value.trim(),
+      document.getElementById('f-floor').value.trim(),
+      document.getElementById('f-building').value.trim()
+    ].filter(Boolean).join(', '),
     city: document.getElementById('f-city').value.trim(),
     province: document.getElementById('f-province').value,
     notes: document.getElementById('f-notes').value.trim()

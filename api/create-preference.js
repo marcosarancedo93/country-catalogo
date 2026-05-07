@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
     const mpItems = [
       ...items.map(item => ({
         id: item.id,
-        title: item.name,
+        title: `Country · ${item.name}`,
         quantity: Number(item.qty),
         unit_price: Number(item.price),
         currency_id: 'ARS'
