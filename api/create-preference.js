@@ -18,22 +18,16 @@ module.exports = async (req, res) => {
 
     const { items, shipping, buyer } = body;
 
-    const mpItems = [
-      ...items.map(item => ({
-        id: item.id,
-        title: `Country · ${item.name}`,
-        quantity: Number(item.qty),
-        unit_price: Number(item.price),
-        currency_id: 'ARS'
-      })),
-      ...(shipping.cost > 0 ? [{
-        id: 'envio',
-        title: `Envío — ${shipping.label}`,
-        quantity: 1,
-        unit_price: Number(shipping.cost),
-        currency_id: 'ARS'
-      }] : [])
-    ];
+    const totalItems = items.reduce((sum, i) => sum + Number(i.price) * Number(i.qty), 0);
+    const totalAmount = totalItems + (shipping.cost > 0 ? Number(shipping.cost) : 0);
+
+    const mpItems = [{
+      id: 'country-order',
+      title: 'Country Home & Deco',
+      quantity: 1,
+      unit_price: totalAmount,
+      currency_id: 'ARS'
+    }];
 
     const preference = new Preference(client);
     const result = await preference.create({
