@@ -24,6 +24,7 @@ module.exports = async (req, res) => {
     const mpItems = [{
       id: 'country-order',
       title: 'Country Home & Deco',
+      picture_url: 'https://countryhomedeco.vercel.app/logo_country_500x500.png',
       quantity: 1,
       unit_price: totalAmount,
       currency_id: 'ARS'
