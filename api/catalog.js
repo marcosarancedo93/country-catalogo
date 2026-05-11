@@ -184,7 +184,63 @@ const PRODUCTS = [
     price: 12900,
     image: 'FOTOS/Esensias/tilo bamboo/1.jpg',
     category: 'Hogar > Aromaterapia > Esencias'
-  }
+  },
+
+  // === COCINA — MISHKA ===
+
+  // CARTAGO BLANCO GRANITE
+  { id: 'plato-playo-cartago', title: 'Plato Playo Cartago Blanco Granite 27 cm', description: 'Plato playo de porcelana 27 cm. Línea Cartago Blanco Granite — diseño artesanal con textura natural y acabado premium.', price: 19999, image: 'FOTOS/mishka/plato-playo-cartago/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'plato-postre-cartago', title: 'Plato Postre Cartago Blanco Granite 21 cm', description: 'Plato postre de porcelana 21 cm. Línea Cartago Blanco Granite — textura natural con acabado artesanal.', price: 15499, image: 'FOTOS/mishka/plato-postre-cartago/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'bowl-cartago', title: 'Bowl Cartago Blanco Granite 15 cm', description: 'Bowl de porcelana 15 cm. Línea Cartago Blanco Granite — ideal para cereales, sopas y postres.', price: 13499, image: 'FOTOS/mishka/bowl-cartago/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'mug-cartago', title: 'Mug Cartago Blanco Granite 450 ml', description: 'Mug de porcelana 450 ml. Línea Cartago Blanco Granite — para el café o té de cada mañana.', price: 10999, image: 'FOTOS/mishka/mug-cartago/1.jpg', category: 'Hogar > Cocina > Tazas y Mugs' },
+
+  // PORTOFINO (VASSA)
+  { id: 'plato-playo-portofino', title: 'Plato Playo Portofino 26 cm', description: 'Plato playo de porcelana 26 cm. Línea Portofino — diseño elegante con acabado suave y artesanal.', price: 21999, image: 'FOTOS/mishka/plato-playo-portofino/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'plato-postre-portofino', title: 'Plato Postre Portofino 22 cm', description: 'Plato postre de porcelana 22 cm. Línea Portofino — complemento perfecto para una mesa bien puesta.', price: 16499, image: 'FOTOS/mishka/plato-postre-portofino/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'mug-portofino-400', title: 'Mug Portofino 400 ml', description: 'Mug de porcelana 400 ml. Línea Portofino — diseño cálido y minimalista para el uso diario.', price: 8999, image: 'FOTOS/mishka/mug-portofino-400/1.jpg', category: 'Hogar > Cocina > Tazas y Mugs' },
+  { id: 'mug-portofino-410', title: 'Mug Portofino 410 ml', description: 'Mug de porcelana 410 ml. Línea Portofino — capacidad generosa para el café o infusiones.', price: 10999, image: 'FOTOS/mishka/mug-portofino-410/1.jpg', category: 'Hogar > Cocina > Tazas y Mugs' },
+
+  // SORRENTO (VASSA)
+  { id: 'plato-playo-sorrento', title: 'Plato Playo Sorrento 27,5 cm', description: 'Plato playo de porcelana 27,5 cm. Línea Sorrento — diseño artesanal con textura y carácter.', price: 25499, image: 'FOTOS/mishka/plato-playo-sorrento/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'plato-postre-sorrento', title: 'Plato Postre Sorrento 22 cm', description: 'Plato postre de porcelana 22 cm. Línea Sorrento — elegancia artesanal en cada detalle.', price: 17999, image: 'FOTOS/mishka/plato-postre-sorrento/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'bowl-sorrento', title: 'Bowl Sorrento 680 ml', description: 'Bowl de porcelana 680 ml. Línea Sorrento — amplio y elegante para pastas, ensaladas o sopas.', price: 17999, image: 'FOTOS/mishka/bowl-sorrento/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'azucarera-sorrento', title: 'Azucarera Sorrento 10,5x11 cm', description: 'Azucarera de porcelana 10,5x11 cm. Línea Sorrento — detalle que completa cualquier mesa.', price: 16999, image: 'FOTOS/mishka/azucarera-sorrento/1.jpg', category: 'Hogar > Cocina > Accesorios de mesa' },
+  { id: 'lechera-sorrento', title: 'Lechera Sorrento 280 ml', description: 'Lechera de porcelana 280 ml. Línea Sorrento — pequeño detalle de gran impacto en la mesa.', price: 15499, image: 'FOTOS/mishka/lechera-sorrento/1.jpg', category: 'Hogar > Cocina > Accesorios de mesa' },
+  { id: 'bandeja-sorrento', title: 'Bandeja Ovalada Sorrento 30x14,5 cm', description: 'Bandeja ovalada de porcelana 30x14,5 cm. Línea Sorrento — para servir con estilo.', price: 35999, image: 'FOTOS/mishka/bandeja-sorrento/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+
+  // SUNDARA
+  { id: 'bowl-sundara-rectangular', title: 'Bowl Rectangular Sundara 700 ml', description: 'Bowl rectangular 700 ml. Diseño orgánico y artesanal — ideal para presentaciones en la mesa.', price: 45999, image: 'FOTOS/mishka/bowl-sundara-rectangular/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+  { id: 'bowl-sundara-redondo', title: 'Bowl Redondo Sundara 1000 ml', description: 'Bowl redondo 1000 ml. Forma orgánica generosa — perfecto para pastas, ensaladas y servicio en mesa.', price: 47999, image: 'FOTOS/mishka/bowl-sundara-redondo/1.jpg', category: 'Hogar > Cocina > Vajilla' },
+
+  // VASOS Y COPAS (VASSA)
+  { id: 'vasos-maja', title: 'Set x6 Vasos Maja 420 ml', description: 'Set de 6 vasos de vidrio 420 ml. Diseño clásico y versátil — para agua, jugos o cócteles.', price: 89999, image: 'FOTOS/mishka/vasos-maja/1.jpg', category: 'Hogar > Cocina > Vasos y Copas' },
+  { id: 'vasos-maja-black', title: 'Set x6 Vasos Maja Black 420 ml', description: 'Set de 6 vasos de vidrio ahumado negro 420 ml. Diseño sofisticado que eleva cualquier mesa.', price: 75999, image: 'FOTOS/mishka/vasos-maja-black/1.jpg', category: 'Hogar > Cocina > Vasos y Copas' },
+  { id: 'copas-fedra', title: 'Set x6 Copas Fedra 330 ml', description: 'Set de 6 copas de vidrio 330 ml. Diseño elegante y fino — para vinos blancos, rosados y espumantes.', price: 143999, image: 'FOTOS/mishka/copas-fedra/1.jpg', category: 'Hogar > Cocina > Vasos y Copas' },
+  { id: 'copas-fedra-brown', title: 'Set x6 Copas Fedra Brown 320 ml', description: 'Set de 6 copas de vidrio ahumado marrón 320 ml. Diseño exclusivo con tono cálido y sofisticado.', price: 169999, image: 'FOTOS/mishka/copas-fedra-brown/1.jpg', category: 'Hogar > Cocina > Vasos y Copas' },
+  { id: 'jarra-maja-black', title: 'Jarra Maja Black 1600 ml', description: 'Jarra de vidrio con funda tejida de rattan negro 1600 ml. Diseño artesanal único.', price: 66999, image: 'FOTOS/mishka/jarra-maja-black/1.jpg', category: 'Hogar > Cocina > Jarras' },
+
+  // BOROSILICATO
+  { id: 'mug-icon', title: 'Mug Borosilicato Cuadrado Icon 190 ml', description: 'Mug de borosilicato cuadrado 190 ml. Vidrio resistente al calor — para café, té y mate cocido.', price: 6999, image: 'FOTOS/mishka/mug-icon/1.jpg', category: 'Hogar > Cocina > Tazas y Mugs' },
+  { id: 'mug-net', title: 'Mug Borosilicato Net 200 ml', description: 'Mug de borosilicato 200 ml con diseño net. Vidrio doble pared resistente al calor.', price: 10999, image: 'FOTOS/mishka/mug-net/1.jpg', category: 'Hogar > Cocina > Tazas y Mugs' },
+
+  // MADERA / ACACIA
+  { id: 'copetineros-acacia', title: 'Set Copetineros Acacia Manila', description: 'Set de copetineros de madera de acacia natural. Ideales para aperitivos, picadas y presentaciones.', price: 23999, image: 'FOTOS/mishka/copetineros-acacia/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'copetineros-porcelana', title: 'Set x4 Copetineros Porcelana + Base Bamboo 20x20 cm', description: 'Set de 4 copetineros de porcelana con base de bamboo negro 20x20 cm. Diseño premium.', price: 47999, image: 'FOTOS/mishka/copetineros-porcelana/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'cuenco-acacia', title: 'Cuenco Ovalado Acacia Manila 26x20x6,5 cm', description: 'Cuenco ovalado de madera de acacia 26x20x6,5 cm. Pieza natural para servir y decorar.', price: 47999, image: 'FOTOS/mishka/cuenco-acacia/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'bifera', title: 'Bifera Cuadrada Acacia 4x27 cm', description: 'Bifera cuadrada de acacia 4x27 cm. Para servir dips, salsas y aperitivos con estilo.', price: 94999, image: 'FOTOS/mishka/bifera/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'bandejas-hanoi', title: 'Set x2 Bandejas Redondas Hanoi 31/25 cm', description: 'Set de 2 bandejas redondas de acacia 31 y 25 cm. Diseño natural y versátil para mesa y cocina.', price: 50999, image: 'FOTOS/mishka/bandejas-hanoi/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'bandeja-family-farm', title: 'Bandeja Rectangular Family Farm 33,5x21 cm', description: 'Bandeja rectangular de madera 33,5x21 cm. Estilo rústico americano para servir y presentar.', price: 22999, image: 'FOTOS/mishka/bandeja-family-farm/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'fuente-family-farm', title: 'Fuente Family Farm 24x16,5x5 cm', description: 'Fuente de madera 24x16,5x5 cm. Diseño rústico y práctico para servir en cualquier ocasión.', price: 19999, image: 'FOTOS/mishka/fuente-family-farm/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'fuente-horno-acacia', title: 'Fuente para Horno con Base Acacia 23 cm', description: 'Fuente redonda para horno con base de madera de acacia 23 cm. Del horno directo a la mesa.', price: 54999, image: 'FOTOS/mishka/fuente-horno-acacia/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'cubiertos-acacia', title: 'Set Cuchara y Tenedor Acacia Manila Black 25,4 cm', description: 'Set de cuchara y tenedor de servicio en acacia negra 25,4 cm. Para ensaladas y fuentes.', price: 15499, image: 'FOTOS/mishka/cubiertos-acacia/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+  { id: 'cesto-kendari', title: 'Cesto con Manijas Kendari 13x27 cm', description: 'Cesto con manijas tejido Kendari 13x27 cm. Pieza artesanal para organizar y decorar.', price: 61999, image: 'FOTOS/mishka/cesto-kendari/1.jpg', category: 'Hogar > Cocina > Madera y Acacia' },
+
+  // JARRAS Y ENLOZADOS
+  { id: 'jarra-bali', title: 'Jarra Recta Bali 1350 ml', description: 'Jarra recta 1350 ml. Diseño limpio y versátil — para agua, jugos y limonadas.', price: 47999, image: 'FOTOS/mishka/jarra-bali/1.jpg', category: 'Hogar > Cocina > Jarras' },
+  { id: 'jarra-menak', title: 'Jarra Cónica Menak 1300 ml', description: 'Jarra cónica 1300 ml. Forma elegante con amplia capacidad — perfecta para cualquier mesa.', price: 52999, image: 'FOTOS/mishka/jarra-menak/1.jpg', category: 'Hogar > Cocina > Jarras' },
+  { id: 'ensaladera-general-18', title: 'Ensaladera Enlozada General Store 18x7 cm', description: 'Ensaladera enlozada 18x7 cm. Diseño vintage rústico — ideal para guarniciones y ensaladas pequeñas.', price: 15999, image: 'FOTOS/mishka/ensaladera-general-18/1.jpg', category: 'Hogar > Cocina > Enlozados' },
+  { id: 'ensaladera-general-22', title: 'Ensaladera Enlozada General Store 22x9 cm', description: 'Ensaladera enlozada 22x9 cm. Diseño vintage rústico — perfecta para ensaladas y guarniciones.', price: 23999, image: 'FOTOS/mishka/ensaladera-general-22/1.jpg', category: 'Hogar > Cocina > Enlozados' },
+  { id: 'ensaladera-omari', title: 'Ensaladera Omari 3500 ml', description: 'Ensaladera 3500 ml. Gran capacidad para ensaladas familiares — diseño limpio y atemporal.', price: 57999, image: 'FOTOS/mishka/ensaladera-omari/1.jpg', category: 'Hogar > Cocina > Enlozados' }
 ];
 
 function encodeImageUrl(path) {
