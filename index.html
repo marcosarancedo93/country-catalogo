@@ -1528,7 +1528,7 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
     <div style="font-size:0.8em;color:#8a6840;letter-spacing:1px;margin-bottom:20px;line-height:1.8;">
       Andreani · Correo Argentino<br>A todo el país
     </div>
-    <button class="modal-btn" onclick="document.getElementById('modalShipping').classList.add('hidden')">Explorar colección</button>
+    <button class="modal-btn" onclick="document.getElementById('modalShipping').classList.add('hidden'); showSection('coleccion'); filterCat('mesa')">Explorar colección</button>
   </div>
 </div>
 
@@ -1544,7 +1544,7 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
       <div class="portada-hero-title">Country</div>
       <div class="portada-hero-sub">Feel at Home</div>
       <div class="portada-hero-divider"></div>
-      <button class="portada-hero-cta" onclick="showSection('coleccion')">
+      <button class="portada-hero-cta" onclick="showSection('coleccion'); filterCat('mesa')">
         Explorar Colección
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
