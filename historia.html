@@ -334,13 +334,14 @@
     }
 
     .cell-tall   { grid-column: span 3; aspect-ratio: auto; height: 420px; }
-    .cell-square { grid-column: span 4; aspect-ratio: auto; height: 320px; }
-    .cell-wide   { grid-column: span 7; aspect-ratio: auto; height: 420px; }
-    .cell-wide-tall { grid-column: span 5; aspect-ratio: auto; height: 420px; }
-    .cell-hero-big { grid-column: span 7; height: 500px; }
-    .cell-hero-sm  { grid-column: span 5; height: 500px; }
+    .cell-square { grid-column: span 6; aspect-ratio: auto; height: 320px; }
+    .cell-wide   { grid-column: span 9; aspect-ratio: auto; height: 420px; }
+    .cell-wide-tall { grid-column: span 6; aspect-ratio: auto; height: 420px; }
+    .cell-hero-big { grid-column: span 8; height: 500px; }
+    .cell-hero-sm  { grid-column: span 4; height: 500px; }
     .cell-md   { grid-column: span 4; height: 320px; }
-    .cell-sm3  { grid-column: span 3; height: 280px; }
+    .cell-sm3  { grid-column: span 4; height: 280px; }
+    .grid-thirds .cell { grid-column: span 4 !important; height: 380px; }
 
     /* Desktop: story-block lado a lado */
     .story-block {
@@ -459,7 +460,7 @@
 </div>
 
 <!-- GRILLA 2: más fotos -->
-<div class="grid">
+<div class="grid grid-thirds">
 
   <!-- tall: Cumbre brazos abiertos -->
   <div class="cell cell-tall">
