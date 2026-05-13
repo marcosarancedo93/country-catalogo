@@ -2,5 +2,6 @@
   "rewrites": [
     { "source": "/links", "destination": "/links.html" },
     { "source": "/historia", "destination": "/historia.html" }
-  ]
+  ],
+  "toolbar": { "disabled": true }
 }
