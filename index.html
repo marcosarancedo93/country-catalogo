@@ -1398,15 +1398,10 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
     <button class="nav-drawer-close" onclick="closeDrawer()">✕</button>
   </div>
   <div class="nav-drawer-items">
-    <button class="nav-drawer-item" data-section="coleccion" onclick="toggleColeccionMenu()">
+    <button class="nav-drawer-item" data-section="coleccion" onclick="showSection('coleccion'); resetCatFilter(); document.getElementById('navDrawer').classList.remove('open');">
       <span>Colección</span>
-      <svg class="col-chevron" id="col-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
-    <div class="nav-drawer-submenu" id="coleccion-submenu">
-      <button class="nav-drawer-subitem" onclick="goToColeccion('mesa')">Mesa y Cocina</button>
-      <button class="nav-drawer-subitem" onclick="goToColeccion('decoracion')">Decoración</button>
-      <button class="nav-drawer-subitem" onclick="goToColeccion('ambiente')">Ambiente</button>
-    </div>
     <button class="nav-drawer-item" data-section="nosotros" onclick="showSection('nosotros')">
       <span>Nosotros</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
