@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido China — Análisis de Costos y Rentabilidad</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5ead8;
+      color: #2c1f0e;
+      padding: 32px 16px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2c1f0e;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #8a6840;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8a6840;
+      border-bottom: 1px solid #c4a87a;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: #fffaf4;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead tr {
+      background: #2c1f0e;
+      color: #f5ead8;
+    }
+
+    thead th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    tbody tr:nth-child(even) { background: #fdf3e3; }
+    tbody tr:hover { background: #f0dfc0; }
+
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8d9c0;
+    }
+
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .green { color: #3a7a3a; font-weight: bold; }
+    .red { color: #a03030; }
+    .gold { color: #8a6840; font-weight: bold; }
+
+    tfoot tr {
+      background: #5c3d1e;
+      color: #f5ead8;
+      font-weight: bold;
+    }
+    tfoot td { padding: 11px 14px; }
+
+    .resumen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .card {
+      background: #fffaf4;
+      border-radius: 8px;
+      padding: 18px 16px;
+      border-left: 4px solid #c4a87a;
+    }
+
+    .card .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8a6840;
+      margin-bottom: 6px;
+    }
+
+    .card .value {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #2c1f0e;
+    }
+
+    .card.highlight {
+      border-left-color: #3a7a3a;
+      background: #f0faf0;
+    }
+
+    .card.highlight .value { color: #3a7a3a; }
+
+    .note {
+      font-size: 0.78rem;
+      color: #8a6840;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-style: normal;
+      letter-spacing: 0.04em;
+    }
+    .tag-ig { background: #f0dfc0; color: #5c3d1e; }
+    .tag-ml { background: #d0e8ff; color: #1a4a7a; }
+
+    @media (max-width: 600px) {
+      thead th, tbody td, tfoot td { padding: 8px 10px; font-size: 0.8rem; }
+      h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Country Home & Deco</h1>
+  <p class="subtitle">Pedido China — Análisis de costos, precios y rentabilidad · Mayo 2026</p>
+
+  <!-- COSTOS DEL PEDIDO -->
+  <section>
+    <h2>Estructura de costos del pedido</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Estado</th>
+          <th class="num">USD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FOB — mercadería al proveedor</td>
+          <td>✅ Pagado</td>
+          <td class="num">$1,400</td>
+        </tr>
+        <tr>
+          <td>Flete Forest Leopard (marítimo LCL, sin aduana)</td>
+          <td>✅ Pagado</td>
+          <td class="num">$1,014</td>
+        </tr>
+        <tr>
+          <td>Depósito fiscal Buenos Aires</td>
+          <td>⏳ Al llegar</td>
+          <td class="num">$1,200</td>
+        </tr>
+        <tr>
+          <td>Impuestos — Nacionalización (sobre FOB declarado $761.80)</td>
+          <td>⏳ Al llegar</td>
+          <td class="num">$1,047</td>
+        </tr>
+        <tr>
+          <td>Camión (depósito fiscal → puerta)</td>
+          <td>⏳ Al llegar</td>
+          <td class="num">$100</td>
+        </tr>
+        <tr>
+          <td>Despachante + Importador</td>
+          <td>⏳ Al llegar</td>
+          <td class="num">$800</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">TOTAL PEDIDO</td>
+          <td class="num">$5,561</td>
+        </tr>
+        <tr>
+          <td colspan="2">Queda por pagar (FOB + flete ya pagados)</td>
+          <td class="num">$3,147</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p class="note">Multiplicador real: $5,561 ÷ $1,400 FOB = <strong>3.97x</strong> · Tipo de cambio: USD 1 = ARS 1,420 · FOB declarado aduana: $761.80</p>
+  </section>
+
+  <!-- DETALLE IMPUESTOS -->
+  <section>
+    <h2>Detalle de impuestos (Nacionalización)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Impuesto</th>
+          <th>Base</th>
+          <th class="num">%</th>
+          <th class="num">USD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Derechos de importación</td>
+          <td>CIF $1,231</td>
+          <td class="num">20%</td>
+          <td class="num">$246</td>
+        </tr>
+        <tr>
+          <td>IVA</td>
+          <td>Val. imponible $1,477</td>
+          <td class="num">21%</td>
+          <td class="num">$310</td>
+        </tr>
+        <tr>
+          <td>IVA Adicional</td>
+          <td>Val. imponible $1,477</td>
+          <td class="num">20%</td>
+          <td class="num">$295</td>
+        </tr>
+        <tr>
+          <td>Ganancias</td>
+          <td>Val. imponible $1,477</td>
+          <td class="num">6%</td>
+          <td class="num">$89</td>
+        </tr>
+        <tr>
+          <td>IIBB</td>
+          <td>Val. imponible $1,477</td>
+          <td class="num">3.5%</td>
+          <td class="num">$52</td>
+        </tr>
+        <tr>
+          <td>Tasa estadística</td>
+          <td>CIF $1,231</td>
+          <td class="num">3%</td>
+          <td class="num">$44</td>
+        </tr>
+        <tr>
+          <td>Arancel SIM</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td class="num">$10</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">TOTAL IMPUESTOS</td>
+          <td class="num">$1,047</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p class="note">CIF = FOB declarado $761.80 + flete $450 + seguro $20 = $1,231 · Valor imponible = CIF + derechos = $1,477</p>
+  </section>
+
+  <!-- MERLIN LIVING -->
+  <section>
+    <h2>Merlin Living — Wall Art + Vases <span class="tag tag-ig">Instagram</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th class="num">Qty</th>
+          <th class="num">FOB u.</th>
+          <th class="num">Landed USD</th>
+          <th class="num">Landed ARS</th>
+          <th class="num">Precio venta</th>
+          <th class="num">Ganancia u.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wall Art 36×36 (GH2410078)</td>
+          <td class="num">19</td>
+          <td class="num">$23.41</td>
+          <td class="num">$93.64</td>
+          <td class="num">$132,969</td>
+          <td class="num gold">$280,000</td>
+          <td class="num green">$147,031</td>
+        </tr>
+        <tr>
+          <td>Wall Art 36×36 (GH2407043)</td>
+          <td class="num">7</td>
+          <td class="num">$23.96</td>
+          <td class="num">$95.84</td>
+          <td class="num">$136,093</td>
+          <td class="num gold">$280,000</td>
+          <td class="num green">$143,907</td>
+        </tr>
+        <tr>
+          <td>Wall Art 36×36 (GH2407051)</td>
+          <td class="num">5</td>
+          <td class="num">$17.77</td>
+          <td class="num">$71.08</td>
+          <td class="num">$100,934</td>
+          <td class="num gold">$230,000</td>
+          <td class="num green">$129,066</td>
+        </tr>
+        <tr>
+          <td>Wall Art 31×31 (GH2407050)</td>
+          <td class="num">7</td>
+          <td class="num">$16.75</td>
+          <td class="num">$67.00</td>
+          <td class="num">$95,140</td>
+          <td class="num gold">$190,000</td>
+          <td class="num green">$94,860</td>
+        </tr>
+        <tr>
+          <td>Wall Art 31×31 (GH2407047)</td>
+          <td class="num">5</td>
+          <td class="num">$14.96</td>
+          <td class="num">$59.84</td>
+          <td class="num">$84,973</td>
+          <td class="num gold">$190,000</td>
+          <td class="num green">$105,027</td>
+        </tr>
+        <tr>
+          <td>Vase 20.5cm (OMS01017302BJ1)</td>
+          <td class="num">15</td>
+          <td class="num">$9.41</td>
+          <td class="num">$37.64</td>
+          <td class="num">$53,449</td>
+          <td class="num gold">$110,000</td>
+          <td class="num green">$56,551</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>TOTAL MERLIN LIVING</td>
+          <td class="num">58</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="num">$6,742,918</td>
+          <td class="num">$14,580,000</td>
+          <td class="num">$7,837,082</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p class="note">Canal: Instagram · Margen bruto promedio: ~54% · Los Wall Art 36×36 son el producto estrella (31 unidades · $8,680,000 en ventas)</p>
+  </section>
+
+  <!-- FLOWER HOLDERS -->
+  <section>
+    <h2>Flower Holders / Wabi-sabi Vases / Maple Leaf <span class="tag tag-ml">MercadoLibre</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th class="num">Qty</th>
+          <th class="num">FOB u. prom.</th>
+          <th class="num">Landed ARS</th>
+          <th class="num">Precio ML</th>
+          <th class="num">Comisión ML</th>
+          <th class="num">Andreani S</th>
+          <th class="num">Ganancia neta u.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Flower holders / Vases / Maple leaf</td>
+          <td class="num">80</td>
+          <td class="num">$4.44</td>
+          <td class="num">$25,219</td>
+          <td class="num gold">$65,000</td>
+          <td class="num red">−$9,330</td>
+          <td class="num red">−$7,000</td>
+          <td class="num green">~$20,000</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>TOTAL 80 UNIDADES</td>
+          <td class="num">80</td>
+          <td colspan="3" class="num">$5,200,000 en ventas</td>
+          <td colspan="2" class="num">−$1,306,400 costos ML+envío</td>
+          <td class="num">~$1,600,000</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p class="note">Comisión ML: 14.35% + cargo fijo $3,100 · Andreani S: $7,000 · Margen neto ~31%</p>
+  </section>
+
+  <!-- RESUMEN GENERAL -->
+  <section>
+    <h2>Resumen general del pedido</h2>
+    <div class="resumen-grid">
+      <div class="card">
+        <div class="label">Inversión total</div>
+        <div class="value">$7,897,820</div>
+      </div>
+      <div class="card">
+        <div class="label">Ingresos si vendés todo</div>
+        <div class="value">~$19,780,000</div>
+      </div>
+      <div class="card highlight">
+        <div class="label">Ganancia bruta estimada</div>
+        <div class="value">~$11,882,180</div>
+      </div>
+      <div class="card highlight">
+        <div class="label">Margen bruto</div>
+        <div class="value">~60%</div>
+      </div>
+      <div class="card">
+        <div class="label">Unidades totales</div>
+        <div class="value">138</div>
+      </div>
+      <div class="card">
+        <div class="label">Multiplicador logística</div>
+        <div class="value">3.97x</div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">* Ganancia bruta no descuenta: publicidad, empaque, monotributo, devoluciones. Aplicar ~15% adicional de costos operativos para ganancia neta real → ~$10,099,853 neto estimado.</p>
+  </section>
+
+</body>
+</html>
