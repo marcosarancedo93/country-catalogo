@@ -343,10 +343,11 @@
   .fs-fill { background: #c4a87a; height: 100%; border-radius: 10px; transition: width 0.3s; }
 
   .cart-item {
-    background: white; border-radius: 4px; padding: 12px 14px;
+    background: white; border-radius: 4px; padding: 10px 12px;
     margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
+  .ci-photo { width: 54px; height: 54px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
   .ci-info { flex: 1; min-width: 0; }
   .ci-name { font-size: 0.87em; font-weight: 500; color: #2c1f0e; }
   .ci-price { font-size: 0.8em; color: #8a6840; margin-top: 2px; }
@@ -2594,8 +2595,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = nameEl ? nameEl.textContent.trim() : `Producto ${i+1}`;
       const price = priceEl ? parseInt(priceEl.textContent.replace(/[^0-9]/g, '')) : 0;
       const id = `prod-${i}`;
+      const imgEl = prod.querySelector('.main-photo');
+      const photo = imgEl ? imgEl.src : '';
       fbq('track', 'ViewContent', { content_ids: [id], content_name: name, value: price, currency: 'ARS', content_type: 'product' });
-      addToCart(id, name, price);
+      addToCart(id, name, price, photo);
       btn.textContent = 'Agregado';
       btn.classList.add('added');
       setTimeout(() => { btn.textContent = '+ Agregar al carrito'; btn.classList.remove('added'); }, 1800);
@@ -2617,10 +2620,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ─── CART MANAGEMENT ─────────────────────────────────────
-function addToCart(id, name, price) {
+function addToCart(id, name, price, photo) {
   const ex = cart.find(i => i.id === id);
   if (ex) ex.qty++;
-  else cart.push({ id, name, price, qty: 1 });
+  else cart.push({ id, name, price, qty: 1, photo: photo || '' });
   save();
   renderCart();
   openCart();
@@ -2673,6 +2676,7 @@ function renderCart() {
   } else {
     itemsEl.innerHTML = cart.map(item => `
       <div class="cart-item">
+        ${item.photo ? `<img class="ci-photo" src="${item.photo}" alt="${item.name}">` : ''}
         <div class="ci-info">
           <div class="ci-name">${item.name}</div>
           <div class="ci-price">${fmt(item.price)} c/u</div>
