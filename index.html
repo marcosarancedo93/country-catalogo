@@ -464,6 +464,46 @@
   .btn-transfer:hover { background: #496040; }
   .btn-transfer.visible { display: block; }
 
+  /* ── COMPRA PROTEGIDA + ACCORDION CHECKOUT ── */
+  .compra-segura-banner {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    background: #eaf4e3; border: 1px solid #9cc88a;
+    color: #2e6e20; border-radius: 3px; padding: 10px 14px;
+    font-size: 0.76em; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .ck-back { background: none; border: none; color: #8a6840; font-size: 0.8em; cursor: pointer; margin-bottom: 12px; padding: 0; text-decoration: underline; display: block; }
+  .ck-section { border: 1px solid #e0d0b0; border-radius: 4px; margin-bottom: 8px; background: white; }
+  .ck-section-head { padding: 13px 14px; display: flex; align-items: center; gap: 10px; }
+  .ck-num {
+    width: 22px; height: 22px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-size: 0.72em;
+    font-weight: 700; flex-shrink: 0; background: #c4a87a; color: white;
+  }
+  .ck-section.ck-active .ck-num { background: #2c1f0e; }
+  .ck-section.ck-done .ck-num { background: #5a7a4a; }
+  .ck-title { flex: 1; font-size: 0.82em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #b0a090; }
+  .ck-section.ck-active .ck-title, .ck-section.ck-done .ck-title { color: #2c1f0e; }
+  .ck-cambiar { font-size: 0.75em; color: #5a7a4a; text-decoration: underline; cursor: pointer; display: none; white-space: nowrap; }
+  .ck-section.ck-done .ck-cambiar { display: block; }
+  .ck-summary { padding: 0 14px 10px; font-size: 0.8em; color: #5a7a4a; line-height: 1.6; display: none; }
+  .ck-section.ck-done .ck-summary { display: block; }
+  .ck-section.ck-active .ck-summary { display: none; }
+  .ck-body { display: none; padding: 14px; border-top: 1px solid #e8d5b5; }
+  .ck-section.ck-active .ck-body { display: block; }
+  .ck-continue {
+    width: 100%; padding: 12px; background: #2c1f0e; color: #f5ead8;
+    border: none; border-radius: 3px; font-family: 'Work Sans', sans-serif;
+    font-size: 0.85em; font-weight: 600; letter-spacing: 1px;
+    cursor: pointer; margin-top: 14px; transition: background 0.2s;
+  }
+  .ck-continue:hover { background: #3a2e20; }
+  .ck-total-bar {
+    background: #2c1f0e; color: #f5ead8; padding: 12px 14px;
+    border-radius: 3px; display: flex; justify-content: space-between;
+    font-size: 0.95em; font-weight: 600; margin: 12px 0 0;
+  }
+
   /* Resumen */
   .resumen-item {
     display: flex; justify-content: space-between;
@@ -1474,87 +1514,115 @@ src="https://www.facebook.com/tr?id=1479825037203290&ev=PageView&noscript=1"/></
       <div id="cart-items"></div>
     </div>
 
-    <!-- STEP 2: Datos personales -->
-    <div class="step" id="step-2">
-      <button class="step-back" onclick="goStep(1)">← Volver al carrito</button>
-      <div class="step-title">Datos de envío</div>
-      <div class="fg"><label>Nombre completo *</label><input type="text" id="f-name" placeholder="Tu nombre"></div>
-      <div class="fg-row">
-        <div class="fg"><label>Teléfono *</label><input type="tel" id="f-phone" placeholder="11 xxxx-xxxx"></div>
-        <div class="fg"><label>Email *</label><input type="email" id="f-email" placeholder="tu@email.com"></div>
+    <!-- CHECKOUT: Datos + Envío + Pago (accordion) -->
+    <div class="step" id="step-checkout">
+      <button class="ck-back" onclick="goStep(1)">← Volver al carrito</button>
+
+      <div class="compra-segura-banner">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        COMPRA PROTEGIDA · 100% SEGURO
       </div>
-      <div class="fg"><label>Dirección *</label><input type="text" id="f-address" placeholder="Calle y número"></div>
-      <div class="fg-row">
-        <div class="fg"><label>Piso / Dpto</label><input type="text" id="f-floor" placeholder="Ej: 3° B"></div>
-        <div class="fg"><label>Edificio / Torre</label><input type="text" id="f-building" placeholder="Opcional"></div>
-      </div>
-      <div class="fg-row">
-        <div class="fg"><label>Ciudad *</label><input type="text" id="f-city" placeholder="Ciudad"></div>
-        <div class="fg">
-          <label>Provincia *</label>
-          <select id="f-province">
-            <option value="">Seleccioná...</option>
-            <option value="Ciudad Autónoma de Buenos Aires">Ciudad Autónoma de Buenos Aires</option>
-            <option value="Buenos Aires">Buenos Aires</option>
-            <option value="Catamarca">Catamarca</option>
-            <option value="Chaco">Chaco</option>
-            <option value="Chubut">Chubut</option>
-            <option value="Córdoba">Córdoba</option>
-            <option value="Corrientes">Corrientes</option>
-            <option value="Entre Ríos">Entre Ríos</option>
-            <option value="Formosa">Formosa</option>
-            <option value="Jujuy">Jujuy</option>
-            <option value="La Pampa">La Pampa</option>
-            <option value="La Rioja">La Rioja</option>
-            <option value="Mendoza">Mendoza</option>
-            <option value="Misiones">Misiones</option>
-            <option value="Neuquén">Neuquén</option>
-            <option value="Río Negro">Río Negro</option>
-            <option value="Salta">Salta</option>
-            <option value="San Juan">San Juan</option>
-            <option value="San Luis">San Luis</option>
-            <option value="Santa Cruz">Santa Cruz</option>
-            <option value="Santa Fe">Santa Fe</option>
-            <option value="Santiago del Estero">Santiago del Estero</option>
-            <option value="Tierra del Fuego">Tierra del Fuego</option>
-            <option value="Tucumán">Tucumán</option>
-          </select>
+
+      <!-- SECCION 1: Datos de envío -->
+      <div class="ck-section ck-active" id="ck-datos">
+        <div class="ck-section-head">
+          <span class="ck-num">1</span>
+          <span class="ck-title">Datos de envío</span>
+          <span class="ck-cambiar" onclick="reopenSection('datos')">Cambiar</span>
+        </div>
+        <div class="ck-summary" id="sum-datos"></div>
+        <div class="ck-body">
+          <div class="fg"><label>Nombre completo *</label><input type="text" id="f-name" placeholder="Tu nombre"></div>
+          <div class="fg-row">
+            <div class="fg"><label>Teléfono *</label><input type="tel" id="f-phone" placeholder="11 xxxx-xxxx"></div>
+            <div class="fg"><label>Email *</label><input type="email" id="f-email" placeholder="tu@email.com"></div>
+          </div>
+          <div class="fg"><label>Dirección *</label><input type="text" id="f-address" placeholder="Calle y número"></div>
+          <div class="fg-row">
+            <div class="fg"><label>Piso / Dpto</label><input type="text" id="f-floor" placeholder="Ej: 3° B"></div>
+            <div class="fg"><label>Edificio / Torre</label><input type="text" id="f-building" placeholder="Opcional"></div>
+          </div>
+          <div class="fg-row">
+            <div class="fg"><label>Ciudad *</label><input type="text" id="f-city" placeholder="Ciudad"></div>
+            <div class="fg">
+              <label>Provincia *</label>
+              <select id="f-province">
+                <option value="">Seleccioná...</option>
+                <option value="Ciudad Autónoma de Buenos Aires">Ciudad Autónoma de Buenos Aires</option>
+                <option value="Buenos Aires">Buenos Aires</option>
+                <option value="Catamarca">Catamarca</option>
+                <option value="Chaco">Chaco</option>
+                <option value="Chubut">Chubut</option>
+                <option value="Córdoba">Córdoba</option>
+                <option value="Corrientes">Corrientes</option>
+                <option value="Entre Ríos">Entre Ríos</option>
+                <option value="Formosa">Formosa</option>
+                <option value="Jujuy">Jujuy</option>
+                <option value="La Pampa">La Pampa</option>
+                <option value="La Rioja">La Rioja</option>
+                <option value="Mendoza">Mendoza</option>
+                <option value="Misiones">Misiones</option>
+                <option value="Neuquén">Neuquén</option>
+                <option value="Río Negro">Río Negro</option>
+                <option value="Salta">Salta</option>
+                <option value="San Juan">San Juan</option>
+                <option value="San Luis">San Luis</option>
+                <option value="Santa Cruz">Santa Cruz</option>
+                <option value="Santa Fe">Santa Fe</option>
+                <option value="Santiago del Estero">Santiago del Estero</option>
+                <option value="Tierra del Fuego">Tierra del Fuego</option>
+                <option value="Tucumán">Tucumán</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label>Notas (opcional)</label><textarea id="f-notes" placeholder="Color, variante, instrucciones especiales..."></textarea></div>
+          <button class="ck-continue" onclick="confirmDatos()">Continuar →</button>
         </div>
       </div>
-      <div class="fg"><label>Notas (opcional)</label><textarea id="f-notes" placeholder="Color, variante, instrucciones especiales..."></textarea></div>
-    </div>
 
-    <!-- STEP 3: Envío + Total -->
-    <div class="step" id="step-3">
-      <button class="step-back" onclick="goStep(2)">← Volver</button>
-      <div class="step-title">Elegí el envío</div>
-      <div id="shipping-opts"></div>
-      <div class="order-total-bar">
-        <span>Total</span>
-        <span id="total-display">$0</span>
+      <!-- SECCION 2: Método de envío -->
+      <div class="ck-section" id="ck-envio">
+        <div class="ck-section-head">
+          <span class="ck-num">2</span>
+          <span class="ck-title">Método de envío</span>
+          <span class="ck-cambiar" onclick="reopenSection('envio')">Cambiar</span>
+        </div>
+        <div class="ck-summary" id="sum-envio"></div>
+        <div class="ck-body">
+          <div id="shipping-opts"></div>
+          <div class="ck-total-bar">
+            <span>Total</span>
+            <span id="total-display">$0</span>
+          </div>
+          <button class="ck-continue" onclick="confirmEnvio()">Continuar →</button>
+        </div>
       </div>
-    </div>
 
-    <!-- STEP 4: Pago -->
-    <div class="step" id="step-4">
-      <button class="step-back" onclick="goStep(3)">← Volver</button>
-      <div class="step-title">Forma de pago</div>
-      <div id="resumen-pago" style="margin-bottom:14px;"></div>
-      <div class="pay-opt" id="pay-mp" onclick="selectPay('mp')">
-        <span class="pay-opt-icon">MP</span>
-        <div><div class="pay-opt-name">Mercado Pago</div><div class="pay-opt-detail">Tarjetas, débito, hasta 12 cuotas</div></div>
+      <!-- SECCION 3: Forma de pago -->
+      <div class="ck-section" id="ck-pago">
+        <div class="ck-section-head">
+          <span class="ck-num">3</span>
+          <span class="ck-title">Forma de pago</span>
+        </div>
+        <div class="ck-body">
+          <div id="resumen-pago" style="margin-bottom:14px;"></div>
+          <div class="pay-opt" id="pay-mp" onclick="selectPay('mp')">
+            <span class="pay-opt-icon">MP</span>
+            <div><div class="pay-opt-name">Mercado Pago</div><div class="pay-opt-detail">Tarjetas, débito, hasta 12 cuotas</div></div>
+          </div>
+          <div class="pay-opt" id="pay-transfer" onclick="selectPay('transfer')">
+            <span class="pay-opt-icon">TR</span>
+            <div><div class="pay-opt-name">Transferencia a Mercado Pago</div><div class="pay-opt-detail">Alias o CVU</div></div>
+          </div>
+          <div class="transfer-box" id="transfer-box">
+            <div class="transfer-row"><span class="transfer-label">Alias</span><span class="transfer-value">countryhomedeco</span></div>
+            <div class="transfer-row"><span class="transfer-label">CVU</span><span class="transfer-value" style="font-size:0.82em;">0000003100099040747536</span></div>
+            <div class="transfer-row" id="transfer-amount-row"><span class="transfer-label">Monto</span><span class="transfer-value" id="transfer-amount">—</span></div>
+          </div>
+          <button class="btn-mp" id="btn-pay-mp" onclick="payWithMP()">Pagar con Mercado Pago</button>
+          <button class="btn-transfer" id="btn-transfer" onclick="confirmTransfer()">Ya transferí — Confirmar pedido</button>
+        </div>
       </div>
-      <div class="pay-opt" id="pay-transfer" onclick="selectPay('transfer')">
-        <span class="pay-opt-icon">TR</span>
-        <div><div class="pay-opt-name">Transferencia a Mercado Pago</div><div class="pay-opt-detail">Alias o CVU</div></div>
-      </div>
-      <div class="transfer-box" id="transfer-box">
-        <div class="transfer-row"><span class="transfer-label">Alias</span><span class="transfer-value">countryhomedeco</span></div>
-        <div class="transfer-row"><span class="transfer-label">CVU</span><span class="transfer-value" style="font-size:0.82em;">0000003100099040747536</span></div>
-        <div class="transfer-row" id="transfer-amount-row"><span class="transfer-label">Monto</span><span class="transfer-value" id="transfer-amount">—</span></div>
-      </div>
-      <button class="btn-mp" id="btn-pay-mp" onclick="payWithMP()">Pagar con Mercado Pago</button>
-      <button class="btn-transfer" id="btn-transfer" onclick="confirmTransfer()">Ya transferí — Confirmar pedido</button>
     </div>
 
   </div>
@@ -2638,27 +2706,25 @@ function closeCart() {
 function goStep(n) {
   currentStep = n;
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-  document.getElementById(`step-${n}`).classList.add('active');
 
   const foot = document.getElementById('cart-foot');
   const btnNext = document.getElementById('btn-next');
 
   if (n === 1) {
+    document.getElementById('step-1').classList.add('active');
     foot.style.display = 'block';
     btnNext.textContent = 'Continuar →';
     btnNext.disabled = cart.length === 0;
-  } else if (n === 2) {
-    foot.style.display = 'block';
-    btnNext.textContent = 'Ver opciones de envío →';
-    btnNext.disabled = false;
-  } else if (n === 3) {
-    foot.style.display = 'block';
-    renderShipping();
-    btnNext.textContent = 'Elegir forma de pago →';
-    btnNext.disabled = !selectedShipping;
-  } else if (n === 4) {
+  } else {
+    document.getElementById('step-checkout').classList.add('active');
     foot.style.display = 'none';
-    renderResumen();
+    // Reset accordion to datos open
+    ['datos','envio','pago'].forEach(s => {
+      const el = document.getElementById(`ck-${s}`);
+      el.classList.remove('ck-active','ck-done');
+    });
+    document.getElementById('ck-datos').classList.add('ck-active');
+    selectedShipping = null;
   }
 }
 
@@ -2666,13 +2732,49 @@ function nextStep() {
   if (currentStep === 1) {
     if (cart.length === 0) return alert('Agregá al menos un producto.');
     goStep(2);
-  } else if (currentStep === 2) {
-    if (!validateForm()) return;
-    goStep(3);
-  } else if (currentStep === 3) {
-    if (!selectedShipping) return alert('Seleccioná un método de envío.');
-    goStep(4);
   }
+}
+
+// ─── ACCORDION CHECKOUT ──────────────────────────────────
+function confirmDatos() {
+  if (!validateForm()) return;
+  const b = getBuyer();
+  document.getElementById('sum-datos').innerHTML =
+    `${b.name} &middot; ${b.phone}<br>${b.address}, ${b.city}, ${b.province}`;
+  const datos = document.getElementById('ck-datos');
+  datos.classList.remove('ck-active');
+  datos.classList.add('ck-done');
+  const envio = document.getElementById('ck-envio');
+  envio.classList.add('ck-active');
+  renderShipping();
+}
+
+function confirmEnvio() {
+  if (!selectedShipping) return alert('Seleccioná un método de envío.');
+  document.getElementById('sum-envio').innerHTML =
+    `${selectedShipping.label} &mdash; ${fmt(selectedShipping.cost)}`;
+  const envio = document.getElementById('ck-envio');
+  envio.classList.remove('ck-active');
+  envio.classList.add('ck-done');
+  const pago = document.getElementById('ck-pago');
+  pago.classList.add('ck-active');
+  renderResumen();
+}
+
+function reopenSection(name) {
+  if (name === 'datos') {
+    // Collapse envío and pago
+    ['envio','pago'].forEach(s => {
+      document.getElementById(`ck-${s}`).classList.remove('ck-active','ck-done');
+    });
+    selectedShipping = null;
+  } else if (name === 'envio') {
+    document.getElementById('ck-pago').classList.remove('ck-active','ck-done');
+  }
+  const sec = document.getElementById(`ck-${name}`);
+  sec.classList.remove('ck-done');
+  sec.classList.add('ck-active');
+  if (name === 'envio') renderShipping();
 }
 
 // ─── FORM VALIDATION ─────────────────────────────────────
@@ -2738,7 +2840,6 @@ function renderShipping() {
 
 function selectShipping(key, cost) {
   selectedShipping = { key, cost, label: SHIPPING[key].label };
-  document.getElementById('btn-next').disabled = false;
   document.querySelectorAll('.shipping-opt').forEach(el => el.classList.remove('selected'));
   event.currentTarget.classList.add('selected');
   updateTotalDisplay();
