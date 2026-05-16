@@ -2558,17 +2558,57 @@ const SHIPPING = {
 };
 const AMBA_PROVINCES = ['Ciudad Autónoma de Buenos Aires', 'Buenos Aires'];
 
-// Pesos en gramos por producto
-const PRODUCT_WEIGHTS = {
-  'PAMPA': 1200, 'GROVE': 1200, 'CLAY': 1200, 'STONE': 1200,
-  'RANCH': 1500, 'LENA': 500,  'KURO': 400,  'WABI': 400,
-  'CLOVER': 1000,'LOVE': 500,  'EMBER': 280, 'HAVEN': 280,
-  'AMBER': 280,  'DUNE': 800,  'BRISA': 900, 'COAL': 900,
-  'TERRA': 700,  'HOME': 500,  'Esencia': 350
-};
+// Pesos estimados por tipo de producto (gramos, incluye packaging)
 function getWeight(name) {
-  for (const [k, w] of Object.entries(PRODUCT_WEIGHTS)) if (name.includes(k)) return w;
-  return 600;
+  const n = name.toLowerCase();
+  // Platos playos cerámicos (sets)
+  if (n.includes('plato') && n.includes('playo') && n.includes('x6')) return 4500;
+  if (n.includes('plato') && n.includes('playo') && n.includes('x4')) return 3100;
+  if (n.includes('plato') && n.includes('playo')) return 3800;
+  // Platos postre cerámicos (sets)
+  if (n.includes('plato') && n.includes('postre') && n.includes('x6')) return 3100;
+  if (n.includes('plato') && n.includes('postre') && n.includes('x4')) return 2100;
+  if (n.includes('plato') && n.includes('postre')) return 2600;
+  // Mugs / tazas cerámicas (sets)
+  if ((n.includes('mug') || n.includes('taza')) && n.includes('x6')) return 2700;
+  if ((n.includes('mug') || n.includes('taza')) && n.includes('x4')) return 1900;
+  if (n.includes('mug') || n.includes('taza')) return 2000;
+  // Bowls cerámicos (sets)
+  if (n.includes('bowl') && n.includes('x6')) return 2400;
+  if (n.includes('bowl') && n.includes('x4')) return 1700;
+  if (n.includes('bowl')) return 1400;
+  // Vasos de vidrio (sets)
+  if (n.includes('vaso') && n.includes('x6')) return 1600;
+  if (n.includes('vaso') && n.includes('x4')) return 1100;
+  if (n.includes('vaso')) return 1300;
+  // Copas de vidrio (sets)
+  if (n.includes('copa') && n.includes('x6')) return 1900;
+  if (n.includes('copa') && n.includes('x4')) return 1300;
+  if (n.includes('copa')) return 1600;
+  // Jarras de vidrio
+  if (n.includes('jarra')) return 900;
+  // Ensaladeras
+  if (n.includes('ensaladera')) return 1000;
+  // Fuentes
+  if (n.includes('fuente')) return 1400;
+  // Copetineros
+  if (n.includes('copetinero') || n.includes('copetín')) return 700;
+  // Azucarera
+  if (n.includes('azucarera')) return 500;
+  // Lechera
+  if (n.includes('lechera')) return 450;
+  // Bandejas
+  if (n.includes('bandeja')) return 800;
+  // Bifera
+  if (n.includes('bifera')) return 2000;
+  // Cestos / canastos
+  if (n.includes('cesto') || n.includes('canasto') || n.includes('kendari')) return 500;
+  // Cubiertos de madera
+  if (n.includes('cubierto') || n.includes('acacia')) return 600;
+  // Set completo
+  if (n.includes('set') && n.includes('sorrento')) return 3500;
+  // Default vajilla
+  return 1000;
 }
 function cartWeightG() { return cart.reduce((s, i) => s + getWeight(i.name) * i.qty, 0); }
 function shippingTier() { return cartWeightG() <= 1000 ? 'light' : 'standard'; }
