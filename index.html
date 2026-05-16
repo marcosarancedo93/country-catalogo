@@ -2647,6 +2647,18 @@ function changeQty(id, delta) {
 function save() { localStorage.setItem('country_cart', JSON.stringify(cart)); }
 
 // ─── RENDER ───────────────────────────────────────────────
+function resolvePhoto(item) {
+  if (item.photo) return item.photo;
+  // Recuperar foto desde el DOM para items guardados antes del cambio
+  const idx = parseInt(item.id.replace('prod-', ''));
+  const prods = document.querySelectorAll('.product');
+  if (!isNaN(idx) && prods[idx]) {
+    const img = prods[idx].querySelector('.main-photo');
+    if (img) { item.photo = img.src; save(); return img.src; }
+  }
+  return '';
+}
+
 function renderCart() {
   const count = cart.reduce((s, i) => s + i.qty, 0);
   const badge = document.getElementById('cart-badge');
@@ -2676,7 +2688,7 @@ function renderCart() {
   } else {
     itemsEl.innerHTML = cart.map(item => `
       <div class="cart-item">
-        ${item.photo ? `<img class="ci-photo" src="${item.photo}" alt="${item.name}">` : ''}
+        ${(()=>{ const p=resolvePhoto(item); return p ? `<img class="ci-photo" src="${p}" alt="${item.name}">` : ''; })()}
         <div class="ci-info">
           <div class="ci-name">${item.name}</div>
           <div class="ci-price">${fmt(item.price)} c/u</div>
